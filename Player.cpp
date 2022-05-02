@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const int MAX_LEVEL=10;
+const int MAX_LEVEL = 10;// check if needs to move to the h file ???
 
 Player::Player(const string& name, int maxHP, int force) :
 m_name(name),
