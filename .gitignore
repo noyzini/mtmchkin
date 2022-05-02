@@ -2,6 +2,7 @@ build/
 .vscode/
 cmake-build-debug
 cmake-build-release
+.idea/workspace.xml
 
 # CMake
 CMakeLists.txt.user
