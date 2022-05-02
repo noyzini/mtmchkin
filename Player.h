@@ -8,6 +8,8 @@
 
 using namespace std;
 
+//add fancy /* */ above functions
+
 class Player{
 
     string m_name;

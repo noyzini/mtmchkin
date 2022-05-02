@@ -51,8 +51,6 @@ bool Player::pay(int coins)
     return false;
 }
 
-
-
 void Player::levelUp(){
     if(m_level<MAX_LEVEL)
     {
