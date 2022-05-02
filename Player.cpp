@@ -10,7 +10,7 @@ using namespace std;
 
 const int MAX_LEVEL=10;
 
-Player::Player(string& name, int maxHP, int force) :
+Player::Player(const string& name, int maxHP, int force) :
 m_name(name),
 m_level(1),
 m_force(force),
@@ -22,6 +22,36 @@ m_coins(0)
 void Player::printInfo() {
     printPlayerInfo(this->m_name.c_str(), this->m_level, this->m_force, this->m_HP, this->m_coins);
 }
+
+int Player::getLevel() {
+    return this->m_level;
+}
+
+void Player::heal(int hp)  ///can we assume hp > 0 ??
+{
+    m_HP += hp;
+    if (m_HP > m_maxHP)
+    {
+        m_HP = m_maxHP;
+    }
+}
+
+bool Player::isKnockedOut()
+{
+    return m_HP==0;
+}
+
+bool Player::pay(int coins)
+{
+    if (m_coins >= coins)
+    {
+        m_coins -= coins;
+        return true;
+    }
+    return false;
+}
+
+
 
 void Player::levelUp(){
     if(m_level<MAX_LEVEL)

@@ -4,9 +4,7 @@
 
 int main() {
     std::cout << "Hello, World!!" << std::endl;
-
-    string s = "hello";
-    std::cout << s.c_str();
-
+    string s;
+    Player p("avia",4,50);
     return 0;
 }
