@@ -18,7 +18,13 @@ class Player{
     int m_coins;
 
 public:
-    Player(string name, int maxHP = 100, int force = 5);
+    Player(string& name, int maxHP = 100, int force = 5);
+    Player(const Player&)=default;//ask on piaza if its ok
+    Player& operator=(const Player&)=default;
+    ~Player()=default;
+
+    void printInfo();
+    void levelUp();
 
 };
 
