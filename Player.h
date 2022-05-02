@@ -25,6 +25,15 @@ public:
 
     void printInfo();
     void levelUp();
+    int getLevel();
+    void buff(int boost);
+    void heal(int hp);
+    void damage(int damage);
+    bool isKnockedOut();
+    void addCoins(int coins);
+    bool pay(int coins);
+    int getAttackStrength();
+
 
 };
 

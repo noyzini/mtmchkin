@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Player.h"
+#include <string>
 
 int main() {
     std::cout << "Hello, World!!" << std::endl;
-    Player p("Avia");
-    Player p2 = p;
-    p = p2;
+
+    string s = "hello";
+    std::cout << s.c_str();
+
     return 0;
 }

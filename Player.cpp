@@ -13,9 +13,9 @@ m_name(name),
 m_level(1),
 m_force(force),
 m_maxHP(maxHP),
+m_HP(maxHP),
 m_coins(0)
-{
-}
+{}
 
 void Player::printInfo() {
     printPlayerInfo(this->m_name.c_str(), this->m_level, this->m_force, this->m_HP, this->m_coins);
