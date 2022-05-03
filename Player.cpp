@@ -77,8 +77,3 @@ void Player::addCoins(int coins) {
 int Player::getAttackStrength() {
     return (this->m_force+ this->m_level);
 }
-
-int Player::getHP()
-{
-    return m_HP;
-}

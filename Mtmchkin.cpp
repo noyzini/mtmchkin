@@ -65,19 +65,12 @@ void Mtmchkin::playNextCard()
     if (m_currentCard == m_cardsCount)
         m_currentCard = 0;
 
-    int level = m_player.getLevel();
-    int hp = m_player.getHP();
-
     currentCard.applyEncounter(m_player);
 
-    if (level < m_player.getLevel())
-    {
-        printBattleResult(WIN);
-    }
-    else if (hp > m_player.getHP()) //can we use this function??
-    {
-        printBattleResult(LOSE);
-    }
+    if (m_player.getLevel() == 10)
+        m_status = GameStatus::Win;
+    if (m_player.isKnockedOut())
+        m_status = GameStatus::Loss;
 
     m_player.printInfo();
 }
