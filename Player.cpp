@@ -70,10 +70,15 @@ void Player::damage(int damage) {
     }
 }
 
-void  Player::addCoins(int coins) {
+void Player::addCoins(int coins) {
     this->m_coins+=coins;
 }
 
 int Player::getAttackStrength() {
     return (this->m_force+ this->m_level);
+}
+
+int Player::getHP()
+{
+    return m_HP;
 }

@@ -36,6 +36,7 @@ public:
     bool pay(int coins);
     int getAttackStrength();
 
+    int getHP(); ///Can we do this??????
 
 };
 
