@@ -4,8 +4,7 @@
 
 #include "Mtmchkin.h"
 
-const bool WIN = true;
-const bool LOSE = false;
+
 
 Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards) :
         m_player(playerName), m_cards(new Card[numOfCards]), m_cardsCount(numOfCards),
@@ -63,14 +62,19 @@ void Mtmchkin::playNextCard()
 
     m_currentCard++;
     if (m_currentCard == m_cardsCount)
+    {
         m_currentCard = 0;
+    }
 
     currentCard.applyEncounter(m_player);
 
     if (m_player.getLevel() == 10)
+    {
         m_status = GameStatus::Win;
-    if (m_player.isKnockedOut())
+    }
+    if (m_player.isKnockedOut()) {
         m_status = GameStatus::Loss;
+    }
 
     m_player.printInfo();
 }

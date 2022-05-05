@@ -14,10 +14,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df190a08-67c2-42c2-a4a5-8f51b509e735" name="Changes" comment=".h functions">
+    <list default="true" id="df190a08-67c2-42c2-a4a5-8f51b509e735" name="Changes" comment="card noy addition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Card.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Card.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mtmchkin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Mtmchkin.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mtmchkin.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mtmchkin.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Player.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +56,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="mtmchkin" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mtmchkin" TARGET_NAME="mtmchkin" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mtmchkin" RUN_TARGET_NAME="mtmchkin">
@@ -78,6 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1651498760943</updated>
       <workItem from="1651498762398" duration="6900000" />
+      <workItem from="1651569901678" duration="5820000" />
     </task>
     <task id="LOCAL-00001" summary="c'tor">
       <created>1651502954553</created>
@@ -93,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651504410555</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="card noy addition">
+      <created>1651516073015</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1651516073015</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,10 +120,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="c'tor" />
     <MESSAGE value=".h functions" />
-    <option name="LAST_COMMIT_MESSAGE" value=".h functions" />
+    <MESSAGE value="card noy addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="card noy addition" />
   </component>
 </project>

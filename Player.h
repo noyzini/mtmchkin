@@ -6,10 +6,11 @@
 #define MTMCHKIN_PLAYER_H
 #include <string>
 
+const int MAX_LEVEL = 10;
 using namespace std;
 
 //add fancy /* */ above functions
-
+//add public static
 class Player{
 
     string m_name;

@@ -7,6 +7,8 @@
 #include "Card.h"
 #include <iostream>
 
+const bool WIN = true;
+const bool LOSE = false;
 /*
  * GameStatus:
  * MidGame - The game is still active and the player continues to encounter cards.

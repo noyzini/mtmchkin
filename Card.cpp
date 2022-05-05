@@ -36,7 +36,7 @@ void Card::applyEncounter(Player &player) const
         case CardType::Buff:
             if (player.pay(m_stats.cost))
             {
-                if (m_effect == CardType::Heal)
+                if (m_effect == CardType::Heal)// add check if got to the max hp limit
                 {
                     player.heal(m_stats.heal);
                 }
