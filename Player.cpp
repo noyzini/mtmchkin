@@ -6,25 +6,22 @@
 #include <string>
 #include "utilities.h"
 
-using namespace std;
+using std::string; //can we do that ??? YES @528
 
+const int defMaxHP = 100; //put those in a better place
+const int defPlayerForce = 5;
 
-Player::Player(const string& name, int maxHP, int force) : // if value <0 need to inshore defult value
-m_name(name),
-m_level(1),
-m_force(force),
-m_maxHP(maxHP),
-m_HP(maxHP),
-m_coins(0)
+Player::Player(const string& name, int maxHP, int force) : // if value <0 need to inshore default value
+m_name(name),m_level(1), m_force(force), m_maxHP(maxHP), m_HP(maxHP), m_coins(0)
 {
     if(force<0)
     {
-        m_force=5;
+        m_force=defPlayerForce;
     }
     if(maxHP<0)
     {
-        m_maxHP=100;
-        m_HP=100;
+        m_maxHP=defMaxHP;
+        m_HP=defMaxHP;
     }
 }
 

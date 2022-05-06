@@ -4,8 +4,7 @@
 
 #include "Mtmchkin.h"
 
-
-
+//can we assume numOfCards > 0 ?
 Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards) :
         m_player(playerName), m_cards(new Card[numOfCards]), m_cardsCount(numOfCards),
         m_currentCard(0),m_status(GameStatus::MidGame)
@@ -14,6 +13,7 @@ Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCard
     {
         m_cards[i] = cardsArray[i];
     }
+
 }
 
 Mtmchkin::Mtmchkin(const Mtmchkin &mtmchkin):
@@ -72,7 +72,8 @@ void Mtmchkin::playNextCard()
     {
         m_status = GameStatus::Win;
     }
-    if (m_player.isKnockedOut()) {
+    if (m_player.isKnockedOut())
+    {
         m_status = GameStatus::Loss;
     }
 

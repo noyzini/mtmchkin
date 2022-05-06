@@ -7,8 +7,6 @@
 #include "Card.h"
 #include <iostream>
 
-const bool WIN = true;
-const bool LOSE = false;
 /*
  * GameStatus:
  * MidGame - The game is still active and the player continues to encounter cards.
@@ -30,9 +28,28 @@ public:
      *      An instance of Mtmchkin
     */
     Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards);
+
+    /*
+     * Copy c'tor of the game:
+     *
+     * @param mtmchkin - Mtmchkin game to copy
+     * @result
+     *      An instance of Mtmchkin
+    */
     Mtmchkin(const Mtmchkin& mtmchkin);
+
+    /*
+     * D'tor of the game
+    */
     ~Mtmchkin();
 
+    /*
+     * Defines the operation of =
+     *
+     * @param mtmchkin - Mtmchkin game to copy
+     * @result
+     *      A reference to an instance of Mtmchkin
+    */
     Mtmchkin& operator=(const Mtmchkin& mtmchkin);
 
     /*

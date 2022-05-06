@@ -6,13 +6,16 @@
 #include <iostream>
 #include "utilities.h"
 
+const bool WIN = true;
+const bool LOSE = false;
+
 Card::Card(CardType type, const CardStats& stats)
 {
     this->m_effect = type;
     this->m_stats = stats;
 }
 
-void Card::applyEncounter(Player &player) const
+void Card::applyEncounter(Player& player) const
 {
     switch (m_effect)
     {
@@ -21,12 +24,12 @@ void Card::applyEncounter(Player &player) const
             {
                 player.levelUp();
                 player.addCoins(m_stats.loot);
-                printBattleResult(true);
+                printBattleResult(WIN);
             }
             else
             {
                 player.damage(m_stats.hpLossOnDefeat);
-                printBattleResult(false);
+                printBattleResult(LOSE);
             }
             break;
         case CardType::Treasure:
