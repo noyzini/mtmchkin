@@ -35,7 +35,7 @@ int Player::getLevel() {
 
 void Player::heal(int hp)  ///can we assume hp > 0 ??
 {
-    if(hp>0)
+    if(hp>=0)
     {
         m_HP += hp;
     }
@@ -52,9 +52,15 @@ bool Player::isKnockedOut()
 
 bool Player::pay(int coins)
 {
-    if (m_coins >= coins)
+    if(coins>0)
     {
-        m_coins -= coins;
+        if (m_coins >= coins)
+        {
+            m_coins -= coins;
+            return true;
+        }
+    } else if(coins<=0)
+    {
         return true;
     }
     return false;
@@ -68,14 +74,14 @@ void Player::levelUp(){
 }
 
 void Player::buff(int boost) {//added check for >0
-    if(boost>0)
+    if(boost>=0)
     {
         this->m_force+=boost;
     }
 }
 
 void Player::damage(int damage) {//added check for >0
-    if(damage>0)
+    if(damage>=0)
     {
         this->m_HP-=damage;
     }
@@ -86,7 +92,7 @@ void Player::damage(int damage) {//added check for >0
 }
 
 void Player::addCoins(int coins) {//added check for >0
-    if(coins>0)
+    if(coins>=0)
     {
         this->m_coins+=coins;
     }
