@@ -1,19 +1,16 @@
-//
-// Created by aviaa on 02/05/2022.
-//
-
 #include "Mtmchkin.h"
 
-//can we assume numOfCards > 0 ?
 Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards) :
-        m_player(playerName), m_cards(new Card[numOfCards]), m_cardsCount(numOfCards),
-        m_currentCard(0),m_status(GameStatus::MidGame)
+        m_player(playerName),
+        m_cards(new Card[numOfCards]),
+        m_cardsCount(numOfCards),
+        m_currentCard(0),
+        m_status(GameStatus::MidGame)
 {
     for (int i = 0; i < numOfCards ; i++)
     {
         m_cards[i] = cardsArray[i];
     }
-
 }
 
 Mtmchkin::Mtmchkin(const Mtmchkin &mtmchkin):
@@ -26,7 +23,8 @@ Mtmchkin::Mtmchkin(const Mtmchkin &mtmchkin):
     }
 }
 
-Mtmchkin::~Mtmchkin() {
+Mtmchkin::~Mtmchkin()
+{
     delete[] m_cards;
 }
 
@@ -41,12 +39,14 @@ Mtmchkin& Mtmchkin::operator=(const Mtmchkin& mtmchkin)
     m_status=mtmchkin.m_status;
     m_currentCard=mtmchkin.m_currentCard;
 
-    delete[] m_cards;
-    m_cards=new Card[mtmchkin.m_cardsCount];
+    Card* tempCards = new Card[mtmchkin.m_cardsCount];
     for (int i = 0; i < mtmchkin.m_cardsCount ; i++)
     {
-        m_cards[i] = mtmchkin.m_cards[i];
+        tempCards[i] = mtmchkin.m_cards[i];
     }
+
+    delete[] m_cards;
+    m_cards = tempCards;
     return *this;
 }
 
@@ -57,27 +57,27 @@ GameStatus Mtmchkin::getGameStatus() const
 
 void Mtmchkin::playNextCard()
 {
-    Card currentCard = m_cards[m_currentCard];
-    currentCard.printInfo();
-
-    m_currentCard++;
-    if (m_currentCard == m_cardsCount)
+    if (getGameStatus() == GameStatus::MidGame)
     {
-        m_currentCard = 0;
-    }
+        Card currentCard = m_cards[m_currentCard];
+        currentCard.printInfo();
 
-    currentCard.applyEncounter(m_player);
+        m_currentCard++;
+        if (m_currentCard == m_cardsCount) {
+            m_currentCard = 0;
+        }
 
-    if (m_player.getLevel() == 10)
-    {
-        m_status = GameStatus::Win;
-    }
-    if (m_player.isKnockedOut())
-    {
-        m_status = GameStatus::Loss;
-    }
+        currentCard.applyEncounter(m_player);
 
-    m_player.printInfo();
+        if (m_player.getLevel() == Player::MAX_LEVEL) {
+            m_status = GameStatus::Win;
+        }
+        if (m_player.isKnockedOut()) {
+            m_status = GameStatus::Loss;
+        }
+
+        m_player.printInfo();
+    }
 }
 
 bool Mtmchkin::isOver() const

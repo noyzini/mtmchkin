@@ -1,41 +1,42 @@
-//
-// Created by Noy Zini on 02/05/2022.
-//
-
 #include "Player.h"
 #include <string>
 #include "utilities.h"
 
-using std::string; //can we do that ??? YES @528
+//using std::string;
 
-const int defMaxHP = 100; //put those in a better place
-const int defPlayerForce = 5;
+/*
+ * TO CHECK:
+ * Allow resurrection ?? can't happen but should we write it code wise ?
+ * name / maxHP const ??
+ * const string& name in c'tor?? make const char* as c'tor??
+ * Mtmchkin copy c'tor/ operator= - what if getting NULL ??
+ * make function variables const ????
+ */
 
-Player::Player(const string& name, int maxHP, int force) : // if value <0 need to inshore default value
-m_name(name),m_level(1), m_force(force), m_maxHP(maxHP), m_HP(maxHP), m_coins(0)
+
+Player::Player(const string& name, int maxHP, int force) :
+m_name(name),
+m_level(1),
+m_force(force > 0 ? force : PLAYER_FORCE_DEFAULT),
+m_maxHP(maxHP > 0 ? maxHP : MAX_HP_DEFAULT),
+m_HP(m_maxHP),
+m_coins(0)
 {
-    if(force<0)
-    {
-        m_force=defPlayerForce;
-    }
-    if(maxHP<0)
-    {
-        m_maxHP=defMaxHP;
-        m_HP=defMaxHP;
-    }
 }
 
-void Player::printInfo() {
-    printPlayerInfo(this->m_name.c_str(), this->m_level, this->m_force, this->m_HP, this->m_coins);
-}
-
-int Player::getLevel() {
-    return this->m_level;
-}
-
-void Player::heal(int hp)  ///can we assume hp > 0 ??
+void Player::printInfo() const
 {
-    if(hp>=0)
+    printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
+}
+
+int Player::getLevel() const
+{
+    return m_level;
+}
+
+void Player::heal(int hp)
+{
+    if(hp>0)
     {
         m_HP += hp;
     }
@@ -45,59 +46,64 @@ void Player::heal(int hp)  ///can we assume hp > 0 ??
     }
 }
 
-bool Player::isKnockedOut()
+bool Player::isKnockedOut() const
 {
     return m_HP==0;
 }
 
 bool Player::pay(int coins)
 {
-    if(coins>0)
-    {
-        if (m_coins >= coins)
-        {
-            m_coins -= coins;
-            return true;
-        }
-    } else if(coins<=0)
+    if (coins <= 0)
     {
         return true;
     }
+
+    if (m_coins >= coins)
+    {
+        m_coins -= coins;
+        return true;
+    }
+
     return false;
 }
 
-void Player::levelUp(){
+void Player::levelUp()
+{
     if(m_level<MAX_LEVEL)
     {
         m_level++;
     }
 }
 
-void Player::buff(int boost) {//added check for >0
+void Player::buff(int boost)
+{
     if(boost>=0)
     {
-        this->m_force+=boost;
+        m_force+=boost;
     }
 }
 
-void Player::damage(int damage) {//added check for >0
+void Player::damage(int damage)
+{
     if(damage>=0)
     {
-        this->m_HP-=damage;
+        m_HP-=damage;
     }
-    if(this->m_HP<0)
+    if(m_HP<0)
     {
-        this->m_HP=0;
+        m_HP=0;
     }
 }
 
-void Player::addCoins(int coins) {//added check for >0
+void Player::addCoins(int coins)
+{
     if(coins>=0)
     {
-        this->m_coins+=coins;
+        m_coins+=coins;
     }
 }
 
-int Player::getAttackStrength() {
-    return (this->m_force+ this->m_level);
+int Player::getAttackStrength() const
+{
+    return (m_force + m_level);
 }

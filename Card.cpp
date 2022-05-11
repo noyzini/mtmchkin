@@ -1,7 +1,3 @@
-//
-// Created by aviaa on 02/05/2022.
-//
-
 #include "Card.h"
 #include <iostream>
 #include "utilities.h"
@@ -9,10 +5,10 @@
 const bool WIN = true;
 const bool LOSE = false;
 
-Card::Card(CardType type, const CardStats& stats)
+Card::Card(CardType type, const CardStats& stats) :
+m_effect(type),
+m_stats(stats)
 {
-    this->m_effect = type;
-    this->m_stats = stats;
 }
 
 void Card::applyEncounter(Player& player) const
@@ -39,11 +35,11 @@ void Card::applyEncounter(Player& player) const
         case CardType::Buff:
             if (player.pay(m_stats.cost))
             {
-                if (m_effect == CardType::Heal)// add check if got to the max hp limit
+                if (m_effect == CardType::Heal)
                 {
                     player.heal(m_stats.heal);
                 }
-                else
+                else if (m_effect == CardType::Buff)
                 {
                     player.buff(m_stats.buff);
                 }
@@ -54,19 +50,21 @@ void Card::applyEncounter(Player& player) const
     }
 }
 
-void Card::printInfo() const {
-    switch (m_effect) {
+void Card::printInfo() const
+{
+    switch (m_effect)
+    {
         case CardType::Battle:
-            printBattleCardInfo(this->m_stats);
+            printBattleCardInfo(m_stats);
             break;
         case CardType::Buff:
-            printBuffCardInfo(this->m_stats);
+            printBuffCardInfo(m_stats);
             break;
         case CardType::Heal:
-            printHealCardInfo(this->m_stats);
+            printHealCardInfo(m_stats);
             break;
         case CardType::Treasure:
-            printTreasureCardInfo(this->m_stats);
+            printTreasureCardInfo(m_stats);
             break;
         default:
             break;

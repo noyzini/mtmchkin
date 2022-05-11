@@ -14,6 +14,7 @@ bool testMtmchkin(){
     cards[2] = Card(CardType::Battle, stats);
     cards[3] = Card(CardType::Heal, stats);
     Mtmchkin game("Daniel", cards, 4);
+
     while(!game.isOver()){
         game.playNextCard();
     }
@@ -80,6 +81,7 @@ void run_test(std::function<bool()> test, std::string test_name){
 }
 
 int main(int argc, char *argv[]) {
+
     const int NUMBER_OF_TESTS = 3;
     std::function<bool()> tests[NUMBER_OF_TESTS] = {
         testPlayer,

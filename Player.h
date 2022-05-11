@@ -1,28 +1,30 @@
-//
-// Created by Noy Zini on 02/05/2022.
-//
-
 #ifndef MTMCHKIN_PLAYER_H
 #define MTMCHKIN_PLAYER_H
 #include <string>
 
-const int MAX_LEVEL = 10;
-using std::string; //can we do that???
+using std::string;
 
 
 //add public static and CONST!
-class Player{
-
-    string m_name;
-    int m_level;
-    int m_force;
-    int m_maxHP;
-    int m_HP;
-    int m_coins;
+class Player {
 
 public:
-    Player(const string& name, int maxHP = 100, int force = 5);
-    Player(const Player&)=default;//ask on piazza if it's ok
+
+    /*
+     * C'tor of the game:
+     *
+     * @param name - The name of the player.
+     * @param maxHP - Player's max hp.
+     * @param force - Player's initial force.
+     * @result
+     *      An instance of Mtmchkin
+    */
+    Player(const string& name, int maxHP = MAX_HP_DEFAULT, int force = PLAYER_FORCE_DEFAULT);
+
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    Player(const Player&)=default;
     Player& operator=(const Player&)=default;
     ~Player()=default;
 
@@ -32,7 +34,7 @@ public:
      * @return
      *      void
     */
-    void printInfo();
+    void printInfo() const;
 
     /*
      * Levels up the player, to a maximum of level 10
@@ -48,7 +50,7 @@ public:
      *  @return
      *          Player level
      */
-    int getLevel();
+    int getLevel() const;
 
     /*
      * Buffs the player
@@ -84,7 +86,7 @@ public:
      *          True if hp is 0
      *          False otherwise
      */
-    bool isKnockedOut();
+    bool isKnockedOut() const;
 
     /*
      * Add coins to the player
@@ -106,15 +108,26 @@ public:
     bool pay(int coins);
 
     /*
-     * Returns the attack strength of the player
+     * Returns the attack strength of the player.
      * Player's attack strength is player force + player level
      *
      * @return
      *          Player's attack strength
     */
-    int getAttackStrength();
+    int getAttackStrength() const;
 
+    static const int MAX_LEVEL = 10;
 
+private:
+    string m_name;
+    int m_level;
+    int m_force;
+    int m_maxHP;
+    int m_HP;
+    int m_coins;
+
+    static const int MAX_HP_DEFAULT = 100;
+    static const int PLAYER_FORCE_DEFAULT = 5;
 };
 
 
