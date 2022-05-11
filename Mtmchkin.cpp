@@ -80,7 +80,7 @@ void Mtmchkin::playNextCard()
     m_player.printInfo();
 }
 
-bool Mtmchkin::isOver()
+bool Mtmchkin::isOver() const
 {
     if (m_status == GameStatus::MidGame)
     {
