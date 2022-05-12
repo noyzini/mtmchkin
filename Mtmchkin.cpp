@@ -63,16 +63,19 @@ void Mtmchkin::playNextCard()
         currentCard.printInfo();
 
         m_currentCard++;
-        if (m_currentCard == m_cardsCount) {
+        if (m_currentCard == m_cardsCount)
+        {
             m_currentCard = 0;
         }
 
         currentCard.applyEncounter(m_player);
 
-        if (m_player.getLevel() == Player::MAX_LEVEL) {
+        if (m_player.getLevel() == Player::MAX_LEVEL)
+        {
             m_status = GameStatus::Win;
         }
-        if (m_player.isKnockedOut()) {
+        if (m_player.isKnockedOut())
+        {
             m_status = GameStatus::Loss;
         }
 
