@@ -14,10 +14,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df190a08-67c2-42c2-a4a5-8f51b509e735" name="Changes" comment="added /* */ above functions in Player.h">
+    <list default="true" id="df190a08-67c2-42c2-a4a5-8f51b509e735" name="Changes" comment="const">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Card.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Card.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mtmchkin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Mtmchkin.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mtmchkin.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mtmchkin.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Player.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Player.h" afterDir="false" />
@@ -49,7 +47,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ex1" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -83,7 +81,7 @@
       <updated>1651498760943</updated>
       <workItem from="1651498762398" duration="21361000" />
       <workItem from="1651572848231" duration="18084000" />
-      <workItem from="1652284091559" duration="11087000" />
+      <workItem from="1652284091559" duration="15809000" />
     </task>
     <task id="LOCAL-00001" summary="c'tor">
       <created>1651502954553</created>
@@ -141,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651828978967</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="const">
+      <created>1652296357054</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1652296357054</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +173,7 @@
     <MESSAGE value="mtmchkin" />
     <MESSAGE value="apply encounter" />
     <MESSAGE value="added /* */ above functions in Player.h" />
-    <option name="LAST_COMMIT_MESSAGE" value="added /* */ above functions in Player.h" />
+    <MESSAGE value="const" />
+    <option name="LAST_COMMIT_MESSAGE" value="const" />
   </component>
 </project>

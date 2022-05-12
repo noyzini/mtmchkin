@@ -4,8 +4,6 @@
 
 using std::string;
 
-
-//add public static and CONST!
 class Player {
 
 public:
@@ -19,7 +17,7 @@ public:
      * @result
      *      An instance of Mtmchkin
     */
-    Player(const string& name, int maxHP = MAX_HP_DEFAULT, int force = PLAYER_FORCE_DEFAULT);
+    Player(const char* name, int maxHP = MAX_HP_DEFAULT, int force = PLAYER_FORCE_DEFAULT);
 
     /*
      * Here we are explicitly telling the compiler to use the default methods

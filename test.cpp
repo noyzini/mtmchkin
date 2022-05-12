@@ -14,7 +14,6 @@ bool testMtmchkin(){
     cards[2] = Card(CardType::Battle, stats);
     cards[3] = Card(CardType::Heal, stats);
     Mtmchkin game("Daniel", cards, 4);
-
     while(!game.isOver()){
         game.playNextCard();
     }

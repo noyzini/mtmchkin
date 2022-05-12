@@ -1,20 +1,7 @@
 #include "Player.h"
-#include <string>
 #include "utilities.h"
 
-//using std::string;
-
-/*
- * TO CHECK:
- * Allow resurrection ?? can't happen but should we write it code wise ?
- * name / maxHP const ??
- * const string& name in c'tor?? make const char* as c'tor??
- * Mtmchkin copy c'tor/ operator= - what if getting NULL ??
- * make function variables const ????
- */
-
-
-Player::Player(const string& name, int maxHP, int force) :
+Player::Player(const char* name, int maxHP, int force) :
 m_name(name),
 m_level(1),
 m_force(force > 0 ? force : PLAYER_FORCE_DEFAULT),
