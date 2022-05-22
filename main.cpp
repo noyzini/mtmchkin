@@ -3,9 +3,9 @@
 #include "Card.h"
 #include "Mtmchkin.h"
 #include <string>
-/*
-int main() {
+#include "HealthPoints.h"
 
+int main() {
+    HealthPoints hp(10);
     return 0;
 }
-*/
