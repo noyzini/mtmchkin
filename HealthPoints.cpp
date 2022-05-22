@@ -3,3 +3,9 @@
 //
 
 #include "HealthPoints.h"
+
+HealthPoints(int hp = 100):
+        m_hp(hp),m_maxHP(hp)
+{
+    throw;
+}

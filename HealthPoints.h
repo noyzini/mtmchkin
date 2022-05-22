@@ -5,13 +5,13 @@
 #ifndef MTMCHKIN_HEALTHPOINTS_H
 #define MTMCHKIN_HEALTHPOINTS_H
 
-class HealthPoints
+#include <exception>
+
+class HealthPoints : std::exception
 {
 public:
-    HealthPoints(int hp = 100):
-            m_hp(hp),m_maxHP(hp)
-    {
-    }
+    HealthPoints(int hp = 100);
+
 
 
 private:
