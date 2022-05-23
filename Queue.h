@@ -108,6 +108,7 @@ void Queue<T>::popFront()
 }
 
 
+
 template<class T>
 T Queue<T>::front()
 {
@@ -139,4 +140,24 @@ Queue<T> filter(Queue<T> queue, Function filter)
     return filtered;
 }
 
+template<class T, class Function>
+void transform(Queue<T> &queue, Function func)
+{
+    if(func==NULL || queue.m_size==0)
+    {
+        return;
+    }
+    Queue<T> transformed;
+    while (queue.size() > 0)
+    {
+        transformed.pushBack(func(queue.front()));
+        queue.popFront();
+    }
+
+    while (transformed.size() > 0)
+    {
+        queue.pushBack(transformed.front());
+        transformed.popFront();
+    }
+}
 #endif //MTMCHKIN_QUEUE_H
