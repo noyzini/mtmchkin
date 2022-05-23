@@ -5,7 +5,10 @@
 #include <string>
 #include "HealthPoints.h"
 #include "Queue.h"
-
+int func (int a)
+{
+    return a+1;
+}
 int main() {
     HealthPoints hp(100);
     hp += 5;
@@ -18,5 +21,6 @@ int main() {
     std::cout << hp;
     Queue<int> queue;
     queue.pushBack(4);
+
     return 0;
 }
