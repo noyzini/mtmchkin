@@ -15,7 +15,9 @@ public:
 
 private:
     T m_data;
+    T* m_next;
     int m_size;
+
 };
 
 
