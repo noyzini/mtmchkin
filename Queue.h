@@ -7,7 +7,8 @@
 
 /*
  * template<class T, class Function>  ??
- * filter(queue, isEven);
+ * filter(queue, isEven) without assignment ????
+ * what if function not returning good type
  */
 
 template<class T>
@@ -28,12 +29,26 @@ public:
 
     class Empty {};
 
+    class Iterator;
+    Iterator begin() const;
+    Iterator end() const;
+
 private:
     T m_data;
     Queue<T>* m_next;
     int m_size;
 
 };
+
+template<class T>
+class Queue<T>::Iterator
+{
+    const Queue<T> queue;
+
+
+};
+
+
 template <class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter);
 

@@ -29,7 +29,7 @@ int main() {
     queue.pushBack(3);
     queue.pushBack(4);
     queue = filter(queue, isEven);
-
+    Iterator i;
     return 0;
 }
 
