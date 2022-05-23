@@ -5,10 +5,13 @@
 #include <string>
 #include "HealthPoints.h"
 #include "Queue.h"
-int func (int a)
+
+
+bool isEven(int n)
 {
-    return a+1;
+    return (n % 2 == 0);
 }
+
 int main() {
     HealthPoints hp(100);
     hp += 5;
@@ -19,8 +22,15 @@ int main() {
     3 == hp;
     hp == 1;
     std::cout << hp;
+
     Queue<int> queue;
+    queue.pushBack(1);
+    queue.pushBack(2);
+    queue.pushBack(3);
     queue.pushBack(4);
+    queue = filter(queue, isEven);
 
     return 0;
 }
+
+
