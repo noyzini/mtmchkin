@@ -29,7 +29,11 @@ int main() {
     queue.pushBack(3);
     queue.pushBack(4);
     queue = filter(queue, isEven);
-    Iterator i;
+
+    //++queue;
+    int x = 4;
+    ++++x;
+    std::cout<<x;
     return 0;
 }
 
