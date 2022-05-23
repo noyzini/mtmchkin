@@ -9,7 +9,7 @@ class Queue{
 
 public:
 
-
+    Queue();
 
 
 
@@ -19,6 +19,12 @@ private:
     int m_size;
 
 };
+
+template<class T>
+Queue<T>::Queue() :
+m_data(NULL),m_next(NULL),m_size(0)
+{
+}
 
 
 #endif //MTMCHKIN_QUEUE_H
