@@ -10,6 +10,7 @@ class Queue{
 public:
 
     Queue();
+    void pushBack(T data);
 
 
 
@@ -24,6 +25,24 @@ template<class T>
 Queue<T>::Queue() :
 m_data(NULL),m_next(NULL),m_size(0)
 {
+}
+
+template<class T>
+void Queue<T>::pushBack(T data)
+{
+    if (m_size == 0)
+    {
+        m_data = data;
+        m_size = 1;
+    }
+    else
+    {
+        Queue<T> temp = this;
+        while (m_next != NULL)
+        {
+            //temp = temp->m_next;
+        }
+    }
 }
 
 

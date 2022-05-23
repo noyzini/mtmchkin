@@ -4,7 +4,7 @@
 #include "Mtmchkin.h"
 #include <string>
 #include "HealthPoints.h"
-#include <stdio.h>
+#include "Queue.h"
 
 int main() {
     HealthPoints hp(100);
@@ -16,5 +16,7 @@ int main() {
     3 == hp;
     hp == 1;
     std::cout << hp;
+    Queue<int> queue;
+    queue.pushBack(4);
     return 0;
 }
