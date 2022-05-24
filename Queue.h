@@ -12,6 +12,11 @@
  * filter(queue, isEven) without assignment ????
  * what if function not returning good type
  * what if allocation fail? try catch and throw ?
+ *meaning of const Queue<T> ?
+ *
+ * TO DO ?
+ * Iterator - replace index with Node/Queue ?
+ * Queue - replace m_data + m_next with Node
  *
  * Write - d'tor, operation=, copy c'tor
  */
@@ -20,37 +25,52 @@ template<class T>
 class Queue {
 
 public:
+    class Node;
 
     Queue();
     void pushBack(T data);
-    T front();
+    T front() const;
     void popFront();
-    int size();
+    int size() const;
 
     class EmptyQueue {};
-    class InvalidOperation {};
 
     class Iterator;
     Iterator begin() const;
     Iterator end() const;
 
 private:
+    Node m_firstNode;
     T m_data;
     Queue<T>* m_next;
     int m_size;
 
 };
 
+template <class T>
+class Node {
+
+    Node(T data);
+
+    T m_data;
+    Node* m_next;
+};
+
+template <class T>
+Node<T>::Node(T data) : m_data(data),m_next(NULL)
+{
+}
+
 template <class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter);
 template<class T, class Function>
-void transform(Queue<T> &queue, Function func);
+void transform(Queue<T>& queue, Function transformFunc);
 
 
 
 template<class T>
 Queue<T>::Queue() :
-m_data(NULL),m_next(NULL),m_size(0)
+m_firstNode(NULL), m_size(0)
 {
 }
 
@@ -102,7 +122,7 @@ void Queue<T>::popFront()
     }
     else
     {
-        Queue<T> *temp = this->m_next;
+        Queue<T>* temp = this->m_next;
         this->m_data = temp->m_data;
         this->m_size = temp->m_size;
         this->m_next = temp->m_next;
@@ -111,7 +131,7 @@ void Queue<T>::popFront()
 }
 
 template<class T>
-T Queue<T>::front()
+T Queue<T>::front() const
 {
     if(m_size==0)
     {
@@ -121,7 +141,7 @@ T Queue<T>::front()
 }
 
 template<class T>
-int Queue<T>::size()
+int Queue<T>::size() const
 {
     return m_size;
 }
@@ -129,7 +149,10 @@ int Queue<T>::size()
 template<class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter)
 {
-
+    if (filter == NULL)
+    {
+        //????
+    }
     if (queue.size() == 0)
         return queue;
 
@@ -146,16 +169,20 @@ Queue<T> filter(Queue<T> queue, Function filter)
 }
 
 template<class T, class Function>
-void transform(Queue<T> &queue, Function func)
+void transform(Queue<T>& queue, Function transformFunc)
 {
-    if(func==NULL || queue.m_size==0)
+    if (transformFunc == NULL)
+    {
+        //????????????
+    }
+    if(queue.m_size==0)
     {
         return;
     }
     Queue<T> transformed;
     while (queue.size() > 0)
     {
-        transformed.pushBack(func(queue.front()));
+        transformed.pushBack(transformFunc(queue.front()));
         queue.popFront();
     }
 
@@ -169,7 +196,7 @@ void transform(Queue<T> &queue, Function func)
 template<class T>
 typename Queue<T>::Iterator Queue<T>::begin() const
 {
-    return Iterator(this,1);
+    return Iterator(*this,1);
 }
 
 template<class T>
@@ -183,21 +210,24 @@ typename Queue<T>::Iterator Queue<T>::end() const
 template<class T>
 class Queue<T>::Iterator
 {
+
 private:
-    const Queue<T> m_queue;
+    const Queue<T>& m_queue;
     int m_index;
 
-    Iterator(const Queue<T>* queue, int index);
+    Iterator(const Queue<int> *queue, int index);
     friend class Queue<T>;
 
 public:
     const T& operator*() const;
     bool operator!=(const Iterator& iterator) const;
     Iterator& operator++();
+
+    class InvalidOperation {};
 };
 
 template<class T>
-Queue<T>::Iterator::Iterator(const Queue<T>* queue, int index):
+Queue<T>::Iterator::Iterator(const Queue<int> *queue, int index):
 m_queue(queue),m_index(index)
 {
 }
@@ -205,6 +235,10 @@ m_queue(queue),m_index(index)
 template<class T>
 typename Queue<T>::Iterator& Queue<T>::Iterator::operator++()
 {
+    if (m_index == this->m_queue.m_size)
+    {
+        throw InvalidOperation();
+    }
     this->m_index++;
     return *this;
 }
@@ -212,14 +246,20 @@ typename Queue<T>::Iterator& Queue<T>::Iterator::operator++()
 template<class T>
 bool Queue<T>::Iterator::operator!=(const Iterator& it) const
 {
-    assert(this->m_queue == it.m_queue); //make an exception ???
+    if (this->m_queue != it.m_queue)
+    {
+        throw InvalidOperation();
+    }
     return (this->m_index != it.m_index);
 }
 
 template<class T>
 const T& Queue<T>::Iterator::operator*() const
 {
-    assert(m_index >= 0 && m_index <= this->m_queue.m_size); //make an exception ???
+    if (m_index <= 0 || m_index > this->m_queue.m_size)
+    {
+        throw InvalidOperation();
+    }
     Queue<T> temp = this->m_queue;
     for (int i = 1; i < m_index; i++)
     {

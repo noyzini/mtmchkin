@@ -24,10 +24,12 @@ int main() {
     std::cout << hp;
 
     Queue<int> queue;
-    queue.pushBack(1);
-    queue.pushBack(2);
-    queue.pushBack(3);
-    queue.pushBack(4);
+    queue.pushBack(15);
+    Queue<int> q2;
+    for (typename Queue<int>::Iterator it = queue.begin();
+    it != queue.end(); ++it )
+    {
+    }
     queue = filter(queue, isEven);
 
     //++queue;
