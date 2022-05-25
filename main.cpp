@@ -30,9 +30,10 @@ int main() {
     x = 18;
     queue.pushBack(x);
     x++;
-    Queue<int> queue2;
-    //queue2 = queue;
-    //queue2.begin();
+    Queue<int> queue2 = queue;
+    queue.operator=(queue2);
+    //queue = queue2;
+    queue2.begin();
     const int y = 5;
     const int* z = &y;
     int *const a = &x;

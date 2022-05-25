@@ -44,7 +44,7 @@ public:
 private:
     class Node;
 
-    Node m_firstNode;
+    Node* m_firstNode;
     //T m_data;
     //Queue<T>* m_next;
     int m_size;
@@ -69,13 +69,15 @@ template<class T>
 Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL) {}
 
 template<class T>
-Queue<T>::Queue() :m_firstNode(NULL), m_size(0)
+Queue<T>::Queue() :m_firstNode(new Node(NULL)), m_size(0)
 {
 }
 
 template<class T>
-Queue<T>::Queue(const Queue<T>& queue) :m_firstNode(NULL), m_size(0){
-    const Node* temp=&queue.m_firstNode;
+Queue<T>::Queue(const Queue<T>& queue) :
+m_firstNode(new Node(NULL)), m_size(0)
+{
+    const Node* temp=queue.m_firstNode;
 
     while (temp!=NULL)
     {
@@ -88,10 +90,10 @@ Queue<T>::Queue(const Queue<T>& queue) :m_firstNode(NULL), m_size(0){
 template<class T>
 Queue<T>::~Queue<T>()
 {
-    Node* ptr = &m_firstNode;
+    Node* ptr = m_firstNode;
     while (ptr != NULL)
     {
-        Node* next = m_firstNode.m_next;
+        Node* next = ptr->m_next;
         delete ptr;
         ptr = next;
     }
@@ -106,7 +108,7 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& queue)
     }
 
     Queue<T> temp;
-    const Node* node = &queue.m_firstNode;
+    const Node* node = queue.m_firstNode;
     while (node != NULL)
     {
         temp.pushBack(node->m_data);
@@ -127,7 +129,7 @@ void Queue<T>::pushBack(T data)
 
     if (m_size == 0)
     {
-        m_firstNode.m_data = data;
+        m_firstNode->m_data = data;
         m_size = 1;
     }
     else
@@ -135,7 +137,7 @@ void Queue<T>::pushBack(T data)
         try
         {
             Node* newNode = new Node(data);
-            Node* temp = &m_firstNode;
+            Node* temp = m_firstNode;
             while (temp->m_next != NULL)
             {
                 temp = temp->m_next;
@@ -175,15 +177,15 @@ void Queue<T>::popFront()
     }
     else if (m_size == 1)
     {
-        delete &m_firstNode;
-        m_firstNode.m_data=NULL;
+        delete m_firstNode;
+        m_firstNode->m_data=NULL;
         this->m_size = 0;
     }
     else
     {
-        Node* temp = m_firstNode.m_next;
-        m_firstNode.m_data = temp->m_data;
-        m_firstNode.m_next= temp->m_next;
+        Node* temp = m_firstNode->m_next;
+        m_firstNode->m_data = temp->m_data;
+        m_firstNode->m_next= temp->m_next;
         m_size--;
         delete temp;
     }
@@ -196,7 +198,7 @@ T Queue<T>::front() const
     {
         throw EmptyQueue();
     }
-    return m_firstNode.m_data;
+    return m_firstNode->m_data;
 }
 
 template<class T>
@@ -256,7 +258,7 @@ void transform(Queue<T>& queue, Function transformFunc)
 template<class T>
 typename Queue<T>::Iterator Queue<T>::begin() const
 {
-    return Iterator(&m_firstNode);
+    return Iterator(m_firstNode);
 }
 
 template<class T>
