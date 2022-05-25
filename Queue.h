@@ -38,8 +38,12 @@ public:
     class EmptyQueue {};
 
     class Iterator;
-    Iterator begin() const;
-    Iterator end() const;
+    Iterator begin() ;
+    Iterator end() ;
+
+    class ConstIterator;
+    ConstIterator begin() const;
+    ConstIterator end() const;
 
 private:
     class Node;
@@ -256,17 +260,27 @@ void transform(Queue<T>& queue, Function transformFunc)
 }
 
 template<class T>
-typename Queue<T>::Iterator Queue<T>::begin() const
+typename Queue<T>::Iterator Queue<T>::begin()
+{
+    return Iterator(&m_firstNode);
+}
+
+template<class T>
+typename Queue<T>::Iterator Queue<T>::end()
+{
+    return Iterator(NULL);
+}
+template<class T>
+typename Queue<T>::ConstIterator Queue<T>::begin() const
 {
     return Iterator(m_firstNode);
 }
 
 template<class T>
-typename Queue<T>::Iterator Queue<T>::end() const
+typename Queue<T>::ConstIterator Queue<T>::end() const
 {
     return Iterator(NULL);
 }
-
 //*******************************************************
 
 template<class T>
@@ -281,7 +295,7 @@ private:
     friend class Queue<T>;
 
 public:
-    const T& operator*() const;
+    T& operator*() const;
     bool operator!=(const Iterator& iterator) const;
     Iterator& operator++();
 
@@ -319,12 +333,61 @@ bool Queue<T>::Iterator::operator!=(const Iterator& it) const
 }
 
 template<class T>
-const T& Queue<T>::Iterator::operator*() const
+T& Queue<T>::Iterator::operator*() const
 {
     return m_node->m_data;
 }
 
 //****************************************************
+template<class T>
+class Queue<T>::ConstIterator
+{
+private:
+    const Node* m_node;
 
+    explicit ConstIterator(const Node* node);
+    friend class Queue<T>;
+
+public:
+    const T& operator*() const;
+    bool operator!=(const ConstIterator& iterator) const;
+    ConstIterator& operator++() const;
+
+    class InvalidOperation {};
+};
+
+template<class T>
+Queue<T>::ConstIterator::ConstIterator(const Queue<T>::Node *node):
+        m_node(node)
+{
+}
+
+template<class T>
+typename Queue<T>::ConstIterator& Queue<T>::ConstIterator::operator++() const//avia thinks it is'nt node
+{
+    if (m_node == NULL)
+    {
+        throw InvalidOperation();
+    }
+    m_node = m_node->m_next;
+    return *this;
+}
+
+template<class T>
+bool Queue<T>::ConstIterator::operator!=(const ConstIterator& it) const
+{
+    //if (this->m_queue != it.m_queue)
+    {
+        //     throw InvalidOperation();
+    }
+    return( m_node!=it.m_node);
+    // return (this->m_index != it.m_index);
+}
+
+template<class T>
+const T& Queue<T>::ConstIterator::operator*() const
+{
+    return m_node->m_data;
+}
 
 #endif //MTMCHKIN_QUEUE_H
