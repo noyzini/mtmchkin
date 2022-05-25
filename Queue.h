@@ -7,9 +7,7 @@
 
 #include <assert.h>
 
-
 /*
- * template<class T, class Function>  ??
  * filter(queue, isEven) without assignment ????
  * what if function not returning good type
  * what if allocation fail? try catch and throw ?
@@ -18,6 +16,9 @@
  * TO DO ?
  * Iterator - replace index with Node/Queue ?
  * Queue - replace m_data + m_next with Node
+ * if making copy c'tor use try catch
+ * const queueueue
+ * const iterator ?????
  *
  * Write - d'tor, operation=, copy c'tor
  */
@@ -27,8 +28,8 @@ class Queue {
 
 public:
 
-
     Queue();
+
     void pushBack(T data);
     T front() const;
     void popFront();
@@ -42,6 +43,7 @@ public:
 
 private:
     class Node;
+
     Node m_firstNode;
     //T m_data;
     //Queue<T>* m_next;
@@ -49,38 +51,31 @@ private:
 
 };
 
-template <class T>
-class Queue<T>::Node {
-public:
-    Node(T data);
-    T m_data;
-    Node* m_next;
-    //friend Queue<T>;
-};
-
-template <class T>
-Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL)
-{
-
-}
-
 template <class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter);
 template<class T, class Function>
 void transform(Queue<T>& queue, Function transformFunc);
 
+template<class T>
+class Queue<T>::Node {
+    Node(T data);
 
+    T m_data;
+    Node* m_next;
+};
 
 template<class T>
-Queue<T>::Queue() :
-m_firstNode(NULL), m_size(0)
-{
+Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL) {}
 
+template<class T>
+Queue<T>::Queue() :m_firstNode(NULL), m_size(0)
+{
 }
 
 template<class T>
 void Queue<T>::pushBack(T data)
 {
+
     if (m_size == 0)
     {
         m_data = data;
@@ -220,7 +215,7 @@ private:
     int m_index;
 
     Iterator(const Queue<int> *queue, int index);
-    //friend class Queue<T>;
+    friend class Queue<T>;
 
 public:
     const T& operator*() const;
@@ -271,6 +266,8 @@ const T& Queue<T>::Iterator::operator*() const
     }
     return temp.m_data;
 }
+
+//****************************************************
 
 
 #endif //MTMCHKIN_QUEUE_H

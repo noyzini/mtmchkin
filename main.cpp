@@ -22,18 +22,23 @@ int main() {
     3 == hp;
     hp == 1;
     std::cout << hp;
+    //Node<int> n(4);
 
     Queue<int> queue;
-    queue.pushBack(15);
+    //queue.pushBack(15);
     Queue<int> q2;
-   /*
-    for (typename Queue<int>::Iterator it = queue.begin();
-    it != queue.end(); ++it )
+    //for (typename Queue<int>::Iterator it = queue.begin();
+    //it != queue.end(); ++it )
     {
     }
-    queue = filter(queue, isEven);
-*/
+    //queue = filter(queue, isEven);
+    //Queue<int>::Iterator i = queue
+    //iterator
+    //for (int num : queue)
+    {
 
+    }
+    //++queue;
     int x = 4;
     ++++x;
     std::cout<<x;
