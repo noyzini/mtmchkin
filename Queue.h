@@ -5,7 +5,6 @@
 #ifndef MTMCHKIN_QUEUE_H
 #define MTMCHKIN_QUEUE_H
 
-#include <assert.h>
 
 /*
  * filter(queue, isEven) without assignment ????
@@ -30,6 +29,7 @@ class Queue {
 public:
 
     Queue();
+    Queue(const Queue<T>& queue);
 
     void pushBack(T data);
     T front() const;
@@ -72,7 +72,17 @@ template<class T>
 Queue<T>::Queue() :m_firstNode(NULL), m_size(0)
 {
 }
+template<class T>
+Queue<T>::Queue(const Queue<T>& queue) :m_firstNode(NULL), m_size(0){
+    const Node* temp=&queue.m_firstNode;
 
+    while (temp!=NULL)
+    {
+        this->pushBack(temp->m_data);
+        temp=temp->m_next;
+    }
+    this->m_size=queue.m_size;
+}
 template<class T>
 void Queue<T>::pushBack(T data)
 {
@@ -116,6 +126,7 @@ void Queue<T>::pushBack(T data)
         }
     }
 }
+
 
 template<class T>
 void Queue<T>::popFront()
@@ -236,6 +247,8 @@ public:
 
     class InvalidOperation {};
 };
+
+
 
 template<class T>
 Queue<T>::Iterator::Iterator(Node* node):

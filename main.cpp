@@ -30,13 +30,13 @@ int main() {
     queue.pushBack(3);
     queue.popFront();
     queue.popFront();
-    Queue<int> q2;
-    //for (typename Queue<int>::Iterator it = queue.begin();
-    //it != queue.end(); ++it )
+    Queue<int> q2=queue;
+    /*
+    for (typename Queue<int>::Iterator it = queue.begin();it != queue.end(); ++it )
     {
     }
-    //queue = filter(queue, isEven);
-    //Queue<int>::Iterator i = queue
+    queue = filter(queue, isEven);
+*/
     //iterator
     //for (int num : queue)
     {
