@@ -72,6 +72,7 @@ template<class T>
 Queue<T>::Queue() :m_firstNode(NULL), m_size(0)
 {
 }
+
 template<class T>
 Queue<T>::Queue(const Queue<T>& queue) :m_firstNode(NULL), m_size(0){
     const Node* temp=&queue.m_firstNode;
@@ -119,7 +120,6 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& queue)
     m_size = temp.m_size;
     return *this;
 }
-
 
 template<class T>
 void Queue<T>::pushBack(T data)
