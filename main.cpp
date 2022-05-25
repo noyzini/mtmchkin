@@ -26,13 +26,14 @@ int main() {
     Queue<int> queue;
     queue.pushBack(15);
     Queue<int> q2;
+   /*
     for (typename Queue<int>::Iterator it = queue.begin();
     it != queue.end(); ++it )
     {
     }
     queue = filter(queue, isEven);
+*/
 
-    //++queue;
     int x = 4;
     ++++x;
     std::cout<<x;

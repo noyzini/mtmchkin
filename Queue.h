@@ -7,6 +7,7 @@
 
 #include <assert.h>
 
+
 /*
  * template<class T, class Function>  ??
  * filter(queue, isEven) without assignment ????
@@ -25,7 +26,7 @@ template<class T>
 class Queue {
 
 public:
-    class Node;
+
 
     Queue();
     void pushBack(T data);
@@ -40,25 +41,27 @@ public:
     Iterator end() const;
 
 private:
+    class Node;
     Node m_firstNode;
-    T m_data;
-    Queue<T>* m_next;
+    //T m_data;
+    //Queue<T>* m_next;
     int m_size;
 
 };
 
 template <class T>
-class Node {
-
+class Queue<T>::Node {
+public:
     Node(T data);
-
     T m_data;
     Node* m_next;
+    //friend Queue<T>;
 };
 
 template <class T>
-Node<T>::Node(T data) : m_data(data),m_next(NULL)
+Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL)
 {
+
 }
 
 template <class T, class Function>
@@ -72,6 +75,7 @@ template<class T>
 Queue<T>::Queue() :
 m_firstNode(NULL), m_size(0)
 {
+
 }
 
 template<class T>
@@ -216,7 +220,7 @@ private:
     int m_index;
 
     Iterator(const Queue<int> *queue, int index);
-    friend class Queue<T>;
+    //friend class Queue<T>;
 
 public:
     const T& operator*() const;
