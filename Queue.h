@@ -207,13 +207,13 @@ void transform(Queue<T>& queue, Function transformFunc)
 template<class T>
 typename Queue<T>::Iterator Queue<T>::begin() const
 {
-    return Iterator(m_firstNode,1);
+    return Iterator(&m_firstNode);
 }
 
 template<class T>
 typename Queue<T>::Iterator Queue<T>::end() const
 {
-    return Iterator(m_firstNode,m_size+1);
+    return Iterator(NULL);
 }
 
 //*******************************************************
@@ -223,10 +223,10 @@ class Queue<T>::Iterator
 {
 
 private:
-    Node m_queue;
-    int m_index;
+    Node* m_node;
+    //int m_index;
 
-    Iterator(Node queue, int index);
+    Iterator(Node* node, int index);
     friend class Queue<T>;
 
 public:
@@ -238,45 +238,37 @@ public:
 };
 
 template<class T>
-Queue<T>::Iterator::Iterator(Node queue, int index):
-m_queue(queue),m_index(index)
+Queue<T>::Iterator::Iterator(Node* node, int index):
+m_node(node)
 {
 }
 
 template<class T>
 typename Queue<T>::Iterator& Queue<T>::Iterator::operator++()
 {
-    if (m_index == this->m_queue.m_size)
+    if (m_node->m_next == NULL)
     {
         throw InvalidOperation();
     }
-    this->m_index++;
+    //this->m_index++;
     return *this;
 }
 
 template<class T>
 bool Queue<T>::Iterator::operator!=(const Iterator& it) const
 {
-    if (this->m_queue != it.m_queue)
+    //if (this->m_queue != it.m_queue)
     {
-        throw InvalidOperation();
+   //     throw InvalidOperation();
     }
-    return (this->m_index != it.m_index);
+    return( m_node!=it.m_node);
+   // return (this->m_index != it.m_index);
 }
 
 template<class T>
 const T& Queue<T>::Iterator::operator*() const
 {
-    if (m_index <= 0 || m_index > this->m_queue.m_size)
-    {
-        throw InvalidOperation();
-    }
-    Queue<T> temp = this->m_queue;
-    for (int i = 1; i < m_index; i++)
-    {
-        temp = temp.m_next;
-    }
-    return temp.m_data;
+    return m_node->m_data;
 }
 
 //****************************************************
