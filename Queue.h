@@ -246,11 +246,11 @@ m_node(node)
 template<class T>
 typename Queue<T>::Iterator& Queue<T>::Iterator::operator++()
 {
-    if (m_node->m_next == NULL)
+    if (m_node == NULL)
     {
         throw InvalidOperation();
     }
-    //this->m_index++;
+    m_node = m_node->m_next;
     return *this;
 }
 
