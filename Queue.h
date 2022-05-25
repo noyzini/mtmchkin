@@ -14,14 +14,11 @@
  *meaning of const Queue<T> ?
  *
  * TO DO ?
- * Iterator - replace index with Node/Queue ?
- * Queue - replace m_data + m_next with Node
  * if making copy c'tor use try catch
  * const queueueue
  * const iterator ?????
- * make d'tor for Node
+ * make d'tor for Node if valgrind fail ?
  *
- * Write - d'tor, operation=, copy c'tor
  */
 
 template<class T>
@@ -30,6 +27,9 @@ class Queue {
 public:
 
     Queue();
+    Queue(const Queue<T>& queue);
+    Queue<T>& operator=(const Queue<T>& queue);
+    ~Queue();
 
     void pushBack(T data);
     T front() const;
@@ -61,6 +61,7 @@ template<class T>
 class Queue<T>::Node {
 public: //? or friend ?
     Node(T data);
+
     T m_data;
     Node* m_next;
 };
@@ -72,6 +73,43 @@ template<class T>
 Queue<T>::Queue() :m_firstNode(NULL), m_size(0)
 {
 }
+
+template<class T>
+Queue<T>::~Queue<T>()
+{
+    Node* ptr = &m_firstNode;
+    while (ptr != NULL)
+    {
+        Node* next = m_firstNode.m_next;
+        delete ptr;
+        ptr = next;
+    }
+}
+
+template<class T>
+Queue<T>& Queue<T>::operator=(const Queue<T>& queue)
+{
+    if (this == &queue)
+    {
+        return *this;
+    }
+
+    Queue<T> temp;
+    const Node* node = &queue.m_firstNode;
+    while (node != NULL)
+    {
+        temp.pushBack(node->m_data);
+        node = node->m_next;
+    }
+    while (m_size > 0)
+    {
+        this->popFront();
+    }
+    m_firstNode = temp.m_firstNode;
+    m_size = temp.m_size;
+    return *this;
+}
+
 
 template<class T>
 void Queue<T>::pushBack(T data)
@@ -207,7 +245,7 @@ void transform(Queue<T>& queue, Function transformFunc)
 template<class T>
 typename Queue<T>::Iterator Queue<T>::begin() const
 {
-    return Iterator(&m_firstNode);
+    return (Iterator(&m_firstNode));
 }
 
 template<class T>

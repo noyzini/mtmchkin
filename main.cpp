@@ -25,16 +25,24 @@ int main() {
     //Node<int> n(4);
 
     Queue<int> queue;
-    queue.pushBack(1);
-    queue.pushBack(2);
-    queue.pushBack(3);
-    queue.popFront();
-    queue.popFront();
-    Queue<int> q2;
+    int x = 4;
+    queue.pushBack(x);
+    x = 18;
+    queue.pushBack(x);
+    x++;
+    Queue<int> queue2;
+    //queue2 = queue;
+    //queue2.begin();
+    const int y = 5;
+    const int* z = &y;
+    int *const a = &x;
+    z++;
+    *a = 4;
+    //a++;
     //for (typename Queue<int>::Iterator it = queue.begin();
     //it != queue.end(); ++it )
-    {
-    }
+    //{
+    //}
     //queue = filter(queue, isEven);
     //Queue<int>::Iterator i = queue
     //iterator
@@ -43,7 +51,7 @@ int main() {
 
     }
     //++queue;
-    int x = 4;
+    //int x = 4;
     ++++x;
     std::cout<<x;
     return 0;
