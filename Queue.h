@@ -226,7 +226,7 @@ private:
     Node* m_node;
     //int m_index;
 
-    Iterator(Node* node, int index);
+    Iterator(Node* node);
     friend class Queue<T>;
 
 public:
@@ -238,7 +238,7 @@ public:
 };
 
 template<class T>
-Queue<T>::Iterator::Iterator(Node* node, int index):
+Queue<T>::Iterator::Iterator(Node* node):
 m_node(node)
 {
 }
