@@ -25,7 +25,11 @@ int main() {
     //Node<int> n(4);
 
     Queue<int> queue;
-    //queue.pushBack(15);
+    queue.pushBack(1);
+    queue.pushBack(2);
+    queue.pushBack(3);
+    queue.popFront();
+    queue.popFront();
     Queue<int> q2;
     //for (typename Queue<int>::Iterator it = queue.begin();
     //it != queue.end(); ++it )

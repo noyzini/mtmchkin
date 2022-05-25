@@ -19,6 +19,7 @@
  * if making copy c'tor use try catch
  * const queueueue
  * const iterator ?????
+ * make d'tor for Node
  *
  * Write - d'tor, operation=, copy c'tor
  */
@@ -58,8 +59,8 @@ void transform(Queue<T>& queue, Function transformFunc);
 
 template<class T>
 class Queue<T>::Node {
+public: //? or friend ?
     Node(T data);
-
     T m_data;
     Node* m_next;
 };
@@ -78,14 +79,24 @@ void Queue<T>::pushBack(T data)
 
     if (m_size == 0)
     {
-        m_data = data;
+        m_firstNode.m_data = data;
         m_size = 1;
     }
     else
     {
         try
         {
-            Queue<T> *newNode = new Queue<T>();
+            Node* newNode = new Node(data);
+            Node* temp = &m_firstNode;
+            while (temp->m_next != NULL)
+            {
+                temp = temp->m_next;
+            }
+
+            temp->m_next = newNode;
+            m_size++;
+
+            /*Queue<T> *newNode = new Queue<T>();
             Queue<T> *node = this;
             while (node->m_next != NULL) {
                 node->m_size++;
@@ -97,6 +108,7 @@ void Queue<T>::pushBack(T data)
             newNode->m_size = 1;
             node->m_next = newNode;
             node->m_size++;
+             */
         }
         catch (const std::bad_alloc& e)
         {
@@ -114,18 +126,17 @@ void Queue<T>::popFront()
     }
     else if (m_size == 1)
     {
-        delete m_data;
-        this->m_data = NULL;
+        delete &m_firstNode;
+        m_firstNode.m_data=NULL;
         this->m_size = 0;
-        this->m_next = NULL;
     }
     else
     {
-        Queue<T>* temp = this->m_next;
-        this->m_data = temp->m_data;
-        this->m_size = temp->m_size;
-        this->m_next = temp->m_next;
-        delete[] temp;
+        Node* temp = m_firstNode.m_next;
+        m_firstNode.m_data = temp->m_data;
+        m_firstNode.m_next= temp->m_next;
+        m_size--;
+        delete temp;
     }
 }
 
@@ -136,7 +147,7 @@ T Queue<T>::front() const
     {
         throw EmptyQueue();
     }
-    return m_data;
+    return m_firstNode.m_data;
 }
 
 template<class T>
@@ -153,8 +164,9 @@ Queue<T> filter(Queue<T> queue, Function filter)
         //????
     }
     if (queue.size() == 0)
+    {
         return queue;
-
+    }
     Queue<T> filtered;
     while (queue.size() > 0)
     {
@@ -195,13 +207,13 @@ void transform(Queue<T>& queue, Function transformFunc)
 template<class T>
 typename Queue<T>::Iterator Queue<T>::begin() const
 {
-    return Iterator(*this,1);
+    return Iterator(m_firstNode,1);
 }
 
 template<class T>
 typename Queue<T>::Iterator Queue<T>::end() const
 {
-    return Iterator(this,m_size+1);
+    return Iterator(m_firstNode,m_size+1);
 }
 
 //*******************************************************
@@ -211,10 +223,10 @@ class Queue<T>::Iterator
 {
 
 private:
-    const Queue<T>& m_queue;
+    Node m_queue;
     int m_index;
 
-    Iterator(const Queue<int> *queue, int index);
+    Iterator(Node queue, int index);
     friend class Queue<T>;
 
 public:
@@ -226,7 +238,7 @@ public:
 };
 
 template<class T>
-Queue<T>::Iterator::Iterator(const Queue<int> *queue, int index):
+Queue<T>::Iterator::Iterator(Node queue, int index):
 m_queue(queue),m_index(index)
 {
 }
