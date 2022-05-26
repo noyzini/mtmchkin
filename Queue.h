@@ -10,7 +10,7 @@
  * filter(queue, isEven) without assignment ????
  * what if function not returning good type
  * what if allocation fail? try catch and throw ?
- *meaning of const Queue<T> ?
+ * meaning of const Queue<T> ?
  *
  * TO DO ?
  * if making copy c'tor use try catch
@@ -31,7 +31,8 @@ public:
     ~Queue();
 
     void pushBack(T data);
-    T& front() const;
+    T& front() ;
+    const T& front() const;
     void popFront();
     int size() const;
 
@@ -49,8 +50,6 @@ private:
     class Node;
 
     Node* m_firstNode;
-    //T m_data;
-    //Queue<T>* m_next;
     int m_size;
 
 };
@@ -197,7 +196,17 @@ void Queue<T>::popFront()
 }
 
 template<class T>
-T& Queue<T>::front() const
+T& Queue<T>::front()
+{
+    if(m_size==0)
+    {
+        throw EmptyQueue();
+    }
+    return m_firstNode->m_data;
+}
+
+template<class T>
+const T& Queue<T>::front() const
 {
     if(m_size==0)
     {

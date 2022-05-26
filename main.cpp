@@ -13,6 +13,7 @@ bool isEven(int n)
 }
 
 int main() {
+    /*
     HealthPoints hp(100);
     hp += 5;
     hp = hp + 2;
@@ -57,6 +58,7 @@ int main() {
     ++++x;
     std::cout<<x;
     //delete queue;
+    */
     return 0;
 }
 
