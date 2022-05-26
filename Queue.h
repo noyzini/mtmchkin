@@ -182,7 +182,7 @@ void Queue<T>::popFront()
     else if (m_size == 1)
     {
         delete m_firstNode;
-        m_firstNode->m_data=NULL;
+        //m_firstNode->m_data=NULL;
         this->m_size = 0;
     }
     else
@@ -262,7 +262,7 @@ void transform(Queue<T>& queue, Function transformFunc)
 template<class T>
 typename Queue<T>::Iterator Queue<T>::begin()
 {
-    return Iterator(&m_firstNode);
+    return Iterator(m_firstNode);
 }
 
 template<class T>

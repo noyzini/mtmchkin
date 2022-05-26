@@ -27,8 +27,6 @@ int main() {
     Queue<int> queue;
     int x = 4;
     queue.pushBack(x);
-    x = 18;
-    queue.pushBack(x);
     x++;
     Queue<int> queue2 = queue;
     queue.operator=(queue2);
@@ -55,6 +53,7 @@ int main() {
     //int x = 4;
     ++++x;
     std::cout<<x;
+    //delete queue;
     return 0;
 }
 
