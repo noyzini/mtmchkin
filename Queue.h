@@ -73,13 +73,13 @@ template<class T>
 Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL) {}
 
 template<class T>
-Queue<T>::Queue() :m_firstNode(new Node(0)), m_size(0)
+Queue<T>::Queue() :m_firstNode(NULL), m_size(0)
 {
 }
 
 template<class T>
 Queue<T>::Queue(const Queue<T>& queue) :
-m_firstNode(new Node(0)), m_size(0)
+m_firstNode(NULL), m_size(0)
 {
     const Node* temp=queue.m_firstNode;
 
@@ -134,7 +134,9 @@ void Queue<T>::pushBack(T data)
 
     if (m_size == 0)
     {
-        m_firstNode->m_data = data;
+        //add try catch
+        m_firstNode = (new Node(data));
+        //m_firstNode->m_data = data;
         m_size = 1;
     }
     else
@@ -183,7 +185,7 @@ void Queue<T>::popFront()
     else if (m_size == 1)
     {
         delete m_firstNode;
-        //m_firstNode->m_data=NULL;
+        m_firstNode = NULL;
         this->m_size = 0;
     }
     else
