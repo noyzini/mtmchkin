@@ -5,7 +5,7 @@
 #include "HealthPoints.h"
 
 HealthPoints::HealthPoints(int hp) :
-m_maxHP(hp),m_hp(hp)
+m_hp(hp),m_maxHP(hp)
 {
     if (hp <= 0)
     {
@@ -22,6 +22,7 @@ HealthPoints& HealthPoints::operator+=(const int hp)
         m_hp = m_maxHP;
     if (m_hp < 0)
         m_hp = 0;
+    return *this;
 }
 
 HealthPoints operator+(HealthPoints& hp1, int hp2)

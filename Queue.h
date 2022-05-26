@@ -31,7 +31,7 @@ public:
     ~Queue();
 
     void pushBack(T data);
-    T front() const;
+    T& front() const;
     void popFront();
     int size() const;
 
@@ -124,6 +124,7 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& queue)
     }
     m_firstNode = temp.m_firstNode;
     m_size = temp.m_size;
+    temp.m_firstNode = NULL;
     return *this;
 }
 
@@ -196,7 +197,7 @@ void Queue<T>::popFront()
 }
 
 template<class T>
-T Queue<T>::front() const
+T& Queue<T>::front() const
 {
     if(m_size==0)
     {
@@ -273,13 +274,13 @@ typename Queue<T>::Iterator Queue<T>::end()
 template<class T>
 typename Queue<T>::ConstIterator Queue<T>::begin() const
 {
-    return Iterator(m_firstNode);
+    return ConstIterator(m_firstNode);
 }
 
 template<class T>
 typename Queue<T>::ConstIterator Queue<T>::end() const
 {
-    return Iterator(NULL);
+    return ConstIterator(NULL);
 }
 //*******************************************************
 
@@ -301,8 +302,6 @@ public:
 
     class InvalidOperation {};
 };
-
-
 
 template<class T>
 Queue<T>::Iterator::Iterator(Node* node):
