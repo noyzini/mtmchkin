@@ -5,6 +5,7 @@
 #ifndef MTMCHKIN_QUEUE_H
 #define MTMCHKIN_QUEUE_H
 
+#include <iostream>
 
 /*
  * filter(queue, isEven) without assignment ????
@@ -73,13 +74,13 @@ template<class T>
 Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL) {}
 
 template<class T>
-Queue<T>::Queue() :m_firstNode(new Node(NULL)), m_size(0)
+Queue<T>::Queue() :m_firstNode(new Node(0)), m_size(0)
 {
 }
 
 template<class T>
 Queue<T>::Queue(const Queue<T>& queue) :
-m_firstNode(new Node(NULL)), m_size(0)
+m_firstNode(new Node(0)), m_size(0)
 {
     const Node* temp=queue.m_firstNode;
 
@@ -224,6 +225,19 @@ Queue<T> filter(Queue<T> queue, Function filter)
         return queue;
     }
     Queue<T> filtered;
+    /*
+    for (typename Queue<T>::Iterator it = queue.begin(); it != queue.end(); ++it)
+    {
+        if (filter(*it))
+            filtered.pushBack(*it);
+    }
+    */
+    for (T value : queue)
+    {
+        if (filter(value))
+            filtered.pushBack(value);
+    }
+    /*
     while (queue.size() > 0)
     {
         if (filter(queue.front()))
@@ -232,6 +246,7 @@ Queue<T> filter(Queue<T> queue, Function filter)
         }
         queue.popFront();
     }
+     */
     return filtered;
 }
 
@@ -242,14 +257,15 @@ void transform(Queue<T>& queue, Function transformFunc)
     {
         //????????????
     }
-    if(queue.m_size==0)
+    if(queue.size() ==0)
     {
         return;
     }
     Queue<T> transformed;
     while (queue.size() > 0)
     {
-        transformed.pushBack(transformFunc(queue.front()));
+        transformFunc(queue.front());
+        transformed.pushBack(queue.front());
         queue.popFront();
     }
 
@@ -350,7 +366,7 @@ private:
 public:
     const T& operator*() const;
     bool operator!=(const ConstIterator& iterator) const;
-    ConstIterator& operator++() const;
+    ConstIterator& operator++();
 
     class InvalidOperation {};
 };
@@ -362,7 +378,7 @@ Queue<T>::ConstIterator::ConstIterator(const Queue<T>::Node *node):
 }
 
 template<class T>
-typename Queue<T>::ConstIterator& Queue<T>::ConstIterator::operator++() const//avia thinks it is'nt node
+typename Queue<T>::ConstIterator& Queue<T>::ConstIterator::operator++() //avia thinks it is'nt node
 {
     if (m_node == NULL)
     {

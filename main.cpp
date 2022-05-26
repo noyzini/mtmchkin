@@ -12,6 +12,7 @@ bool isEven(int n)
     return (n % 2 == 0);
 }
 
+/*
 int main() {
     HealthPoints hp(100);
     hp += 5;
@@ -61,3 +62,4 @@ int main() {
 }
 
 
+*/
