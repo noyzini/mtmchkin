@@ -234,10 +234,6 @@ int Queue<T>::size() const
 template<class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter)
 {
-    if (filter == NULL)
-    {
-        //????
-    }
     if (queue.size() == 0)
     {
         return queue;
