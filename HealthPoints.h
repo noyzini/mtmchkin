@@ -21,7 +21,7 @@ public:
     HealthPoints& operator+=(int hp);
     HealthPoints& operator-=(int hp);
 
-    friend bool operator==(HealthPoints& hp1, HealthPoints& hp2);
+    friend bool operator==(HealthPoints hp1, HealthPoints hp2);
     friend bool operator<=(HealthPoints hp1, HealthPoints hp2);
     friend std::ostream& operator<<(std::ostream& os, const HealthPoints& hp);
 

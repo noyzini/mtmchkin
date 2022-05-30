@@ -116,16 +116,6 @@ Queue<T>::~Queue<T>()
         ptr = next;
         m_size--;
     }
-    /*
-    while (this->m_firstNode!=NULL)
-    {
-        Node* temp = m_firstNode->m_next->m_next;
-        delete m_firstNode->m_next;
-        this->m_firstNode=temp;
-
-    }
-     */
-
 }
 
 template<class T>
@@ -234,6 +224,10 @@ int Queue<T>::size() const
 template<class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter)
 {
+    if (filter == NULL)
+    {
+        //????
+    }
     if (queue.size() == 0)
     {
         return queue;

@@ -49,7 +49,7 @@ HealthPoints operator-(HealthPoints& hp1, int hp2)
     return hp1 + (-hp2);
 }
 
-bool operator==(HealthPoints& hp1, HealthPoints& hp2)
+bool operator==(HealthPoints hp1, HealthPoints hp2)
 {
     return (hp1.m_hp == hp2.m_hp);
 }
