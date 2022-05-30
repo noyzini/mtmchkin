@@ -6,7 +6,7 @@
 #define MTMCHKIN_HEALTHPOINTS_H
 
 #include <iostream>
-
+#include <stdio.h>
 /*
  * TO DO:
  * Where should the +- operators be?

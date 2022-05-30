@@ -3,7 +3,8 @@
 //
 
 #include "HealthPoints.h"
-
+//changed & to operators + -
+//
 HealthPoints::HealthPoints(int hp) :
 m_hp(hp),m_maxHP(hp)
 {
@@ -25,16 +26,16 @@ HealthPoints& HealthPoints::operator+=(const int hp)
     return *this;
 }
 
-HealthPoints operator+(HealthPoints& hp1, int hp2)
+HealthPoints operator+(HealthPoints &hp1, int hp2)
 {
-    hp1 += hp2;
-    return hp1;
+    HealthPoints temp = hp1;
+    temp += hp2;
+    return temp;
 }
 
 HealthPoints operator+(int hp1, HealthPoints& hp2)
 {
-    hp2 += hp1;
-    return hp2;
+    return hp2 + hp1;
 }
 
 HealthPoints& HealthPoints::operator-=(int hp)
@@ -45,13 +46,12 @@ HealthPoints& HealthPoints::operator-=(int hp)
 
 HealthPoints operator-(HealthPoints& hp1, int hp2)
 {
-    hp1 += -hp2;
-    return hp1;
+    return hp1 + (-hp2);
 }
 
 bool operator==(HealthPoints hp1, HealthPoints hp2)
 {
-    return hp1.m_hp == hp2.m_hp;
+    return (hp1.m_hp == hp2.m_hp);
 }
 
 bool operator!=(HealthPoints hp1, HealthPoints hp2)
