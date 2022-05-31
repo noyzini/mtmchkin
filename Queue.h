@@ -4,21 +4,47 @@
 
 #include <iostream>
 
-//add consts and remove //
+
 template<class T>
 class Queue {
 
 public:
 
+    /*
+    * C'tors and copy constructor of Queue:
+    */
     Queue();
     Queue(const Queue<T>& queue);
-    Queue<T>& operator=(const Queue<T>& queue);
+
     ~Queue();
 
+    Queue<T>& operator=(const Queue<T>& queue);
+
+    /*
+     *  The pushBack operation inserts a new member at the end of the queue
+     *  @return
+     *          void
+     */
     void pushBack(T data);
+
+    /*
+    *  The front operation returns the first template T.
+    *  @return
+    *          T object
+    */
     T& front() ;
     const T& front() const;
+
+    /*
+    *  The popFront action removes the first member from the top.
+    *  @return
+    *          void
+    */
     void popFront();
+
+    /*
+    *  Check the size of Queue
+    */
     int size() const;
 
     class EmptyQueue {};
@@ -38,12 +64,25 @@ private:
     int m_size;
 
 };
-
+/*
+ *  Accepts a certain condition and filters the queue organs accordingly
+ *  @return
+ *          Filtered Queue
+ */
 template <class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter);
+
+/*
+ *  Goes through all the queue members and changes them by a given operation
+ *  @return
+ *          void
+ */
 template<class T, class Function>
 void transform(Queue<T>& queue, Function transformFunc);
 
+/*
+* Node class for the struct of Queue
+*/
 template<class T>
 class Queue<T>::Node {
 public:
@@ -54,12 +93,13 @@ public:
 };
 
 template<class T>
-Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL) {}
-
-template<class T>
 Queue<T>::Queue() :m_firstNode(NULL), m_size(0)
 {
 }
+
+template<class T>
+Queue<T>::Node::Node(T data) : m_data(data),m_next(NULL) {}
+
 
 template<class T>
 Queue<T>::Queue(const Queue<T>& queue) :
@@ -264,8 +304,8 @@ typename Queue<T>::ConstIterator Queue<T>::end() const
 {
     return ConstIterator(NULL);
 }
-//*******************************************************
 
+//*****************-Iterator-*******************
 template<class T>
 class Queue<T>::Iterator
 {
@@ -330,7 +370,7 @@ T& Queue<T>::Iterator::operator*() const
     return m_node->m_data;
 }
 
-//****************************************************
+//*****************-ConstIterator-*******************
 template<class T>
 class Queue<T>::ConstIterator
 {
@@ -356,7 +396,7 @@ Queue<T>::ConstIterator::ConstIterator(const Queue<T>::Node *node):
 }
 
 template<class T>
-typename Queue<T>::ConstIterator& Queue<T>::ConstIterator::operator++() //avia thinks it is'nt node
+typename Queue<T>::ConstIterator& Queue<T>::ConstIterator::operator++()
 {
     if (m_node == NULL)
     {
@@ -367,7 +407,7 @@ typename Queue<T>::ConstIterator& Queue<T>::ConstIterator::operator++() //avia t
 }
 
 template<class T>
-typename Queue<T>::ConstIterator Queue<T>::ConstIterator::operator++(int) //avia thinks it is'nt node
+typename Queue<T>::ConstIterator Queue<T>::ConstIterator::operator++(int)
 {
     if (m_node == NULL)
     {

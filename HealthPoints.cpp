@@ -1,10 +1,6 @@
-//
-// Created by aviaa on 5/22/2022.
-//
 
 #include "HealthPoints.h"
-//changed & to operators + -
-//
+
 HealthPoints::HealthPoints(int hp) :
 m_hp(hp),m_maxHP(hp)
 {
@@ -26,7 +22,7 @@ HealthPoints& HealthPoints::operator+=(const int hp)
     return *this;
 }
 
-HealthPoints operator+(HealthPoints &hp1, int hp2)
+HealthPoints operator+(HealthPoints& hp1, int hp2)
 {
     HealthPoints temp = hp1;
     temp += hp2;
