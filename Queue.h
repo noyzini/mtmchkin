@@ -1,26 +1,10 @@
-//
-// Created by aviaa on 5/22/2022.
-//
 
 #ifndef MTMCHKIN_QUEUE_H
 #define MTMCHKIN_QUEUE_H
 
 #include <iostream>
 
-/*
- * filter(queue, isEven) without assignment ????
- * what if function not returning good type
- * what if allocation fail? try catch and throw ?
- * meaning of const Queue<T> ?
- *
- * TO DO ?
- * if making copy c'tor use try catch
- * const queueueue
- * const iterator ?????
- * make d'tor for Node if valgrind fail ?
- *
- */
-
+//add consts and remove //
 template<class T>
 class Queue {
 
@@ -86,7 +70,6 @@ m_firstNode(NULL), m_size(0)
     {
         while (temp!=NULL)
         {
-
             this->pushBack(temp->m_data);
             temp=temp->m_next;
         }
@@ -110,7 +93,6 @@ Queue<T>::~Queue<T>()
     Node* ptr = m_firstNode;
     while (ptr != NULL)
     {
-        //this->popFront();
         Node* next = ptr->m_next;
         delete ptr;
         ptr = next;
@@ -177,7 +159,7 @@ void Queue<T>::popFront()
 {
     if (m_size == 0)
     {
-        throw EmptyQueue(); // doing throw without try catch
+        throw EmptyQueue();
     }
     else if (m_size == 1)
     {
@@ -224,22 +206,11 @@ int Queue<T>::size() const
 template<class T, class Function>
 Queue<T> filter(Queue<T> queue, Function filter)
 {
-    if (filter == NULL)
-    {
-        //????
-    }
     if (queue.size() == 0)
     {
         return queue;
     }
     Queue<T> filtered;
-    /*
-    for (typename Queue<T>::Iterator it = queue.begin(); it != queue.end(); ++it)
-    {
-        if (filter(*it))
-            filtered.pushBack(*it);
-    }
-    */
     for (T value : queue)
     {
         if (filter(value))
@@ -251,10 +222,6 @@ Queue<T> filter(Queue<T> queue, Function filter)
 template<class T, class Function>
 void transform(Queue<T>& queue, Function transformFunc)
 {
-    if (transformFunc == NULL)
-    {
-        //????????????
-    }
     if(queue.size() ==0)
     {
         return;
@@ -354,12 +321,7 @@ typename Queue<T>::Iterator Queue<T>::Iterator::operator++(int)
 template<class T>
 bool Queue<T>::Iterator::operator!=(const Iterator& it) const
 {
-    //if (this->m_queue != it.m_queue)
-    {
-   //     throw InvalidOperation();
-    }
     return( m_node!=it.m_node);
-
 }
 
 template<class T>
@@ -419,12 +381,7 @@ typename Queue<T>::ConstIterator Queue<T>::ConstIterator::operator++(int) //avia
 template<class T>
 bool Queue<T>::ConstIterator::operator!=(const ConstIterator& it) const
 {
-    //if (this->m_queue != it.m_queue)
-    {
-        //     throw InvalidOperation();
-    }
     return( m_node!=it.m_node);
-    // return (this->m_index != it.m_index);
 }
 
 template<class T>

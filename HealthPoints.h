@@ -9,7 +9,7 @@
 #include <stdio.h>
 /*
  * TO DO:
- * Where should the +- operators be?
+
  *adding defult distractor
  */
 
@@ -17,6 +17,9 @@ class HealthPoints
 {
 public:
     HealthPoints(int hp = 100);
+    HealthPoints(const HealthPoints& hp) = default;
+    ~HealthPoints()=default;
+    HealthPoints& operator=(const HealthPoints& hp)=default;
 
     HealthPoints& operator+=(int hp);
     HealthPoints& operator-=(int hp);
@@ -33,8 +36,8 @@ private:
 
 };
 
-HealthPoints operator+(HealthPoints& hp1, int hp2);
-HealthPoints operator+(int hp1, HealthPoints& hp2);
+HealthPoints& operator+(HealthPoints& hp1, int hp2);
+HealthPoints& operator+(int hp1, HealthPoints& hp2);
 HealthPoints operator-(HealthPoints& hp1, int hp);
 
 bool operator!=(HealthPoints hp1, HealthPoints hp2);
