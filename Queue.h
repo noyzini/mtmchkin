@@ -66,6 +66,8 @@ private:
 };
 /*
  *  Accepts a certain condition and filters the queue organs accordingly
+ *  @param Queue - Queue with T template to be filtered
+ *  @param Function -function to check T values and filter by bool checks.
  *  @return
  *          Filtered Queue
  */
@@ -74,6 +76,8 @@ Queue<T> filter(Queue<T> queue, Function filter);
 
 /*
  *  Goes through all the queue members and changes them by a given operation
+ *  @param Queue - Queue with T template to be changed
+ *  @param Function - function to be used on all the T values.
  *  @return
  *          void
  */
