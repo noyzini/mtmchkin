@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "utilities.h"
+#include "../utilities.h"
 
 Player::Player(const char* name, int maxHP, int force) :
 m_name(name),
@@ -13,7 +13,7 @@ m_coins(0)
 
 void Player::printInfo() const
 {
-    printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
+    //printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
 }
 
 int Player::getLevel() const

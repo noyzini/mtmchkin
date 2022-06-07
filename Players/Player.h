@@ -1,6 +1,7 @@
 #ifndef MTMCHKIN_PLAYER_H
 #define MTMCHKIN_PLAYER_H
 #include <string>
+#include "../HealthPoints.h"
 
 using std::string;
 
@@ -120,8 +121,7 @@ private:
     string m_name;
     int m_level;
     int m_force;
-    int m_maxHP;
-    int m_HP;
+    HealthPoints m_hp;
     int m_coins;
 
     static const int MAX_HP_DEFAULT = 100;

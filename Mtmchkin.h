@@ -1,90 +1,55 @@
-#ifndef EX2_GAME_H
-#define EX2_GAME_H
-#include "Card.h"
+#ifndef MTMCHKIN_H_
+#define MTMCHKIN_H_
+
 #include <iostream>
 
-
-/*
- * GameStatus:
- * MidGame - The game is still active and the player continues to encounter cards.
- * Win - The player reached level 10.
- * Loss - The player's HP is 0.
-*/
-enum class GameStatus{Win, Loss, MidGame};
-
-class Mtmchkin {
+class Mtmchkin{
 
 public:
-
+    
     /*
-     * C'tor of the game:
-     *
-     * @param playerName - The name of the player.
-     * @param cardsArray - A ptr to the cards deck.
-     * @param numOfCards - Num of cards in the deck.
-     * @result
-     *      An instance of Mtmchkin
+    * C'tor of Mtmchkin class
+    *
+    * @param filename - a file which contains the cards of the deck.
+    * @return
+    *      A new instance of Mtmchkin.
     */
-    Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards);
-
+    Mtmchkin(const std::string fileName);
+    
     /*
-     * Copy c'tor of the game:
-     *
-     * @param mtmchkin - Mtmchkin game to copy
-     * @result
-     *      An instance of Mtmchkin
+    * Play the next Round of the game - according to the instruction in the exercise document.
+    *
+    * @return
+    *      void
     */
-    Mtmchkin(const Mtmchkin& mtmchkin);
-
+    void playRound();
+    
     /*
-     * D'tor of the game
+    * Prints the leaderBoard of the game at a given stage of the game - according to the instruction in the exercise document.
+    *
+    * @return
+    *      void
     */
-    ~Mtmchkin();
-
+    void printLeaderBoard() const;
+    
     /*
-     * Defines the operation of =
-     *
-     * @param mtmchkin - Mtmchkin game to copy
-     * @result
-     *      A reference to an instance of Mtmchkin
+    *  Checks if the game ended:
+    *
+    *  @return
+    *          True if the game ended
+    *          False otherwise
     */
-    Mtmchkin& operator=(const Mtmchkin& mtmchkin);
-
-    /*
-     * Play the next Card - according to the instruction in the exercise document
-     *
-     * @return
-     *      void
+    bool isGameOver() const;
+    
+	/*
+    *  Returns the number of rounds played.
+    *
+    *  @return
+    *          int - number of rounds played
     */
-    void playNextCard();
-
-
-    /*
-     *  Check if the game ended:
-     *
-     *  @return
-     *          True if the game ended
-     *          False otherwise
-     */
-    bool isOver() const;
-
-
-    /*
-     *  Get the status of the game:
-     *
-     *  @return
-     *          GameStatus - the current status of the running game
-     */
-    GameStatus getGameStatus() const;
-
-private:
-    Player m_player;
-    Card* m_cards;
-    int m_cardsCount;
-    int m_currentCard;
-    GameStatus m_status;
-
+    int getNumberOfRounds() const;
 };
 
 
-#endif //EX2_GAME_H
+
+#endif /* MTMCHKIN_H_ */
