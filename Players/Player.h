@@ -13,12 +13,10 @@ public:
      * C'tor of the game:
      *
      * @param name - The name of the player.
-     * @param maxHP - Player's max hp.
-     * @param force - Player's initial force.
      * @result
      *      An instance of Mtmchkin
     */
-    Player(const char* name, int maxHP = MAX_HP_DEFAULT, int force = PLAYER_FORCE_DEFAULT);
+    Player(const char* name);
 
     /*
      * Here we are explicitly telling the compiler to use the default methods
@@ -33,7 +31,7 @@ public:
      * @return
      *      void
     */
-    void printInfo() const;
+    virtual void printInfo() const =0;
 
     /*
      * Levels up the player, to a maximum of level 10
@@ -67,7 +65,7 @@ public:
      * @return
      *          void
     */
-    void heal(int hp);
+    virtual void heal(int hp);
 
     /*
      * Deals damage to the player
@@ -94,7 +92,7 @@ public:
      * @return
      *          void
     */
-    void addCoins(int coins);
+    virtual void addCoins(int coins);
 
     /*
      * Deduce coins from the player, given player have enough
@@ -113,19 +111,22 @@ public:
      * @return
      *          Player's attack strength
     */
-    int getAttackStrength() const;
+    virtual int getAttackStrength() const;
 
     static const int MAX_LEVEL = 10;
 
 private:
     string m_name;
     int m_level;
+
+protected:
     int m_force;
     HealthPoints m_hp;
     int m_coins;
 
     static const int MAX_HP_DEFAULT = 100;
     static const int PLAYER_FORCE_DEFAULT = 5;
+    static const int DEFAULT_COINS = 10;
 };
 
 

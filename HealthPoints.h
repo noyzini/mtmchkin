@@ -14,7 +14,7 @@ public:
      * @param hp - max and start hp.
      *      An instance of Mtmchkin
     */
-    HealthPoints(int hp = 100);
+    HealthPoints(int hp = DEFAULT_HP);
 
     /*
     * Here we are explicitly telling the compiler to use the default methods for copy c'tor, d'tor and
@@ -44,6 +44,7 @@ private:
     int m_hp;
     int m_maxHP;
 
+    static int const DEFAULT_HP=100;
 };
 
 /*

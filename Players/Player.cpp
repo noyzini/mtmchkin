@@ -1,20 +1,15 @@
 #include "Player.h"
 #include "../utilities.h"
 
-Player::Player(const char* name, int maxHP, int force) :
+Player::Player(const char* name) :
 m_name(name),
 m_level(1),
-m_force(force > 0 ? force : PLAYER_FORCE_DEFAULT),
-m_maxHP(maxHP > 0 ? maxHP : MAX_HP_DEFAULT),
-m_HP(m_maxHP),
-m_coins(0)
+m_force(PLAYER_FORCE_DEFAULT),
+m_hp(MAX_HP_DEFAULT),
+m_coins(DEFAULT_COINS)
 {
 }
 
-void Player::printInfo() const
-{
-    //printPlayerInfo(m_name.c_str(), m_level, m_force, m_HP, m_coins);
-}
 
 int Player::getLevel() const
 {
@@ -25,17 +20,13 @@ void Player::heal(int hp)
 {
     if(hp>0)
     {
-        m_HP += hp;
-    }
-    if (m_HP > m_maxHP)
-    {
-        m_HP = m_maxHP;
+        m_hp+=hp;
     }
 }
 
 bool Player::isKnockedOut() const
 {
-    return m_HP==0;
+    return m_hp==0;
 }
 
 bool Player::pay(int coins)
@@ -50,7 +41,6 @@ bool Player::pay(int coins)
         m_coins -= coins;
         return true;
     }
-
     return false;
 }
 
@@ -74,11 +64,7 @@ void Player::damage(int damage)
 {
     if(damage>=0)
     {
-        m_HP-=damage;
-    }
-    if(m_HP<0)
-    {
-        m_HP=0;
+        m_hp-=damage;
     }
 }
 
