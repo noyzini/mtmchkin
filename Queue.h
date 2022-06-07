@@ -11,24 +11,22 @@ class Queue {
 public:
 
     /*
-    * C'tors and copy constructor of Queue:
+    * Default C'tor, copy constructor, d'tor and assignment operator of Queue:
     */
     Queue();
     Queue(const Queue<T>& queue);
-
     ~Queue();
-
     Queue<T>& operator=(const Queue<T>& queue);
 
     /*
-     *  The pushBack operation inserts a new member at the end of the queue
+     *  Insert a new member to the end of the queue
      *  @return
      *          void
      */
     void pushBack(T data);
 
     /*
-    *  The front operation returns the first template T.
+    *  Returns the first member on the queue
     *  @return
     *          T object
     */
@@ -36,19 +34,27 @@ public:
     const T& front() const;
 
     /*
-    *  The popFront action removes the first member from the top.
+    *  Removes the first member from the top.
     *  @return
     *          void
     */
     void popFront();
 
     /*
-    *  Check the size of Queue
+    *  Check the number of members on the queue
+     *  @return
+     *          size of the queue
     */
     int size() const;
 
+    /*
+     * Exception class
+     */
     class EmptyQueue {};
 
+    /*
+     * Iterator and ConstIterator classes and functions
+     */
     class Iterator;
     Iterator begin() ;
     Iterator end() ;
@@ -317,16 +323,25 @@ class Queue<T>::Iterator
 private:
     Node* m_node;
 
+    /*
+     * C'tor for class Iterator
+     */
     Iterator(Node* node);
+
     friend class Queue<T>;
 
 public:
+    /*
+     * operators for class Iterator
+     */
     T& operator*() const;
     bool operator!=(const Iterator& iterator) const;
     Iterator& operator++();
     Iterator operator++(int);
 
-
+    /*
+     * Exception class
+     */
     class InvalidOperation {};
 };
 
@@ -380,16 +395,23 @@ class Queue<T>::ConstIterator
 {
 private:
     const Node* m_node;
-
-    explicit ConstIterator(const Node* node);
+    /*
+     * C'tor for class Iterator
+     */
+    ConstIterator(const Node* node);
     friend class Queue<T>;
 
 public:
+    /*
+     * operators for class Iterator
+     */
     const T& operator*() const;
     bool operator!=(const ConstIterator& iterator) const;
     ConstIterator& operator++();
-    ConstIterator operator++(int );
-
+    ConstIterator operator++(int);
+    /*
+     * Exception class
+     */
     class InvalidOperation {};
 };
 

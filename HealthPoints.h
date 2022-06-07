@@ -17,12 +17,12 @@ public:
     HealthPoints(int hp = 100);
 
     /*
-    * Here we are explicitly telling the compiler to use the default methods
+    * Here we are explicitly telling the compiler to use the default methods for copy c'tor, d'tor and
+     * assignment operator
     */
     HealthPoints(const HealthPoints& hp) = default;
     ~HealthPoints()=default;
     HealthPoints& operator=(const HealthPoints& hp)=default;
-
 
     /*
     *operators and friend operators for Health Points
@@ -47,7 +47,7 @@ private:
 };
 
 /*
-*external operators and friend operators for Health Points
+*operators for Health Points
 */
 HealthPoints operator+(HealthPoints& hp1, int hp2) ;
 HealthPoints operator+(int hp1, HealthPoints& hp2) ;

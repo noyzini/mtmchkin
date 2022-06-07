@@ -10,8 +10,6 @@ m_hp(hp),m_maxHP(hp)
     }
 }
 
-
-
 HealthPoints& HealthPoints::operator+=(const int hp)
 {
     m_hp += hp;
