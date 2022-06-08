@@ -1,6 +1,3 @@
-//
-// Created by Noy Zini on 07/06/2022.
-//
 
 #include "Fighter.h"
 #include <iostream>
@@ -12,7 +9,7 @@ Fighter::Fighter(const char *name) : Player(name)
 
 int Fighter::getAttackStrength() const
 {
-    return (Player::getAttackStrength() + Player::getLevel());
+    return (m_force*DOUBLE + m_level);
 }
 
 void Fighter::print(std::ostream &os) const

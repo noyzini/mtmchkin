@@ -1,8 +1,6 @@
-//
-// Created by Noy Zini on 07/06/2022.
-//
 
 #include "Rogue.h"
+
 
 Rogue::Rogue(const char *name): Player(name)
 {
@@ -10,5 +8,13 @@ Rogue::Rogue(const char *name): Player(name)
 
 void Rogue::addCoins(int coins)
 {
-    Player::addCoins(coins*DOUBLE);
+    if(coins>=0)
+    {
+        m_coins+=coins*DOUBLE;
+    }
+}
+
+void Rogue::print(std::ostream &os) const
+{
+    printPlayerDetails(os,m_name,ROGUE_NAME,m_level,m_force,m_hp.toInt(),m_coins);
 }

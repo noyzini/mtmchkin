@@ -2,6 +2,7 @@
 #define MTMCHKIN_PLAYER_H
 #include <string>
 #include "../HealthPoints.h"
+#include "../utilities.h"
 
 using std::string;
 
@@ -107,11 +108,6 @@ public:
     */
     virtual int getAttackStrength() const;
 
-
-    friend std::ostream& operator<<(std::ostream& os, const Player& player) ;
-
-    virtual void print(std::ostream& os) const =0;
-
     static const int MAX_LEVEL = 10;
 
 protected: // should be privet??
@@ -120,6 +116,9 @@ protected: // should be privet??
     int m_force;
     HealthPoints m_hp;
     int m_coins;
+
+    friend std::ostream& operator<<(std::ostream& os, const Player& player) ;
+    virtual void print(std::ostream& os) const =0;
 
     static const int MAX_HP_DEFAULT = 100;
     static const int PLAYER_FORCE_DEFAULT = 5;

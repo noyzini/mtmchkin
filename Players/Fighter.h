@@ -13,8 +13,10 @@ int getAttackStrength() const override;
 
 protected:
     void print(std::ostream& os) const;
-
     const std::string FIGHTER_NAME = "Fighter";
+
+private:
+    static const int DOUBLE=2;
 };
 
 
