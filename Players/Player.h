@@ -23,15 +23,9 @@ public:
     */
     Player(const Player&)=default;
     Player& operator=(const Player&)=default;
-    ~Player()=default;
+    virtual ~Player()=default;
 
-    /*
-     * Prints the player info:
-     *
-     * @return
-     *      void
-    */
-    virtual void printInfo() const =0;
+
 
     /*
      * Levels up the player, to a maximum of level 10
@@ -113,13 +107,16 @@ public:
     */
     virtual int getAttackStrength() const;
 
+
+    friend std::ostream& operator<<(std::ostream& os, const Player& player) ;
+
+    virtual void print(std::ostream& os) const =0;
+
     static const int MAX_LEVEL = 10;
 
-private:
+protected: // should be privet??
     string m_name;
     int m_level;
-
-protected:
     int m_force;
     HealthPoints m_hp;
     int m_coins;

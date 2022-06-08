@@ -5,9 +5,14 @@
 #ifndef MTMCHKIN_H_WIZARD_H
 #define MTMCHKIN_H_WIZARD_H
 
+#include "Player.h"
 
-class Wizard {
-
+class Wizard : public Player{
+public:
+    Wizard(const char* name);
+    void heal (int hp) override;
+private:
+    static int const DOUBLE=2;
 };
 
 

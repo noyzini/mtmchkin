@@ -9,12 +9,13 @@
 
 class Rogue : public Player{
 public:
-Rogue(const char* name );
-void addCoins(int coins) override;
+    Rogue(const char* name );
+    void addCoins(int coins) override;
 private:
 
     static int const DOUBLE=2;
 };
+
 
 
 #endif //MTMCHKIN_H_ROGUE_H

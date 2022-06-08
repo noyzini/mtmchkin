@@ -75,6 +75,6 @@ bool operator>(HealthPoints hp1, HealthPoints hp2)
 
 std::ostream& operator<<(std::ostream &os, const HealthPoints &hp)
 {
-    return (os << hp.m_hp << "(" << hp.m_maxHP << ")");
+    return (os << hp.m_hp);
 }
 
