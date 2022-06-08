@@ -1,13 +1,22 @@
-//
-// Created by aviaa on 6/8/2022.
-//
+
 
 #ifndef MTMCHKIN_GOBLIN_H
 #define MTMCHKIN_GOBLIN_H
 
+#include "BattleCards.h"
+#include "../../utilities.h"
 
-class Goblin {
+class Goblin:public BattleCards {
+public:
+    Goblin();
+    ~Goblin() = default;
+    void playCard(Player &player) override;
 
+private:
+    const std::string m_monsterName = "Goblin";
+    static const int FORCE=6;
+    static const int DAMAGE=10;
+    static const int COINS=2;
 };
 
 

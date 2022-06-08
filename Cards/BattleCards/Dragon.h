@@ -8,7 +8,7 @@
 #include "BattleCards.h"
 #include "../../utilities.h"
 
-class Dragon : BattleCards {
+class Dragon :public BattleCards {
 public:
     Dragon();
     ~Dragon() = default;
@@ -16,6 +16,8 @@ public:
 
 private:
     const std::string m_monsterName = "Dragon";
+    static const int FORCE=25;
+    static const int COINS=1000;
 };
 
 

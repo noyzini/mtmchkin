@@ -5,7 +5,7 @@
 #include "Dragon.h"
 
 //add defines
-Dragon::Dragon() : BattleCards(25,INT32_MAX,1000)
+Dragon::Dragon() : BattleCards(FORCE,INT32_MAX,COINS)
 {
 }
 
