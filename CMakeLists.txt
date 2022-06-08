@@ -5,8 +5,6 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(mtmchkin
         main.cpp
-        #Card.h
-        #Card.cpp
         Mtmchkin.h
         Mtmchkin.cpp
         Players/Player.h
@@ -23,4 +21,14 @@ add_executable(mtmchkin
         HealthPoints.cpp
         Queue.h
         Exception.h
+        Cards/Card.cpp
+        Cards/Card.h
+        Cards/BattleCards/BattleCards.cpp
+        Cards/BattleCards/BattleCards.h
+        Cards/BattleCards/Dragon.cpp
+        Cards/BattleCards/Dragon.h
+        Cards/BattleCards/Goblin.cpp
+        Cards/BattleCards/Goblin.h
+        Cards/BattleCards/Vampire.cpp
+        Cards/BattleCards/Vampire.h
         )

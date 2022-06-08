@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include "Players/Player.h"
-#include "utilities.h"
+#include "Players/Wizard.h"
+#include "Players/Rogue.h"
+#include "Players/Fighter.h"
 
 class Mtmchkin{
 

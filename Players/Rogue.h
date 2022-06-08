@@ -3,12 +3,18 @@
 #define MTMCHKIN_H_ROGUE_H
 
 #include "Player.h"
+#include "../utilities.h"
 #include <iostream>
 #include "../utilities.h"
 
-class Rogue : public Player{
+class Rogue : public Player {
 public:
+    /*
+     * Should we do default for operator= and Copy c'tor
+     */
     Rogue(const char* name );
+    ~Rogue() = default;
+
     void addCoins(int coins) override;
 
 protected:
