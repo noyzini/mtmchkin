@@ -1,6 +1,5 @@
 
 #include "Fighter.h"
-#include <iostream>
 
 Fighter::Fighter(const char *name) : Player(name)
 {

@@ -12,7 +12,7 @@ m_hp(hp),m_maxHP(hp)
 
 int HealthPoints::toInt() const
 {
-    return m_hp
+    return m_hp;
 }
 
 HealthPoints& HealthPoints::operator+=(const int hp)

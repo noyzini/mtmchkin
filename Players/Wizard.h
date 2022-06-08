@@ -11,8 +11,12 @@ class Wizard : public Player{
 public:
     Wizard(const char* name);
     void heal (int hp) override;
+
+protected:
+    void print(std::ostream& os) const;
 private:
     static int const DOUBLE=2;
+    const std::string WIZARD_NAME = "Wizard";
 };
 
 

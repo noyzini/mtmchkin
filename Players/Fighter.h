@@ -2,7 +2,6 @@
 #define MTMCHKIN_H_FIGHTER_H
 
 #include "Player.h"
-#include "../utilities.h"
 
 class Fighter : public Player
 {

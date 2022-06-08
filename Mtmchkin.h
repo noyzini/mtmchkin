@@ -2,6 +2,7 @@
 #define MTMCHKIN_H_
 
 #include <iostream>
+#include "Players/Player.h"
 
 class Mtmchkin{
 
