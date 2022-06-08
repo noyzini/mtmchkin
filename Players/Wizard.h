@@ -6,12 +6,13 @@
 #define MTMCHKIN_H_WIZARD_H
 
 #include "Player.h"
+#include "../utilities.h"
 
 class Wizard : public Player{
 public:
     Wizard(const char* name);
     void heal (int hp) override;
-
+    ~Wizard()=default;
 protected:
     void print(std::ostream& os) const;
 private:

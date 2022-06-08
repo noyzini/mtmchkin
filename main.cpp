@@ -5,8 +5,6 @@
 
 int main() {
 
-    Wizard w("Avia");
-
 }
 
 

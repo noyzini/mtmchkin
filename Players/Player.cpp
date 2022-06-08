@@ -16,6 +16,7 @@ int Player::getLevel() const
     return m_level;
 }
 
+
 void Player::heal(int hp)
 {
     if(hp>0)
@@ -81,8 +82,14 @@ int Player::getAttackStrength() const
     return (m_force + m_level);
 }
 
+string Player::getName() const
+{
+    return m_name;
+}
+
 std::ostream& operator<<(std::ostream& os,const Player& player)
 {
     player.print(os);
     return os;
 }
+

@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include <iostream>
+#include "../utilities.h"
 
 class Rogue : public Player{
 public:

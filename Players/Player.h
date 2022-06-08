@@ -2,7 +2,7 @@
 #define MTMCHKIN_PLAYER_H
 #include <string>
 #include "../HealthPoints.h"
-#include "../utilities.h"
+
 
 using std::string;
 
@@ -106,7 +106,13 @@ public:
      * @return
      *          Player's attack strength
     */
+
+    string  getName() const;
+
+
     virtual int getAttackStrength() const;
+
+
 
     static const int MAX_LEVEL = 10;
 

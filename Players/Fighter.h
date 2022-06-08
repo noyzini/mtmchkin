@@ -2,13 +2,15 @@
 #define MTMCHKIN_H_FIGHTER_H
 
 #include "Player.h"
+#include "../utilities.h"
 
 class Fighter : public Player
 {
 
 public:
 Fighter(const char* name);
-int getAttackStrength() const override;
+    int getAttackStrength() const override;
+    ~Fighter()=default;
 
 protected:
     void print(std::ostream& os) const;
