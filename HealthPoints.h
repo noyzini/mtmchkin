@@ -24,6 +24,7 @@ public:
     ~HealthPoints()=default;
     HealthPoints& operator=(const HealthPoints& hp)=default;
 
+    int toInt() const;
     /*
     *operators and friend operators for Health Points
     */

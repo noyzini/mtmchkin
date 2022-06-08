@@ -8,7 +8,7 @@ Rogue::Rogue(const char *name): Player(name)
 {
 }
 
-void Rogue:: addCoins(int coins)
+void Rogue::addCoins(int coins)
 {
     Player::addCoins(coins*DOUBLE);
 }

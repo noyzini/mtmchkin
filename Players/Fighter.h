@@ -1,13 +1,20 @@
-//
-// Created by Noy Zini on 07/06/2022.
-//
-
 #ifndef MTMCHKIN_H_FIGHTER_H
 #define MTMCHKIN_H_FIGHTER_H
 
+#include "Player.h"
+#include "../utilities.h"
 
-class Fighter {
+class Fighter : public Player
+{
 
+public:
+Fighter(const char* name);
+int getAttackStrength() const override;
+
+protected:
+    void print(std::ostream& os) const;
+
+    const std::string FIGHTER_NAME = "Fighter";
 };
 
 
