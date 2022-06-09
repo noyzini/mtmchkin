@@ -16,7 +16,7 @@ private:
     const std::string m_monsterName = "Goblin";
     static const int FORCE=6;
     static const int DAMAGE=10;
-    static const int COINS=2;
+    static const int LOOT=2;
 };
 
 

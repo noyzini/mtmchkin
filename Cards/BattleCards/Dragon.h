@@ -17,7 +17,7 @@ public:
 private:
     const std::string m_monsterName = "Dragon";
     static const int FORCE=25;
-    static const int COINS=1000;
+    static const int LOOT=1000;
 };
 
 

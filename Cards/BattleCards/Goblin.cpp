@@ -1,7 +1,8 @@
 
 #include "Goblin.h"
 
-Goblin::Goblin() : BattleCards(FORCE,DAMAGE,COINS)
+
+Goblin::Goblin() : BattleCards(FORCE,DAMAGE,LOOT)
 {
 }
 
