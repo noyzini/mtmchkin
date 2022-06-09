@@ -11,7 +11,7 @@ public:
     Goblin();
     ~Goblin() = default;
     void playCard(Player &player) override;
-
+    void print(std::ostream& os) const;
 private:
     const std::string m_monsterName = "Goblin";
     static const int FORCE=6;

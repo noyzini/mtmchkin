@@ -13,7 +13,7 @@ public:
     Dragon();
     ~Dragon() = default;
     void playCard(Player &player) override;
-
+    void print(std::ostream& os) const;
 private:
     const std::string m_monsterName = "Dragon";
     static const int FORCE=25;

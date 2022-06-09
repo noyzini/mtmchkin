@@ -13,6 +13,8 @@ public:
 
     virtual void playCard(Player& player) = 0;
 
+    friend std::ostream& operator<<(std::ostream& os, const Card& card);
+    virtual void print(std::ostream& os) const = 0;
 };
 
 

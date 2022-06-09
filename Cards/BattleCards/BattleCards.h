@@ -13,6 +13,7 @@ public:
     virtual ~BattleCards() = default;
 
     virtual void playCard(Player &player) = 0;
+    virtual void print(std::ostream& os) const = 0;
 
 protected:
     int m_force;

@@ -23,3 +23,8 @@ void Dragon::playCard(Player& player)
         printLossBattle(player.getName(),m_monsterName);
     }
 }
+
+void Dragon::print(std::ostream& os) const
+{
+    printMonsterDetails(os,m_force,m_damageOnLoss,m_coinsOnWin,true);
+}
