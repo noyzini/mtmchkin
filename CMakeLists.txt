@@ -31,4 +31,5 @@ add_executable(mtmchkin
         Cards/BattleCards/Goblin.h
         Cards/BattleCards/Vampire.cpp
         Cards/BattleCards/Vampire.h
-        )
+        Cards/Treasure.cpp
+        Cards/Treasure.h)
