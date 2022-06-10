@@ -1,11 +1,11 @@
-//
-// Created by Noy Zini on 09/06/2022.
-//
 
 #ifndef MTMCHKIN_H_TREASURE_H
 #define MTMCHKIN_H_TREASURE_H
+
 #include "../utilities.h"
 #include "Card.h"
+
+
 class Treasure: public Card {
 public:
     Treasure();
