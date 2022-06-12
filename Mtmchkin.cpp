@@ -1,7 +1,10 @@
 #include <map>
 #include "Mtmchkin.h"
 
-Mtmchkin::Mtmchkin(const std::string fileName)
+typedef void (*builtFunction)(void);
+typedef std::map<std::string, builtFunction> script_map;
+
+Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
 {
     std::string card;
     std::ifstream file(fileName);
@@ -22,12 +25,52 @@ T* create()
 
 Card *Mtmchkin::makeCard(std::string cardName)
 {
-    std::map<std::string,Card*> map;
-    //Dragon* myClass = create<Dragon>();
-    map["Dragon"] = create<Dragon>();
+
+
 
 }
 
+void Mtmchkin::playRound() {
+    m_round++;
+    printRoundStartMessage(m_round);
+    int index=0;
+    while (index<m_playersNumber)
+    {
+        Player* current_player=m_players.front();
+        m_players.pop();
+        printTurnStartMessage(current_player->getName());
+        Card* current_card = m_cards.front();
+        m_cards.pop();
+        current_card->playCard(*current_player);
+        m_cards.push(current_card);
+        if(current_player->getLevel()>=MAX_LEVEL || current_player->isKnockedOut() )
+        {
+            //add to leaderbord
+            m_playersNumber--;
+        }
+        else
+        {
+            m_players.push(current_player);
+        }
+        index++;
+        if(isGameOver())
+        {
+            printGameEndMessage();
+        }
+    }
+}
+
+bool Mtmchkin::isGameOver() const {
+    if (m_players.empty())
+    {
+        return true;
+    }
+    return false;
+}
+
+int Mtmchkin::getNumberOfRounds() const {
+    return m_round;
+}
 
 
 //Card* (*createMyClass)(void) = create<Card>;

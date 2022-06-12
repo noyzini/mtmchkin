@@ -23,6 +23,11 @@ class Mtmchkin{
 private:
     std::queue<Player*> m_players;
     std::queue<Card*> m_cards;
+    std::deque<Player*> m_leaderboard;
+    int m_round;
+    int m_playersNumber;
+
+    static const int MAX_LEVEL=10;
 
     static Card* makeCard(std::string cardName);
 public:
