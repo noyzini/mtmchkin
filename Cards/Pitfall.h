@@ -9,10 +9,12 @@ class Pitfall: public Card{
 public:
     Pitfall();
     ~Pitfall()=default;
-    void playCard(Player &player) override;
+    void playCard(Player &player) const override;
+    void print(std::ostream& os) const override;
 
 private:
     static const int DAMAGE=10;
+    const std::string PITFALL = "Pitfall";
 };
 
 

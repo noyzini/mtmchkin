@@ -90,6 +90,7 @@ string Player::getName() const
 std::ostream& operator<<(std::ostream& os,const Player& player)
 {
     player.print(os);
+    //os << std::endl; //Needed for further prints ?
     return os;
 }
 
