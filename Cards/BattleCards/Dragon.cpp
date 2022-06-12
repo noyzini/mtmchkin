@@ -9,7 +9,7 @@ Dragon::Dragon() : BattleCards(FORCE,INT32_MAX,LOOT)
 {
 }
 
-void Dragon::playCard(Player& player)
+void Dragon::playCard(Player& player) const
 {
     if (player.getAttackStrength() >= m_force)
     {

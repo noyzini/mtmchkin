@@ -2,13 +2,29 @@
 #define MTMCHKIN_H_
 
 #include <iostream>
+#include <fstream> //check if this is the include they used in tutorial!
+#include <queue>
 #include "Players/Player.h"
 #include "Players/Wizard.h"
 #include "Players/Rogue.h"
 #include "Players/Fighter.h"
+#include "Cards/Card.h"
+#include "Cards/BattleCards/BattleCards.h"
+#include "Cards/BattleCards/Dragon.h"
+#include "Cards/BattleCards/Goblin.h"
+#include "Cards/BattleCards/Vampire.h"
+#include "Cards/Barfight.h"
+#include "Cards/Fairy.h"
+#include "Cards/Merchant.h"
+#include "Cards/Pitfall.h"
+#include "Cards/Treasure.h"
 
 class Mtmchkin{
+private:
+    std::queue<Player*> m_players;
+    std::queue<Card*> m_cards;
 
+    static Card* makeCard(std::string cardName);
 public:
     
     /*

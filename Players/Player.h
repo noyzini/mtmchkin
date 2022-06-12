@@ -108,7 +108,7 @@ public:
      *          Player's attack strength
     */
 
-    string  getName() const;
+    string getName() const;
 
     int getCoins() const;
 

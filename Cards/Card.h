@@ -7,6 +7,8 @@
 #include "../Players/Player.h"
 #include "../utilities.h"
 
+
+
 class Card {
 public:
     Card() = default;
@@ -16,6 +18,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Card& card);
     virtual void print(std::ostream& os) const = 0;
+    //virtual Card* makeCard() const = 0;
 };
 
 

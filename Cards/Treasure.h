@@ -10,10 +10,11 @@ class Treasure: public Card {
 public:
     Treasure();
     ~Treasure()=default;
-    void playCard(Player &player) override;
-
+    void playCard(Player &player) const override;
+    void print(std::ostream& os) const override;
 private:
-    static const int TREASURE=10;
+    static const int LOOT=10;
+    const std::string TREASURE = "Treasure";
 
 };
 

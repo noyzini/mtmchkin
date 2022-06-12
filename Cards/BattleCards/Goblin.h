@@ -12,6 +12,7 @@ public:
     ~Goblin() = default;
     void playCard(Player &player) override;
     void print(std::ostream& os) const;
+    //virtual Goblin* makeCard() const;
 private:
     const std::string m_monsterName = "Goblin";
     static const int FORCE=6;

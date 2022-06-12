@@ -12,7 +12,7 @@ class Vampire: public BattleCards{
 public:
     Vampire();
     void playCard(Player &player) override;
-
+    virtual Vampire* makeCard() const;
 private:
     const std::string m_monsterName = "Vampire";
     static const int FORCE=10;

@@ -2,7 +2,7 @@
 #include <string>
 #include "Mtmchkin.h"
 #include <queue>
-#include "Cards/Pitfall.h"
+//#include "Cards/Pitfall.h"
 
 int main() {
     Fighter r("Avia");
