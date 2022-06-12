@@ -87,6 +87,10 @@ string Player::getName() const
     return m_name;
 }
 
+int Player::getCoins() const {
+    return m_coins;
+}
+
 std::ostream& operator<<(std::ostream& os,const Player& player)
 {
     player.print(os);

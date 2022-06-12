@@ -5,6 +5,7 @@
 #ifndef MTMCHKIN_CARD_H
 #define MTMCHKIN_CARD_H
 #include "../Players/Player.h"
+#include "../utilities.h"
 
 class Card {
 public:

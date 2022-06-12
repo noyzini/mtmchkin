@@ -110,6 +110,7 @@ public:
 
     string  getName() const;
 
+    int getCoins() const;
 
     virtual int getAttackStrength() const;
 
