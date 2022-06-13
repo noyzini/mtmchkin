@@ -4,10 +4,6 @@
 
 #include "Card.h"
 
-Card::Card(CardFactory* factory) : m_factory(factory)
-{
-}
-
 std::ostream& operator<<(std::ostream& os, const Card& card)
 {
     card.print(os);

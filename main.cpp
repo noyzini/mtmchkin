@@ -6,6 +6,11 @@
 
 int main() {
     Fighter r("Avia");
+
+    Mtmchkin mtmchkin("ee");
+    mtmchkin.makeCard("ee");
+
+    /*
     r.levelUp();
     r.levelUp();
     r.addCoins(1000);
@@ -16,7 +21,8 @@ int main() {
     pit.playCard(r);
 
     std::cout << r;
-std::cout << r;
+    std::cout << r;
+     */
 }
 
 

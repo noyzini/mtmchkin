@@ -11,8 +11,8 @@
 class Vampire: public BattleCards{
 public:
     Vampire();
-    void playCard(Player &player) override;
-    virtual Vampire* makeCard() const;
+    void playCard(Player &player) const override;
+    void print(std::ostream& os) const override;
 private:
     const std::string m_monsterName = "Vampire";
     static const int FORCE=10;

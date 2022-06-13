@@ -6,7 +6,7 @@
 
 
 class Merchant : public Card{
-private:
+public:
     Merchant();
     ~Merchant()=default;
     void playCard(Player& player) const override;

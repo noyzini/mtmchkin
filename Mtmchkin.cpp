@@ -1,9 +1,6 @@
 #include <map>
 #include "Mtmchkin.h"
 
-typedef void (*builtFunction)(void);
-typedef std::map<std::string, builtFunction> script_map;
-
 Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
 {
     std::string card;
@@ -17,17 +14,39 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
     file.close();
 }
 
+//remove this after reception hour
+class Factory {
+public:
+    static Card* createDragon() { //why cant we do Dragon* ?? Can we do it without Code duplicating so much?
+        return new Dragon();
+    }
+};
+
 template<class T>
-T* create()
+Card* create()
 {
-    return new T;
+    return new T();
 }
 
-Card *Mtmchkin::makeCard(std::string cardName)
+typedef Card* (*createFunctions)(void);
+typedef std::map<std::string, createFunctions> StringToFunctionMap; //check convention about capital letter at the beginning
+
+//wrap this in try catch if invalid card name was entered, or return null ptr, preferably the latter
+Card *Mtmchkin::makeCard(std::string& cardName)
 {
+    StringToFunctionMap map;
+    map["Dragon"] = create<Dragon>;
+    map["Goblin"] = create<Goblin>;
+    map["Vampire"] = create<Vampire>;
+    map["Barfight"] = create<Barfight>;
+    map["Fairy"] = create<Fairy>;
+    map["Merchant"] = create<Merchant>;
+    map["Pitfall"] = create<Pitfall>;
+    map["Treasure"] = create<Treasure>;
 
-
-
+    if (map.find(cardName) == map.end())
+        return nullptr;
+    return map.find(cardName)->second();
 }
 
 void Mtmchkin::playRound() {
@@ -73,5 +92,5 @@ int Mtmchkin::getNumberOfRounds() const {
 }
 
 
-//Card* (*createMyClass)(void) = create<Card>;
+
 

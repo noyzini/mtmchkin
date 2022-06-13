@@ -4,7 +4,7 @@
 #include "Card.h"
 #include "../Players/Wizard.h"
 class Fairy : public Card{
-private:
+public:
     Fairy();
     ~Fairy()=default;
     void playCard(Player& player) const override;

@@ -1,5 +1,3 @@
-
-
 #ifndef MTMCHKIN_GOBLIN_H
 #define MTMCHKIN_GOBLIN_H
 
@@ -10,8 +8,8 @@ class Goblin:public BattleCards {
 public:
     Goblin();
     ~Goblin() = default;
-    void playCard(Player &player) override;
-    void print(std::ostream& os) const;
+    void playCard(Player &player) const override;
+    void print(std::ostream& os) const override;
     //virtual Goblin* makeCard() const;
 private:
     const std::string m_monsterName = "Goblin";

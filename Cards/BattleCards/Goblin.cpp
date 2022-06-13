@@ -6,7 +6,7 @@ Goblin::Goblin() : BattleCards(FORCE,DAMAGE,LOOT)
 {
 }
 
-void Goblin::playCard(Player& player)
+void Goblin::playCard(Player& player) const
 {
     if (player.getAttackStrength() >= m_force)
     {

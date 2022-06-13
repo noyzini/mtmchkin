@@ -29,9 +29,9 @@ private:
 
     static const int MAX_LEVEL=10;
 
-    static Card* makeCard(std::string cardName);
 public:
-    
+
+    static Card* makeCard(std::string& cardName);
     /*
     * C'tor of Mtmchkin class
     *
