@@ -7,7 +7,7 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
     std::ifstream file(fileName);
     while (getline (file, card)) {
         std::unique_ptr<Card> temp(makeCard(card));
-        m_cards.push(std::move(temp));
+        m_cards.push_back(std::move(temp));
     }
 
 // Close the file
@@ -50,15 +50,15 @@ void Mtmchkin::playRound() {
     {
         roundIndex--;
         std::unique_ptr<Player> current_player=std::move(m_players.front());
-        m_players.pop();
+        m_players.pop_front();
 
         printTurnStartMessage(current_player->getName());
 
         std::unique_ptr<Card> current_card=std::move(m_cards.front());
-        m_cards.pop();
+        m_cards.pop_front();
 
         current_card->playCard(*current_player);
-        m_cards.push(std::move(current_card));
+        m_cards.push_back(std::move(current_card));
 
         if(current_player->getLevel()>=MAX_LEVEL || current_player->isKnockedOut() )
         {
@@ -67,7 +67,7 @@ void Mtmchkin::playRound() {
         }
         else
         {
-            m_players.push(std::move(current_player));
+            m_players.push_back(std::move(current_player));
         }
         if(isGameOver())
         {

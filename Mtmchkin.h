@@ -23,8 +23,8 @@
 
 class Mtmchkin{
 private:
-    std::queue<std::unique_ptr<Player>> m_players;
-    std::queue<std::unique_ptr<Card>> m_cards;
+    std::deque<std::unique_ptr<Player>> m_players;
+    std::deque<std::unique_ptr<Card>> m_cards;
     Leaderboard m_leaderboard;
     int m_round;
     int m_playersNumber;

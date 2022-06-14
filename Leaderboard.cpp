@@ -16,7 +16,7 @@ void Leaderboard::addPlayer(std::unique_ptr<Player> player) {
     }
 }
 
-void Leaderboard::printBoard(std::queue<std::unique_ptr<Player>> players) {
+void Leaderboard::printBoard(const std::deque<std::unique_ptr<Player>> players) const {
     printLeaderBoardStartMessage();
     int place=1;
     int index=0;
@@ -25,15 +25,12 @@ void Leaderboard::printBoard(std::queue<std::unique_ptr<Player>> players) {
         printPlayerLeaderBoard(place,*m_winners[index]);
         place++;
     }
-    index=0;
-    while (index<players.size())
+    for (int i =0 ; i < players.size(); i++)
     {
-        std::unique_ptr<Player> current_player=std::move(players.front());
-        players.pop();
-        printPlayerLeaderBoard(place,*current_player);
-        players.push(std::move(current_player));
+        printPlayerLeaderBoard(place,*players[i]);
         place++;
     }
+    
     for (std::vector<std::unique_ptr<Player>>::reverse_iterator i = m_losers.rbegin();i != m_losers.rend(); ++i )
     {
         printPlayerLeaderBoard(place,**i);

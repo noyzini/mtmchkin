@@ -18,7 +18,7 @@ public:
     Leaderboard();
     ~Leaderboard()=default;
     void addPlayer(std::unique_ptr<Player> player);
-    void printBoard(std::queue<std::unique_ptr<Player>> players);
+    void printBoard(std::deque<std::unique_ptr<Player>> players) const;
 };
 
 
