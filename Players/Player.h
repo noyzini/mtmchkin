@@ -18,12 +18,12 @@ public:
      * @result
      *      An instance of Mtmchkin
     */
-    Player(const char* name);
+    Player(const char* name); //<--------------------------------Avia doesn't like const char*
 
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    Player(const Player&)=default;
+    Player(const Player&)=default; //<---------------------- if needed, make clone()!! here and @ Card.h???
     Player& operator=(const Player&)=default;
     virtual ~Player()=default;
 
@@ -114,8 +114,6 @@ public:
 
     virtual int getAttackStrength() const;
 
-
-
     static const int MAX_LEVEL = 10;
 
 protected: // should be privet??
@@ -126,8 +124,8 @@ protected: // should be privet??
     int m_coins;
 
     friend std::ostream& operator<<(std::ostream& os, const Player& player) ;
-    virtual void print(std::ostream& os) const =0;
-
+    virtual void print(std::ostream& os) const = 0;
+private:
     static const int MAX_HP_DEFAULT = 100;
     static const int PLAYER_FORCE_DEFAULT = 5;
     static const int DEFAULT_COINS = 10;
