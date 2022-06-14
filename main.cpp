@@ -8,7 +8,6 @@ int main() {
     Fighter r("Avia");
 
     Mtmchkin mtmchkin("ee");
-    mtmchkin.makeCard("ee");
 
     /*
     r.levelUp();

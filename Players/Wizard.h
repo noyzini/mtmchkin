@@ -13,8 +13,8 @@ public:
 protected:
     void print(std::ostream& os) const;
 private:
-    static int const DOUBLE=2;
-    const std::string WIZARD_NAME = "Wizard";
+    static const int DOUBLE=2;
+    const std::string WIZARD_NAME ="Wizard";
 };
 
 
