@@ -30,10 +30,11 @@ void Leaderboard::printBoard(const std::deque<std::unique_ptr<Player>> players) 
         printPlayerLeaderBoard(place,*players[i]);
         place++;
     }
-    
-    for (std::vector<std::unique_ptr<Player>>::reverse_iterator i = m_losers.rbegin();i != m_losers.rend(); ++i )
+    index = m_losers.size()-1;
+    while (index>=0)
     {
-        printPlayerLeaderBoard(place,**i);
+        printPlayerLeaderBoard(place,*m_losers[index]);
         place++;
+        index--;
     }
 }
