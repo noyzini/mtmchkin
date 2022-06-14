@@ -2,7 +2,7 @@
 
 #ifndef MTMCHKIN_CPP_LEADERBOARD_H
 #define MTMCHKIN_CPP_LEADERBOARD_H
-#include "/Players/player.h"
+#include "Players/player.h"
 #include <iostream>
 #include <vector>
 #include <memory>
@@ -17,8 +17,8 @@ private:
 public:
     Leaderboard();
     ~Leaderboard()=default;
-    void addPlayer(std::unique_ptr<Player> player);
-    void printBoard(std::deque<std::unique_ptr<Player>> players) const;
+    void addPlayer(std::unique_ptr<Player>& player);
+    void printBoard(const std::deque<std::unique_ptr<Player>>& players) const;
 };
 
 

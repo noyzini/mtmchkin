@@ -6,7 +6,7 @@ Leaderboard::Leaderboard():m_losers(std::vector<std::unique_ptr<Player>>())
 {
 }
 
-void Leaderboard::addPlayer(std::unique_ptr<Player> player) {
+void Leaderboard::addPlayer(std::unique_ptr<Player>& player) {
     if(player->isKnockedOut())
     {
         m_losers.push_back(std::move(player));
@@ -16,7 +16,7 @@ void Leaderboard::addPlayer(std::unique_ptr<Player> player) {
     }
 }
 
-void Leaderboard::printBoard(const std::deque<std::unique_ptr<Player>> players) const {
+void Leaderboard::printBoard(const std::deque<std::unique_ptr<Player>>& players) const {
     printLeaderBoardStartMessage();
     int place=1;
     int index=0;

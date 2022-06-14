@@ -34,6 +34,7 @@ private:
     static Card* makeCard(std::string cardName);
 
 public:
+    static Player* makePlayer(std::string playerClass, std::string name);
 
 
     /*

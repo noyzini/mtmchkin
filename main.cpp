@@ -5,23 +5,25 @@
 //#include "Cards/Pitfall.h"
 #include <memory>
 
+
+
 int main() {
+    //Fighter r("Avia");
 
-
-    std::queue<std::unique_ptr<int>> qu;
-    std::unique_ptr<int>p1(new int(1));
-    std::unique_ptr<int>p2(new int(2));
-    qu.push(std::move(p1));
-    qu.push(std::move(p2));
-    std::cout<<*qu.front();
-    std::unique_ptr<int> p3= std::move(qu.front());
-    qu.pop();
-    std::cout<<*qu.front();
-   //
-   // std::cout<<qu.front().get();
-
-    //qu.push(b);
-
+    Mtmchkin game("deck.txt");
+    int maxRounds = 5;
+    while (!game.isGameOver() && game.getNumberOfRounds() < maxRounds)
+    {
+        game.playRound();
+    }
+    //game.printLeaderBoard();
+    /*
+    std::string input;
+    std::getline(std::cin, input);
+    int spaceIndex = input.find(" ");
+    std::string name = input.substr(0,spaceIndex), playerClass = input.substr(spaceIndex+1,input.length()-1);
+    std::cout << "Name is:" << name << "Class is:" << playerClass << "Test is";
+    */
     /*
     r.levelUp();
     r.levelUp();
