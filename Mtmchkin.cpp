@@ -28,8 +28,13 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
     std::string card;
     std::ifstream file(fileName);
 
+    if (!file)
+        std::cout << "Err";
+    else
+        std::cout << "File is cool";
     while (getline (file, card)) {
         std::unique_ptr<Card> temp(makeCard(card));
+        //if temp == nullptr
         m_cards.push_back(std::move(temp));
     }
 
@@ -54,6 +59,7 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
 
     while (playersEntered < numOfPlayers)
     {
+        printInsertPlayerMessage();
         std::string name, playerClass;
         std::string input;
         std::getline(std::cin, input);
@@ -81,7 +87,7 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
     }
 
 // Close the file
-    file.close();
+    //file.close();
 }
 
 
