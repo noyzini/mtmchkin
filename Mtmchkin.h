@@ -16,22 +16,26 @@
 #include "Cards/Barfight.h"
 #include "Cards/Fairy.h"
 #include "Cards/Merchant.h"
-#include "Cards/Pitfall.h"
 #include "Cards/Treasure.h"
+#include "Cards/Pitfall.h"
+#include "Leaderboard.h"
+#include <memory>
 
 class Mtmchkin{
 private:
-    std::queue<Player*> m_players;
-    std::queue<Card*> m_cards;
-    std::deque<Player*> m_leaderboard;
+    std::queue<std::unique_ptr<Player>> m_players;
+    std::queue<std::unique_ptr<Card>> m_cards;
+    Leaderboard m_leaderboard;
     int m_round;
     int m_playersNumber;
 
     static const int MAX_LEVEL=10;
 
+    static Card* makeCard(std::string cardName);
+
 public:
 
-    static Card* makeCard(std::string& cardName);
+
     /*
     * C'tor of Mtmchkin class
     *

@@ -3,11 +3,24 @@
 #include "Mtmchkin.h"
 #include <queue>
 //#include "Cards/Pitfall.h"
+#include <memory>
 
 int main() {
-    Fighter r("Avia");
 
-    Mtmchkin mtmchkin("ee");
+
+    std::queue<std::unique_ptr<int>> qu;
+    std::unique_ptr<int>p1(new int(1));
+    std::unique_ptr<int>p2(new int(2));
+    qu.push(std::move(p1));
+    qu.push(std::move(p2));
+    std::cout<<*qu.front();
+    std::unique_ptr<int> p3= std::move(qu.front());
+    qu.pop();
+    std::cout<<*qu.front();
+   //
+   // std::cout<<qu.front().get();
+
+    //qu.push(b);
 
     /*
     r.levelUp();

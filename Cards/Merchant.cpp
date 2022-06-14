@@ -33,6 +33,7 @@ void Merchant::playCard(Player &player) const {
                 player.heal(1);
                 cost=COST_HEAL_POINT;
             }
+            break;
         }
         case BUY_FORCE:
         {
@@ -45,8 +46,10 @@ void Merchant::playCard(Player &player) const {
                 player.buff(1);
                 cost=COST_FORCE_POINT;
             }
+            break;
         }
-        
+        default:
+            break;
     }
     printMerchantSummary(std::cout,player.getName(),type,cost);
 }
