@@ -27,12 +27,14 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
 
     std::string card;
     std::ifstream file(fileName);
+    //file.open("deck.txt");
 
     if (!file)
         std::cout << "Err";
     else
-        std::cout << "File is cool";
+        std::cout << "Should Work";
     while (getline (file, card)) {
+        //card = card.replace(card.length()-1,1,"");
         std::unique_ptr<Card> temp(makeCard(card));
         //if temp == nullptr
         m_cards.push_back(std::move(temp));
@@ -54,9 +56,9 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
         }
     }
     while (!numOfPlayers);
+    m_playersNumber = numOfPlayers;
 
     int playersEntered = 0;
-
     while (playersEntered < numOfPlayers)
     {
         printInsertPlayerMessage();
@@ -140,6 +142,7 @@ Card *Mtmchkin::makeCard(std::string cardName)
 }
 
 void Mtmchkin::playRound() {
+    //if (!isGameOver()) ?????
     m_round++;
     printRoundStartMessage(m_round);
     int roundIndex=m_playersNumber;
@@ -166,7 +169,7 @@ void Mtmchkin::playRound() {
         {
             m_players.push_back(std::move(current_player));
         }
-        //index++;
+
         if(isGameOver())
         {
             printGameEndMessage();

@@ -27,7 +27,7 @@ void Player::heal(int hp)
 
 bool Player::isKnockedOut() const
 {
-    return m_hp==0;
+    return m_hp.toInt()==0;
 }
 
 bool Player::pay(int coins)

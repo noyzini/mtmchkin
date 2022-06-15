@@ -20,16 +20,31 @@ void Leaderboard::printBoard(const std::deque<std::unique_ptr<Player>>& players)
     printLeaderBoardStartMessage();
     int place=1;
     int index=0;
+
+    for (int i = 0 ; i < m_winners.size(); i ++)
+    {
+        printPlayerLeaderBoard(place, *m_winners[index]);
+        place++;
+    }
+    /*
     while ( index < m_winners.size() ) {
         index++;
         printPlayerLeaderBoard(place,*m_winners[index]);
         place++;
     }
+     */
     for (int i =0 ; i < players.size(); i++)
     {
         printPlayerLeaderBoard(place,*players[i]);
         place++;
     }
+
+    for (int i = m_losers.size() - 1 ; i >= 0; i--) //consider doing push front for a normal loop
+    {
+        printPlayerLeaderBoard(place,*m_losers[i]);
+        place++;
+    }
+    /*
     index = m_losers.size()-1;
     while (index>=0)
     {
@@ -37,4 +52,5 @@ void Leaderboard::printBoard(const std::deque<std::unique_ptr<Player>>& players)
         place++;
         index--;
     }
+     */
 }
