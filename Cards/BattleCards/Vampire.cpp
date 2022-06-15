@@ -17,6 +17,7 @@ void Vampire::playCard(Player& player) const
     else
     {
         player.damage(m_damageOnLoss);
+        player.loseForce();
         printLossBattle(player.getName(),m_monsterName);
     }
 }

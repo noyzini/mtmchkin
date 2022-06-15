@@ -114,6 +114,8 @@ public:
 
     virtual int getAttackStrength() const;
 
+    void loseForce();
+
     static const int MAX_LEVEL = 10;
 
 protected: // should be privet??

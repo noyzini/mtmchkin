@@ -21,6 +21,8 @@ bool isValidPlayerName(std::string name)
     return charCount <= 15;
 }
 
+
+//important: we need to initialize m_leaderboard !!!
 Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
 {
     printStartGameMessage();
@@ -39,7 +41,7 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
         std::unique_ptr<Card> temp(makeCard(card));
         if (temp == nullptr)
         {
-            throw DeckFileFormatError(currentLine);
+            throw (DeckFileFormatError(currentLine));
         }
         m_cards.push_back(std::move(temp));
         currentLine++;
@@ -74,28 +76,32 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
         printInsertPlayerMessage();
         std::string name, playerClass;
         std::string input;
-        std::getline(std::cin, input);
-        int spaceIndex = input.find(" ");
-        name = input.substr(0, spaceIndex);
-        playerClass = input.substr(spaceIndex + 1,input.length() - 1);
+        bool isValid = false;
+        do {
+            std::getline(std::cin, input);
+            int spaceIndex = input.find(" ");
+            name = input.substr(0, spaceIndex);
+            playerClass = input.substr(spaceIndex + 1, input.length() - 1);
 
-        if (isValidPlayerName(name))
-        {
-            std::unique_ptr<Player> temp(makePlayer(playerClass, name));
-            if (temp != nullptr)
+            if (isValidPlayerName(name))
             {
-                m_players.push_back(std::move(temp));
-                playersEntered++;
+                std::unique_ptr<Player> temp(makePlayer(playerClass, name));
+                if (temp != nullptr)
+                {
+                    isValid = true;
+                    m_players.push_back(std::move(temp));
+                    playersEntered++;
+                }
+                else
+                {
+                    printInvalidClass();
+                }
             }
             else
             {
-                printInvalidClass();
+                printInvalidName();
             }
-        }
-        else
-        {
-            printInvalidName();
-        }
+        } while (!isValid);
     }
 
 // Close the file

@@ -7,11 +7,11 @@
 #include "Players/Player.h"
 #include "Cards/Card.h"
 #include "Mtmchkin.h"
-#include "Cards/Vampire.h"
+#include "Cards/BattleCards/Vampire.h"
 #include "Cards/Barfight.h"
-#include "Cards/Dragon.h"
+#include "Cards/BattleCards/Dragon.h"
 #include "Cards/Fairy.h"
-#include "Cards/Goblin.h"
+#include "Cards/BattleCards/Goblin.h"
 #include "Cards/Merchant.h"
 #include "Cards/Pitfall.h"
 #include "Cards/Treasure.h"
@@ -94,7 +94,7 @@ bool GeneralGameSimulationTest(const string &tempDeckFilename, string input, str
         game.printLeaderBoard();
     }
 
-    bool res = compareFiles(tempDeckFilename+"out.txt", expectedOutputFileName);
+    bool res = compareFiles(tempDeckFilename+"out.txt", "../"+expectedOutputFileName);
 	outfile.close();
     std::cin.rdbuf(cinbuf);
     std::cout.rdbuf(coutbuf);
@@ -133,17 +133,6 @@ bool cardsPrintsTest()
                     << std::endl << goblin  << std::endl << pizzaHut
                     << std::endl << moedB  << std::endl << factor
                     << std::endl << dracula;
-    return true;
-}
-
-bool playersPrintsTest()
-{
-    
-    Rogue player1("Itay");
-    Fighter player2("Efrat");
-    Wizard player3("Jimmy");
-    cout << player1 << std::endl << player2 << std::endl << player3   
-                    << std::endl;
     return true;
 }
 
@@ -250,7 +239,7 @@ bool badPlayerInputTest()
 bool merchantInputTest()
 {
     const string tmp_file("merchantInput_test");
-    string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter"
+    string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter\n"
                  "1\n"
                  "1\n"
                  "0\n"
@@ -322,7 +311,7 @@ bool badFormatStartTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("badFormat_test_start_of_file.txt");
+        Mtmchkin("inputs/badFormat_test_start_of_file.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 1")==0)
@@ -337,9 +326,8 @@ bool badFormatStartTest()
 // --------------------------------       Main function          ------------------------------
 
 int main(){
-    
+
 	run_test(cardsPrintsTest,"cardsPrintsTest");
-	run_test(playersPrintsTest,"playersPrintsTest");
 	run_test(testCard,"Deck creation test");
 	run_test(dragonDenTest,"Dragon Den simulation test");
 	run_test(goblinCaveTest,"Goblin Cave simulation test");

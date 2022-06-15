@@ -8,7 +8,7 @@ class Fighter : public Player
 {
 
 public:
-Fighter(const char* name);
+    Fighter(const char* name);
     int getAttackStrength() const override;
     ~Fighter()=default;
 

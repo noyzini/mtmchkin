@@ -61,6 +61,14 @@ void Player::buff(int boost)
     }
 }
 
+void Player::loseForce()
+{
+    if(m_force > 0)
+    {
+        m_force--;
+    }
+}
+
 void Player::damage(int damage)
 {
     if(damage>=0)
