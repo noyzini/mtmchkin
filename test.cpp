@@ -261,7 +261,7 @@ bool badSizeTest()
     string expectedOutputFilename("notneeded.txt");
 	bool flag= false;
     try{
-        Mtmchkin("inputs/empty.txt");
+        Mtmchkin("../inputs/empty.txt");
     }
     catch(const DeckFileInvalidSize& e){
         flag = true;
@@ -293,7 +293,7 @@ bool badFormatTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("inputs/badFormat_test.txt");
+        Mtmchkin("../inputs/badFormat_test.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 2")==0) {
@@ -311,7 +311,7 @@ bool badFormatStartTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("inputs/badFormat_test_start_of_file.txt");
+        Mtmchkin("../inputs/badFormat_test_start_of_file.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 1")==0)

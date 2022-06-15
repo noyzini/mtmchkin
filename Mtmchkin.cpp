@@ -41,7 +41,7 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
         std::unique_ptr<Card> temp(makeCard(card));
         if (temp == nullptr)
         {
-            throw (DeckFileFormatError(currentLine));
+            throw DeckFileFormatError(currentLine);
         }
         m_cards.push_back(std::move(temp));
         currentLine++;

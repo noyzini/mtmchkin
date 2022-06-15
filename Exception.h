@@ -2,6 +2,9 @@
 #ifndef MTMCHKIN_H_EXCEPTION_H
 #define MTMCHKIN_H_EXCEPTION_H
 
+#include <iostream>
+#include <exception>
+
 class DeckFileNotFound : public std::exception
 {
 public:
@@ -33,25 +36,19 @@ public:
 class DeckFileFormatError : public std::exception
 {
     int m_lineError;
+    std::string m_error;
 public:
 
-    DeckFileFormatError(int line) : m_lineError(line)
+    DeckFileFormatError(int line) : m_lineError(line) ,
+    m_error("Deck File Error: File format error in line " + std::to_string(m_lineError))
     {
     }
 
     const char * what() const noexcept override
     {
-        std::string s = "Deck File Error: File format error in line " + std::to_string(m_lineError);
-        return s.c_str();
+        return m_error.c_str();
     };
 };
 
-
-#include <iostream>
-#include <exception>
-
-class Exception: public std::exception{
-
-};
 
 #endif //MTMCHKIN_H_EXCEPTION_H

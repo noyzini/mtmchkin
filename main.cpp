@@ -5,7 +5,35 @@
 //#include "Cards/Pitfall.h"
 #include <memory>
 #include "Exception.h"
+#include <map>
 
+
+template<class T>
+Card* createCard()
+{
+    return new T();
+}
+
+typedef Card* (*createCardFunction)(void);
+typedef std::map<std::string, createCardFunction> StringToFunctionMap; //check convention about capital letter at the beginning
+
+//wrap this in try catch if invalid card name was entered, or return null ptr, preferably the latter
+Card *makeCard(std::string cardName)
+{
+    StringToFunctionMap map;
+    map["Dragon"] = createCard<Dragon>;
+    map["Goblin"] = createCard<Goblin>;
+    map["Vampire"] = createCard<Vampire>;
+    map["Barfight"] = createCard<Barfight>;
+    map["Fairy"] = createCard<Fairy>;
+    map["Merchant"] = createCard<Merchant>;
+    map["Pitfall"] = createCard<Pitfall>;
+    map["Treasure"] = createCard<Treasure>;
+
+    if (map.find(cardName) == map.end())
+        return nullptr;
+    return map.find(cardName)->second();
+}
 
 int main() {
     //Fighter r("Avia");
@@ -14,7 +42,33 @@ int main() {
 //    std::unique_ptr<int> ptr2 = std::move(ptr);
 
 
+    std::string s = "../inputs/badFormat_test_start_of_file.txt";
+    std::ifstream file(s);
+    //file.open("deck.txt");
+    std::string str;
+    if (!file)
+    {
+        throw DeckFileNotFound();
+    }
 
+    int currentLine = 1;
+    while (getline (file, str))
+    {
+        std::unique_ptr<Card> temp(makeCard(str));
+        if (temp == nullptr)
+        {
+            try {
+                throw DeckFileFormatError(currentLine);
+            }
+            catch (DeckFileFormatError& e)
+            {
+                std::cout << e.what();
+            }
+        }
+        currentLine++;
+    }
+
+/*
     Mtmchkin game("../deck.txt");
     int maxRounds = 50;
     while (!game.isGameOver() && game.getNumberOfRounds() < maxRounds)
@@ -22,6 +76,7 @@ int main() {
         game.playRound();
     }
     game.printLeaderBoard();
+    */
     /*
     std::string input;
     std::getline(std::cin, input);
