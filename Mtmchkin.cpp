@@ -30,14 +30,24 @@ Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
     //file.open("deck.txt");
 
     if (!file)
-        std::cout << "Err";
-    else
-        std::cout << "Should Work";
-    while (getline (file, card)) {
-        //card = card.replace(card.length()-1,1,"");
+    {
+        throw DeckFileNotFound();
+    }
+    int currentLine = 1;
+    while (getline (file, card))
+    {
         std::unique_ptr<Card> temp(makeCard(card));
-        //if temp == nullptr
+        if (temp == nullptr)
+        {
+            throw DeckFileFormatError(currentLine);
+        }
         m_cards.push_back(std::move(temp));
+        currentLine++;
+    }
+
+    if (m_cards.size() < MIN_AMOUNT_OF_CARDS)
+    {
+        throw DeckFileInvalidSize();
     }
 
     //put this in a function later

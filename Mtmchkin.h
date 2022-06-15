@@ -19,6 +19,7 @@
 #include "Cards/Treasure.h"
 #include "Cards/Pitfall.h"
 #include "Leaderboard.h"
+#include "Exception.h"
 #include <memory>
 
 class Mtmchkin{
@@ -30,6 +31,7 @@ private:
     int m_playersNumber;
 
     static const int MAX_LEVEL=10;
+    static const int MIN_AMOUNT_OF_CARDS = 5;
 
     static Card* makeCard(std::string cardName);
 
