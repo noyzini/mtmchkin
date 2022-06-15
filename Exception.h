@@ -47,4 +47,11 @@ public:
 };
 
 
+#include <iostream>
+#include <exception>
+
+class Exception: public std::exception{
+
+};
+
 #endif //MTMCHKIN_H_EXCEPTION_H

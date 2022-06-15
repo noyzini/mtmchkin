@@ -12,6 +12,9 @@ int main() {
 //    int x;
 //    std::unique_ptr<int> ptr(&x);
 //    std::unique_ptr<int> ptr2 = std::move(ptr);
+
+
+
     Mtmchkin game("../deck.txt");
     int maxRounds = 50;
     while (!game.isGameOver() && game.getNumberOfRounds() < maxRounds)
