@@ -6,7 +6,7 @@
 #define MTMCHKIN_DRAGON_H
 
 #include "BattleCards.h"
-#include "../../utilities.h"
+#include "../utilities.h"
 
 class Dragon :public BattleCards {
 public:

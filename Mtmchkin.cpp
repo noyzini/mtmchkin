@@ -131,7 +131,7 @@ Player* Mtmchkin::makePlayer(std::string playerClass, std::string name)
 }
 
 template<class T>
-Card* createCard()
+Card* createCard() //should it be smart ptr ???? @983 !! :(
 {
     return new T();
 }

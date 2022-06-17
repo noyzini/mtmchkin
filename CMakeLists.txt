@@ -23,13 +23,13 @@ add_executable(mtmchkin
         Exception.h
         Cards/Card.cpp
         Cards/Card.h
-        Cards/BattleCards/BattleCards.cpp
-        Cards/BattleCards/BattleCards.h
-        Cards/BattleCards/Dragon.cpp
-        Cards/BattleCards/Dragon.h
-        Cards/BattleCards/Goblin.cpp
-        Cards/BattleCards/Goblin.h
-        Cards/BattleCards/Vampire.cpp
-        Cards/BattleCards/Vampire.h
+        Cards/BattleCards.cpp
+        Cards/BattleCards.h
+        Cards/Dragon.cpp
+        Cards/Dragon.h
+        Cards/Goblin.cpp
+        Cards/Goblin.h
+        Cards/Vampire.cpp
+        Cards/Vampire.h
         Cards/Treasure.cpp
         Cards/Treasure.h Cards/Pitfall.cpp Cards/Pitfall.h Cards/Barfight.cpp Cards/Barfight.h Cards/Fairy.cpp Cards/Fairy.h Cards/Merchant.cpp Cards/Merchant.h Leaderboard.cpp Leaderboard.h)

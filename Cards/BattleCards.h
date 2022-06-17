@@ -5,7 +5,7 @@
 #ifndef MTMCHKIN_BATTLECARDS_H
 #define MTMCHKIN_BATTLECARDS_H
 
-#include "../Card.h"
+#include "Card.h"
 
 class BattleCards : public Card {
 public:

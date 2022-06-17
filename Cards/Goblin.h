@@ -2,7 +2,7 @@
 #define MTMCHKIN_GOBLIN_H
 
 #include "BattleCards.h"
-#include "../../utilities.h"
+#include "../utilities.h"
 
 class Goblin:public BattleCards {
 public:

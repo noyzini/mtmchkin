@@ -1,8 +1,7 @@
 
 #include "Leaderboard.h"
 
-Leaderboard::Leaderboard():m_losers(std::vector<std::unique_ptr<Player>>())
-    ,m_winners(std::vector<std::unique_ptr<Player>>())
+Leaderboard::Leaderboard() : m_winners(), m_losers()
 {
 }
 
