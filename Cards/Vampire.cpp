@@ -24,5 +24,7 @@ void Vampire::playCard(Player& player) const
 
 void Vampire::print(std::ostream& os) const
 {
+    printCardDetails(os,m_monsterName);
     printMonsterDetails(os,m_force,m_damageOnLoss,m_coinsOnWin,false);
+    printEndOfCardDetails(os);
 }

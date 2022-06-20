@@ -27,4 +27,5 @@ void Pitfall::playCard(Player &player) const {
 void Pitfall::print(std::ostream &os) const
 {
     printCardDetails(os,PITFALL); //add const here
+    printEndOfCardDetails(os);
 }

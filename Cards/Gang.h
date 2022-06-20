@@ -18,6 +18,7 @@ public:
 
 private:
     std::vector<std::unique_ptr<BattleCards>> m_gang;
+    const std::string GANG_NAME="Gang";
 
 };
 

@@ -57,4 +57,5 @@ void Merchant::playCard(Player &player) const {
 void Merchant::print(std::ostream &os) const
 {
     printCardDetails(os,MERCHANT);
+    printEndOfCardDetails(os);
 }

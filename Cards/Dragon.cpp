@@ -26,5 +26,7 @@ void Dragon::playCard(Player& player) const
 
 void Dragon::print(std::ostream& os) const
 {
-    printMonsterDetails(os,m_force,m_damageOnLoss,m_coinsOnWin,true);
+    printCardDetails(os,m_monsterName);
+    printMonsterDetails(os,m_force,m_damageOnLoss,m_coinsOnWin, true);
+    printEndOfCardDetails(os);
 }

@@ -13,4 +13,5 @@ void Treasure::playCard(Player &player) const {
 
 void Treasure::print(std::ostream &os) const {
     printCardDetails(os,TREASURE);
+    printEndOfCardDetails(os);
 }
