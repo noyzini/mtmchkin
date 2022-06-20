@@ -29,21 +29,61 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
 
     std::string card;
     std::ifstream file(fileName);
-    //file.open("deck.txt");
 
     if (!file)
     {
         throw DeckFileNotFound();
     }
     int currentLine = 1;
+    bool gangMode= false;
+    int lastGangIndex;
+    std::unique_ptr<Gang> lastGang(new Gang());
     while (getline (file, card))
     {
-        std::unique_ptr<Card> temp(makeCard(card));
-        if (temp == nullptr)
+        if (strcmp(card.c_str(),"Gang") == 0)
         {
-            throw DeckFileFormatError(currentLine);
+            if (gangMode)
+            {
+                throw DeckFileFormatError(currentLine);
+            }
+            gangMode = true;
+            //lastGangIndex = m_cards.size() - 1;
+        } else if(strcmp(card.c_str(),"EndGang") == 0)
+        {
+            if (!gangMode)
+            {
+                throw DeckFileFormatError(currentLine);
+            }
+            m_cards.push_back(std::move(lastGang));
+            lastGang= std::unique_ptr<Gang>(new Gang());
+            gangMode = false;
         }
-        m_cards.push_back(std::move(temp));
+        else
+        {
+            std::unique_ptr<Card> temp(makeCard(card));
+            if (temp == nullptr)
+            {
+                throw DeckFileFormatError(currentLine);
+            }
+
+            if(gangMode)
+            {
+                BattleCards* monster = dynamic_cast<BattleCards*>(temp.get());
+                if(monster!= nullptr)
+                {
+                    std::unique_ptr<BattleCards> insertMonster(std::move(monster));
+                    lastGang->addMonster(insertMonster);
+                }
+                else
+                {
+                    throw DeckFileFormatError(currentLine);
+                }
+
+            } else
+            {
+                m_cards.push_back(std::move(temp));
+            }
+        }
         currentLine++;
     }
 

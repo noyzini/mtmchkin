@@ -18,6 +18,7 @@
 #include "Cards/Merchant.h"
 #include "Cards/Treasure.h"
 #include "Cards/Pitfall.h"
+#include "Cards/Gang.h"
 #include "Leaderboard.h"
 #include "Exception.h"
 #include <memory>
