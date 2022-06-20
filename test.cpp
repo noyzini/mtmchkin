@@ -1,4 +1,3 @@
-
 #include <functional>
 #include <string>
 #include <iostream>
@@ -56,12 +55,12 @@ bool compareFiles(const string &filename1, const string &filename2)
     string line1,line2;
     fstream file1(filename1),file2(filename2);
     if( !file2){
-         cerr<<"Error opening file 2"<<std::endl;
-         return false;
+        cerr<<"Error opening file 2"<<std::endl;
+        return false;
     }
-	if(!file1 ){
-         cerr<<"Error opening file 1"<<std::endl;
-         return false;
+    if(!file1 ){
+        cerr<<"Error opening file 1"<<std::endl;
+        return false;
     }
     while(!file1.eof()){ //read file until you reach the end
         getline(file1,line1);
@@ -94,11 +93,11 @@ bool GeneralGameSimulationTest(const string &tempDeckFilename, string input, str
         game.printLeaderBoard();
     }
 
-    bool res = compareFiles(tempDeckFilename+"out.txt", "../"+expectedOutputFileName);
-	outfile.close();
+    bool res = compareFiles(tempDeckFilename+"out.txt", expectedOutputFileName);
+    outfile.close();
     std::cin.rdbuf(cinbuf);
     std::cout.rdbuf(coutbuf);
-    deleteTextFile(tempDeckFilename+".txt");
+    //deleteTextFile(tempDeckFilename+".txt");
     return res;
 }
 
@@ -120,7 +119,7 @@ void run_test(std::function<bool()> test, std::string test_name)
 
 bool cardsPrintsTest()
 {
-    
+
     Barfight junta;
     Dragon mushu;
     Fairy alizaMalek;
@@ -129,10 +128,10 @@ bool cardsPrintsTest()
     Pitfall moedB;
     Treasure factor;
     Vampire dracula;
-    cout << junta << std::endl << mushu << std::endl << alizaMalek   
-                    << std::endl << goblin  << std::endl << pizzaHut
-                    << std::endl << moedB  << std::endl << factor
-                    << std::endl << dracula;
+    cout << junta << std::endl << mushu << std::endl << alizaMalek
+         << std::endl << goblin  << std::endl << pizzaHut
+         << std::endl << moedB  << std::endl << factor
+         << std::endl << dracula;
     return true;
 }
 
@@ -150,7 +149,7 @@ bool testCard()
     for(unique_ptr<Card>& card : cards){
         cout << *card;
     }
-	cards.erase(cards.begin(),cards.end());
+    cards.erase(cards.begin(),cards.end());
     return true;
 }
 
@@ -259,9 +258,9 @@ bool badSizeTest()
     string input("4\nBarbieGirl Wizard\nInABarbieWorld Rogue\nMadeOfPlastic Rogue\nITSFANTASTIC Wizard");
     string deck("Fairy");
     string expectedOutputFilename("notneeded.txt");
-	bool flag= false;
+    bool flag= false;
     try{
-        Mtmchkin("../inputs/empty.txt");
+        Mtmchkin("inputs/empty.txt");
     }
     catch(const DeckFileInvalidSize& e){
         flag = true;
@@ -293,7 +292,7 @@ bool badFormatTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("../inputs/badFormat_test.txt");
+        Mtmchkin("inputs/badFormat_test.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 2")==0) {
@@ -311,7 +310,7 @@ bool badFormatStartTest()
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
-        Mtmchkin("../inputs/badFormat_test_start_of_file.txt");
+        Mtmchkin("inputs/badFormat_test_start_of_file.txt");
     }
     catch(const DeckFileFormatError& e){
         if(strcmp(e.what(),"Deck File Error: File format error in line 1")==0)
@@ -327,16 +326,16 @@ bool badFormatStartTest()
 
 int main(){
 
-	run_test(cardsPrintsTest,"cardsPrintsTest");
-	run_test(testCard,"Deck creation test");
-	run_test(dragonDenTest,"Dragon Den simulation test");
-	run_test(goblinCaveTest,"Goblin Cave simulation test");
-	run_test(vampireLairTest,"Vampire Lair simulation test");
-	run_test(nonMostersTest,"Non monsters cards simulation test");
-	run_test(badFormatStartTest,"Bad format at start of file exception test");
-	run_test(badFormatTest,"Bad format exception test");
-	run_test(noFileTest,"File Doesnt exist exception test");
-	run_test(badSizeTest,"Bad size exception test");
+    run_test(cardsPrintsTest,"cardsPrintsTest");
+    run_test(testCard,"Deck creation test");
+    run_test(dragonDenTest,"Dragon Den simulation test");
+    run_test(goblinCaveTest,"Goblin Cave simulation test");
+    run_test(vampireLairTest,"Vampire Lair simulation test");
+    run_test(nonMostersTest,"Non monsters cards simulation test");
+    run_test(badFormatStartTest,"Bad format at start of file exception test");
+    run_test(badFormatTest,"Bad format exception test");
+    run_test(noFileTest,"File Doesnt exist exception test");
+    run_test(badSizeTest,"Bad size exception test");
     run_test(roundLimitTest,"Round upper limit test");
     run_test(allTenTest,"All reach lvl 10 test");
     run_test(badPlayerInputTest,"Bad player input test");
