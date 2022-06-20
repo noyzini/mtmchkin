@@ -78,24 +78,8 @@ void Mtmchkin::getCards(std::ifstream& file)
     }
 }
 
-//important: we need to initialize m_leaderboard !!!
-Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
+int Mtmchkin::getNumOfPlayers()
 {
-    printStartGameMessage();
-
-    std::ifstream file(fileName);
-
-    if (!file)
-    {
-        throw DeckFileNotFound();
-    }
-    getCards(file);
-    if (m_cards.size() < MIN_AMOUNT_OF_CARDS)
-    {
-        throw DeckFileInvalidSize();
-    }
-
-    //put this in a function later
     int numOfPlayers = 0;
     do {
         printEnterTeamSizeMessage();
@@ -111,8 +95,12 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
         }
     }
     while (!numOfPlayers);
-    m_playersNumber = numOfPlayers;
+    return numOfPlayers;
+}
 
+
+void Mtmchkin::getPlayers(int numOfPlayers)
+{
     int playersEntered = 0;
     while (playersEntered < numOfPlayers)
     {
@@ -146,6 +134,27 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
             }
         } while (!isValid);
     }
+}
+
+//important: we need to initialize m_leaderboard !!!
+Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
+{
+    printStartGameMessage();
+
+    std::ifstream file(fileName);
+
+    if (!file)
+    {
+        throw DeckFileNotFound();
+    }
+    getCards(file);
+    if (m_cards.size() < MIN_AMOUNT_OF_CARDS)
+    {
+        throw DeckFileInvalidSize();
+    }
+
+    m_playersNumber = getNumOfPlayers();
+    getPlayers(m_playersNumber);
 }
 
 

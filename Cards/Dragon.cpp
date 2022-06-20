@@ -1,11 +1,8 @@
-//
-// Created by aviaa on 6/8/2022.
-//
 
 #include "Dragon.h"
 
 const std::string Dragon::m_monsterName = "Dragon";
-//add defines
+
 Dragon::Dragon() : BattleCards(FORCE,INT32_MAX,LOOT,m_monsterName)
 {
 }

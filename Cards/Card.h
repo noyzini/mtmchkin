@@ -1,6 +1,3 @@
-//
-// Created by aviaa on 6/8/2022.
-//
 
 #ifndef MTMCHKIN_CARD_H
 #define MTMCHKIN_CARD_H
@@ -18,7 +15,6 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Card& card);
     virtual void print(std::ostream& os) const = 0;
-    //virtual Card* makeCard() const = 0;
 };
 
 

@@ -1,6 +1,3 @@
-//
-// Created by aviaa on 6/8/2022.
-//
 
 #ifndef MTMCHKIN_DRAGON_H
 #define MTMCHKIN_DRAGON_H
@@ -14,7 +11,6 @@ public:
     ~Dragon() = default;
     void playCard(Player &player) const override;
     void print(std::ostream& os) const;
-    //virtual Dragon* makeCard() const;
 
 private:
     static const std::string m_monsterName;

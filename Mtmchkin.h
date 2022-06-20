@@ -40,6 +40,8 @@ private:
     static Card* makeCard(std::string cardName);
     static Player* makePlayer(std::string playerClass, std::string name);
     void getCards(std::ifstream& file);
+    void getPlayers(int numOfPlayers);
+    static int getNumOfPlayers();
 
 public:
 

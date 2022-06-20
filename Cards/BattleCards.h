@@ -1,6 +1,3 @@
-//
-// Created by aviaa on 6/8/2022.
-//
 
 #ifndef MTMCHKIN_BATTLECARDS_H
 #define MTMCHKIN_BATTLECARDS_H
@@ -14,7 +11,6 @@ public:
 
     virtual void playCard(Player &player) const = 0;
     virtual void print(std::ostream& os) const = 0;
-    //virtual BattleCards* makeCard() const = 0;
 
 protected:
     int m_force;

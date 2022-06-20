@@ -1,5 +1,4 @@
 
-
 #include "Barfight.h"
 
 Barfight::Barfight():Card() {
@@ -21,6 +20,6 @@ void Barfight::playCard(Player &player) const {
 
 void Barfight::print(std::ostream &os) const
 {
-    printCardDetails(os,BARFIGHT); //add const here
+    printCardDetails(os,BARFIGHT);
     printEndOfCardDetails(os);
 }
