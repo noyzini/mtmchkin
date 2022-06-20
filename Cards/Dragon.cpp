@@ -4,8 +4,9 @@
 
 #include "Dragon.h"
 
+const std::string Dragon::m_monsterName = "Dragon";
 //add defines
-Dragon::Dragon() : BattleCards(FORCE,INT32_MAX,LOOT)
+Dragon::Dragon() : BattleCards(FORCE,INT32_MAX,LOOT,m_monsterName)
 {
 }
 

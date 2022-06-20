@@ -1,8 +1,9 @@
 
 #include "Vampire.h"
 
+const std::string Vampire::m_monsterName = "Vampire";
 
-Vampire::Vampire() : BattleCards(FORCE,DAMAGE,LOOT)
+Vampire::Vampire() : BattleCards(FORCE,DAMAGE,LOOT,m_monsterName)
 {
 }
 

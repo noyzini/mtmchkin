@@ -48,7 +48,8 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
             }
             gangMode = true;
             //lastGangIndex = m_cards.size() - 1;
-        } else if(strcmp(card.c_str(),"EndGang") == 0)
+        }
+        else if(strcmp(card.c_str(),"EndGang") == 0)
         {
             if (!gangMode)
             {
@@ -68,11 +69,13 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
 
             if(gangMode)
             {
-                BattleCards* monster = dynamic_cast<BattleCards*>(temp.get());
+                BattleCards* monster = dynamic_cast<BattleCards*>(temp.release());
                 if(monster!= nullptr)
                 {
-                    std::unique_ptr<BattleCards> insertMonster(std::move(monster));
+                    std::unique_ptr<BattleCards> insertMonster(monster);
                     lastGang->addMonster(insertMonster);
+                    //insertMonster= nullptr;
+
                 }
                 else
                 {
@@ -143,9 +146,6 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
             }
         } while (!isValid);
     }
-
-// Close the file
-    //file.close();
 }
 
 

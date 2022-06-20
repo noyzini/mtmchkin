@@ -36,7 +36,7 @@ void Gang::playCard(Player &player) const {
         for(; index < gangSize; index++)
         {
             player.damage(m_gang[index]->m_damageOnLoss);
-            printLossBattle(player.getName(),typeid(m_gang[index]).name());
+            printLossBattle(player.getName(),m_gang[index]->m_name);
         }
     }
 }

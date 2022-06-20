@@ -12,7 +12,7 @@ public:
     void print(std::ostream& os) const override;
     //virtual Goblin* makeCard() const;
 private:
-    const std::string m_monsterName = "Goblin";
+    static const std::string m_monsterName;
     static const int FORCE=6;
     static const int DAMAGE=10;
     static const int LOOT=2;

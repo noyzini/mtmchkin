@@ -1,8 +1,9 @@
 
 #include "Goblin.h"
 
+const std::string Goblin::m_monsterName = "Goblin";
 
-Goblin::Goblin() : BattleCards(FORCE,DAMAGE,LOOT)
+Goblin::Goblin() : BattleCards(FORCE,DAMAGE,LOOT,m_monsterName)
 {
 }
 

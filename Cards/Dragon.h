@@ -17,7 +17,7 @@ public:
     //virtual Dragon* makeCard() const;
 
 private:
-    const std::string m_monsterName = "Dragon";
+    static const std::string m_monsterName;
     static const int FORCE=25;
     static const int LOOT=1000;
 };

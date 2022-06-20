@@ -14,7 +14,7 @@ public:
     void playCard(Player &player) const override;
     void print(std::ostream& os) const override;
 private:
-    const std::string m_monsterName = "Vampire";
+    static const std::string m_monsterName;
     static const int FORCE=10;
     static const int DAMAGE=10;
     static const int LOOT=2;
