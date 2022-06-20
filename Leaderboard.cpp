@@ -18,21 +18,21 @@ void Leaderboard::addPlayer(std::unique_ptr<Player>& player) {
 void Leaderboard::printBoard(const std::deque<std::unique_ptr<Player>>& players) const {
     printLeaderBoardStartMessage();
     int place=1;
-    for (int i = 0 ; i < m_winners.size(); i ++)
+    for (const std::unique_ptr<Player> & winner : m_winners)
     {
-        printPlayerLeaderBoard(place, *m_winners[i]);
+        printPlayerLeaderBoard(place, *winner);
         place++;
     }
-    for (int i =0 ; i < players.size(); i++)
+    for (const std::unique_ptr<Player>& player : players)
     {
-        printPlayerLeaderBoard(place,*players[i]);
+        printPlayerLeaderBoard(place,*player);
         place++;
     }
 
-    for (int i = m_losers.size() - 1 ; i >= 0; i--) //consider doing push front for a normal loop
+    for (std::vector<std::unique_ptr<Player>>::const_reverse_iterator i = m_losers.rbegin(); i != m_losers.rend(); i++)
+    //for (int i = m_losers.size() - 1 ; i >= 0; i--) //consider doing push front for a normal loop
     {
-        printPlayerLeaderBoard(place,*m_losers[i]);
+        printPlayerLeaderBoard(place,**i);
         place++;
     }
 }
-//

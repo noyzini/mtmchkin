@@ -21,6 +21,8 @@ protected:
     int m_damageOnLoss;
     int m_coinsOnWin;
 
+    friend class Gang;
+
 };
 
 

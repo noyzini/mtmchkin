@@ -32,4 +32,16 @@ add_executable(mtmchkin
         Cards/Vampire.cpp
         Cards/Vampire.h
         Cards/Treasure.cpp
-        Cards/Treasure.h Cards/Pitfall.cpp Cards/Pitfall.h Cards/Barfight.cpp Cards/Barfight.h Cards/Fairy.cpp Cards/Fairy.h Cards/Merchant.cpp Cards/Merchant.h Leaderboard.cpp Leaderboard.h)
+        Cards/Treasure.h
+        Cards/Pitfall.cpp
+        Cards/Pitfall.h
+        Cards/Barfight.cpp
+        Cards/Barfight.h
+        Cards/Fairy.cpp
+        Cards/Fairy.h
+        Cards/Merchant.cpp
+        Cards/Merchant.h
+        Cards/Gang.cpp
+        Cards/Gang.h
+        Leaderboard.cpp
+        Leaderboard.h)
