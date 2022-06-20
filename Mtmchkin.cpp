@@ -1,6 +1,7 @@
 #include <map>
 #include "Mtmchkin.h"
 
+
 //add this to .h file later
 bool isNumber(std::string str) {
     for (char i : str)
@@ -21,35 +22,23 @@ bool isValidPlayerName(std::string name)
     return charCount <= 15;
 }
 
-
-//important: we need to initialize m_leaderboard !!!
-Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
+void Mtmchkin::getCards(std::ifstream& file)
 {
-    printStartGameMessage();
-
     std::string card;
-    std::ifstream file(fileName);
-
-    if (!file)
-    {
-        throw DeckFileNotFound();
-    }
     int currentLine = 1;
     bool gangMode= false;
-    int lastGangIndex;
     std::unique_ptr<Gang> lastGang(new Gang());
     while (getline (file, card))
     {
-        if (strcmp(card.c_str(),"Gang") == 0)
+        if (strcmp(card.c_str(),GANG_START.c_str()) == 0)
         {
             if (gangMode)
             {
                 throw DeckFileFormatError(currentLine);
             }
             gangMode = true;
-            //lastGangIndex = m_cards.size() - 1;
         }
-        else if(strcmp(card.c_str(),"EndGang") == 0)
+        else if(strcmp(card.c_str(),GANG_END.c_str()) == 0)
         {
             if (!gangMode)
             {
@@ -74,8 +63,6 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
                 {
                     std::unique_ptr<BattleCards> insertMonster(monster);
                     lastGang->addMonster(insertMonster);
-                    //insertMonster= nullptr;
-
                 }
                 else
                 {
@@ -89,7 +76,20 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
         }
         currentLine++;
     }
+}
 
+//important: we need to initialize m_leaderboard !!!
+Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
+{
+    printStartGameMessage();
+
+    std::ifstream file(fileName);
+
+    if (!file)
+    {
+        throw DeckFileNotFound();
+    }
+    getCards(file);
     if (m_cards.size() < MIN_AMOUNT_OF_CARDS)
     {
         throw DeckFileInvalidSize();
