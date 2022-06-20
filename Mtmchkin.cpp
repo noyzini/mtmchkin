@@ -23,7 +23,7 @@ bool isValidPlayerName(std::string name)
 
 
 //important: we need to initialize m_leaderboard !!!
-Mtmchkin::Mtmchkin(const std::string fileName):m_round(0)
+Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
 {
     printStartGameMessage();
 

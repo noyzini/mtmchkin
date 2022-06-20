@@ -34,9 +34,9 @@ private:
     static const int MIN_AMOUNT_OF_CARDS = 5;
 
     static Card* makeCard(std::string cardName);
+    static Player* makePlayer(std::string playerClass, std::string name);
 
 public:
-    static Player* makePlayer(std::string playerClass, std::string name);
 
 
     /*
@@ -46,7 +46,7 @@ public:
     * @return
     *      A new instance of Mtmchkin.
     */
-    Mtmchkin(const std::string fileName);
+    Mtmchkin(const std::string& fileName);
     
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
