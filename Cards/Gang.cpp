@@ -1,15 +1,16 @@
 
 #include "Gang.h"
 
-Gang::Gang() : Card() {
-
+Gang::Gang() : Card()
+{
 }
 
 void Gang::addMonster(std::unique_ptr<BattleCards> &card) {
     m_gang.push_back(std::move(card));
 }
 
-void Gang::playCard(Player &player) const {
+void Gang::playCard(Player &player) const
+{
     int index=0;
     bool playOn= true;
     int gangSize=m_gang.size();

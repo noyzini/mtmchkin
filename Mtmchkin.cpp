@@ -3,14 +3,15 @@
 
 
 //add this to .h file later
-bool isNumber(std::string str) {
+bool Mtmchkin::isNumber(std::string& str)
+{
     for (char i : str)
         if (!isdigit(i))
             return false;
     return true;
 }
 
-bool isValidPlayerName(std::string name)
+bool Mtmchkin::isValidPlayerName(std::string& name)
 {
     int charCount = 0;
     for (char c : name)

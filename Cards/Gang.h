@@ -7,6 +7,9 @@
 #include <vector>
 #include <memory>
 
+
+//using std::unique_ptr;
+
 class Gang: public Card {
 public:
     Gang();

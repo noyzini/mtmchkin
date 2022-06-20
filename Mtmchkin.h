@@ -34,14 +34,16 @@ private:
     static const int MAX_LEVEL=10;
     static const int MIN_AMOUNT_OF_CARDS = 5;
 
+    static bool isValidPlayerName(std::string& name);
+    static bool isNumber(std::string& str);
     const std::string GANG_START="Gang";
     const std::string GANG_END="EndGang";
 
     static Card* makeCard(std::string cardName);
     static Player* makePlayer(std::string playerClass, std::string name);
-    void getCards(std::ifstream& file);
-    void getPlayers(int numOfPlayers);
     static int getNumOfPlayers();
+    void getPlayers(int numOfPlayers);
+    void getCards(std::ifstream& file);
 
 public:
 

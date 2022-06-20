@@ -3,7 +3,7 @@
 #define MTMCHKIN_CARD_H
 #include "../Players/Player.h"
 #include "../utilities.h"
-
+#include <memory>
 
 
 class Card {

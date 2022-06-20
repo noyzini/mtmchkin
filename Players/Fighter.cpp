@@ -3,7 +3,6 @@
 
 Fighter::Fighter(const char *name) : Player(name)
 {
-    const std::string s = "t";
 }
 
 int Fighter::getAttackStrength() const
