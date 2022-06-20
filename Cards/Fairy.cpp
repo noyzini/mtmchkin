@@ -20,6 +20,6 @@ void Fairy::playCard(Player &player) const {
 
 void Fairy::print(std::ostream &os) const
 {
-    printCardDetails(os,FAIRY); //add const here
+    printCardDetails(os,FAIRY);
     printEndOfCardDetails(os);
 }

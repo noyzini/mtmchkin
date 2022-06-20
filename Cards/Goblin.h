@@ -10,7 +10,7 @@ public:
     ~Goblin() = default;
     void playCard(Player &player) const override;
     void print(std::ostream& os) const override;
-    //virtual Goblin* makeCard() const;
+
 private:
     static const std::string m_monsterName;
     static const int FORCE=6;

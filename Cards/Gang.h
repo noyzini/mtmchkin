@@ -1,5 +1,4 @@
 
-
 #ifndef MTMCHKIN_H_GANG_H
 #define MTMCHKIN_H_GANG_H
 #include "Card.h"

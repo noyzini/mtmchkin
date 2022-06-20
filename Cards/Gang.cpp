@@ -10,8 +10,6 @@ void Gang::addMonster(std::unique_ptr<BattleCards> &card) {
 }
 
 void Gang::playCard(Player &player) const {
-
-    //for (const std::unique_ptr<BattleCards>& monster : m_gang)
     int index=0;
     bool playOn= true;
     int gangSize=m_gang.size();
@@ -49,5 +47,4 @@ void Gang::print(std::ostream &os) const {
         m_gang[i]->print(os);
     }
     os<<"End of Gang card\n";
-
 }

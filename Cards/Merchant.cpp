@@ -7,7 +7,7 @@ Merchant::Merchant() :Card(){
 
 void Merchant::playCard(Player &player) const {
     int cost=0;
-    int type=-1;
+    int type=UNDEFINED;
     std::string input;
     printMerchantInitialMessageForInteractiveEncounter(std::cout,player.getName(),player.getCoins());
     while (type<DONT_BUY || type>BUY_FORCE)

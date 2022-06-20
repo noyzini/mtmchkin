@@ -17,6 +17,7 @@ private:
     static const int DONT_BUY = 0;
     static const int BUY_HP = 1;
     static const int BUY_FORCE = 2;
+    static const int UNDEFINED =-1;
     const std::string MERCHANT = "Merchant";
 };
 
