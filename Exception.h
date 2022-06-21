@@ -6,55 +6,38 @@
 /*
 * Exception if the file we want to use is not find at the directory
 */
-class DeckFileNotFound : public std::exception
+class DeckFileNotFound : public std::runtime_error
 {
 public:
 
-    DeckFileNotFound()
+    DeckFileNotFound() : std::runtime_error("Deck File Error: File not found")
     {
     }
-
-    const char * what() const noexcept override
-    {
-        return "Deck File Error: File not found";
-    };
 };
 
 /*
 * Exception throws error if the number of arg in the file is wrong
 */
-class DeckFileInvalidSize : public std::exception
+class DeckFileInvalidSize : public std::runtime_error
 {
 public:
 
-    DeckFileInvalidSize()
+    DeckFileInvalidSize() : std::runtime_error("Deck File Error: Deck size is invalid")
     {
     }
 
-    const char * what() const noexcept override
-    {
-        return "Deck File Error: Deck size is invalid";
-    };
 };
 
 /*
 * Exception throws error if the arg in the file is not according to conventions
 */
-class DeckFileFormatError : public std::exception
+class DeckFileFormatError : public std::runtime_error
 {
-    int m_lineError;
-    std::string m_error;
 public:
 
-    DeckFileFormatError(int line) : m_lineError(line) ,
-    m_error("Deck File Error: File format error in line " + std::to_string(m_lineError))
+    DeckFileFormatError(int line) : std::runtime_error("Deck File Error: File format error in line " + std::to_string(line))
     {
     }
-
-    const char * what() const noexcept override
-    {
-        return m_error.c_str();
-    };
 };
 
 

@@ -11,7 +11,7 @@
 int main()
 {
     const int MAX_NUMBER_OF_ROUNDS = 100;
-    Mtmchkin game("../gangEmpty.txt");
+    Mtmchkin game("../gangBad.txt");
     while(!game.isGameOver() && game.getNumberOfRounds() < MAX_NUMBER_OF_ROUNDS){
         game.playRound();
     }
