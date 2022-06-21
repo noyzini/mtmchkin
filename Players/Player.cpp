@@ -3,7 +3,7 @@
 
 Player::Player(const char* name) :
 m_name(name),
-m_level(1),
+m_level(FIRST_LEVEL),
 m_force(PLAYER_FORCE_DEFAULT),
 m_hp(MAX_HP_DEFAULT),
 m_coins(DEFAULT_COINS)
@@ -95,14 +95,14 @@ string Player::getName() const
     return m_name;
 }
 
-int Player::getCoins() const {
+int Player::getCoins() const
+{
     return m_coins;
 }
 
 std::ostream& operator<<(std::ostream& os,const Player& player)
 {
     player.print(os);
-    //os << std::endl; //Needed for further prints ?
     return os;
 }
 

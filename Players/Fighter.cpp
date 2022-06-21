@@ -1,6 +1,8 @@
 
 #include "Fighter.h"
 
+const std::string Fighter::FIGHTER_NAME = "Fighter";
+
 Fighter::Fighter(const char *name) : Player(name)
 {
 }

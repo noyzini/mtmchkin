@@ -1,6 +1,7 @@
 
 #include "Rogue.h"
 
+const std::string Rogue::ROGUE_NAME = "Rogue";
 
 Rogue::Rogue(const char *name): Player(name)
 {

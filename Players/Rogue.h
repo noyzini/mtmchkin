@@ -10,19 +10,38 @@
 class Rogue : public Player {
 public:
     /*
-     * Should we do default for operator= and Copy c'tor
-     */
-    Rogue(const char* name );
-    ~Rogue() = default;
+     * C'tor of the game:
+     *
+     * @param name - The name of the player.
+     * @result
+     *      An instance of Rogue
+    */
+    Rogue(const char* name);
 
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    ~Rogue() override= default;
+    Rogue(const Rogue&) = default;
+    Rogue& operator=(const Rogue&) = default;
+
+    /*
+     * Add coins to the player
+     *
+     * @param coins - coins to add to the player
+     * @return
+     *          void
+    */
     void addCoins(int coins) override;
 
 protected:
+    /*
+     * Virtual print function
+     */
     void print(std::ostream& os) const override;
 
 private:
-    static const int DOUBLE=2;
-    const std::string ROGUE_NAME = "Rogue"; //cant make it static
+    static const std::string ROGUE_NAME;
 };
 
 #endif //MTMCHKIN_H_ROGUE_H

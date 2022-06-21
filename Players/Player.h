@@ -4,7 +4,6 @@
 #include "../HealthPoints.h"
 
 
-
 using std::string;
 
 class Player {
@@ -16,7 +15,7 @@ public:
      *
      * @param name - The name of the player.
      * @result
-     *      An instance of Mtmchkin
+     *      An instance of Player
     */
     Player(const char* name); //<--------------------------------Avia doesn't like const char*
 
@@ -101,19 +100,38 @@ public:
     bool pay(int coins);
 
     /*
+     * Returns the name of the player.
+     *
+     * @return
+     *          Player's name
+    */
+
+    std::string getName() const;
+
+    /*
+     * Returns the amount of coins of the player.
+     *
+     * @return
+     *          Player's amount of coins
+    */
+    int getCoins() const;
+
+    /*
      * Returns the attack strength of the player.
      * Player's attack strength is player force + player level
      *
      * @return
      *          Player's attack strength
     */
-
-    string getName() const;
-
-    int getCoins() const;
-
     virtual int getAttackStrength() const;
 
+    /*
+     * Removes force from the player
+     *
+     * @param boost - force to remove from the player
+     * @return
+     *          void
+    */
     void loseForce();
 
     static const int MAX_LEVEL = 10;
@@ -124,13 +142,18 @@ protected: // should be privet??
     int m_force;
     HealthPoints m_hp;
     int m_coins;
+    static const int DOUBLE=2;
 
+    /*
+     * Overloading operator<< to use the virtual function print for Player class
+     */
     friend std::ostream& operator<<(std::ostream& os, const Player& player) ;
     virtual void print(std::ostream& os) const = 0;
 private:
     static const int MAX_HP_DEFAULT = 100;
     static const int PLAYER_FORCE_DEFAULT = 5;
     static const int DEFAULT_COINS = 10;
+    static const int FIRST_LEVEL = 1;
 };
 
 

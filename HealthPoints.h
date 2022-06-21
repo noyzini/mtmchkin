@@ -23,7 +23,12 @@ public:
     HealthPoints(const HealthPoints& hp) = default;
     ~HealthPoints()=default;
     HealthPoints& operator=(const HealthPoints& hp)=default;
-
+    /*
+    * Returns the hp as an integer
+     *
+     * @return
+     *          hp (int)
+    */
     int toInt() const;
     /*
     *operators and friend operators for Health Points
@@ -41,7 +46,6 @@ public:
     class InvalidArgument {};
 
 private:
-
     int m_hp;
     int m_maxHP;
 

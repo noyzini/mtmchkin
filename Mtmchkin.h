@@ -24,29 +24,6 @@
 #include <memory>
 
 class Mtmchkin{
-private:
-    std::deque<std::unique_ptr<Player>> m_players;
-    std::deque<std::unique_ptr<Card>> m_cards;
-    Leaderboard m_leaderboard;
-    int m_round;
-    int m_playersNumber;
-
-    static const int MAX_LEVEL=10;
-    static const int MIN_AMOUNT_OF_CARDS = 5;
-    static const int MAX_NUMBER_PLAYERS=6;
-    static const int MIN_NUMBER_PLAYERS=2;
-
-    static bool isValidPlayerName(std::string& name);
-    static bool isNumber(std::string& str);
-    const std::string GANG_START="Gang";
-    const std::string GANG_END="EndGang";
-
-    static Card* makeCard(std::string cardName);
-    static Player* makePlayer(std::string playerClass, std::string name);
-    static int getNumOfPlayers();
-    void getPlayers(int numOfPlayers);
-    void getCards(std::ifstream& file);
-
 public:
 
 
@@ -91,6 +68,34 @@ public:
     *          int - number of rounds played
     */
     int getNumberOfRounds() const;
+
+private:
+    std::deque<std::unique_ptr<Player>> m_players;
+    std::deque<std::unique_ptr<Card>> m_cards;
+    Leaderboard m_leaderboard;
+    int m_round;
+    int m_playersNumber;
+
+    static const int MIN_AMOUNT_OF_CARDS = 5;
+    static const int MAX_NUMBER_PLAYERS = 6;
+    static const int MIN_NUMBER_PLAYERS = 2;
+
+    static const std::string GANG_START;
+    static const std::string GANG_END;
+    static const std::string SPACE;
+
+    //static bool isNumber(std::string& str);
+
+    /*
+     * Helper functions for Mtmchkin C'tor
+     */
+    static bool isValidPlayerName(std::string& name);
+    static Card* makeCard(std::string& cardName);
+    static Player* makePlayer(std::string& playerClass, std::string& name);
+    static int getNumOfPlayers();
+    void getPlayers(int numOfPlayers);
+    void getCards(std::ifstream& file);
+
 };
 
 

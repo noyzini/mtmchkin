@@ -2,7 +2,12 @@
 #include "Mtmchkin.h"
 
 
-//add this to .h file later
+const std::string Mtmchkin::GANG_START="Gang";
+const std::string Mtmchkin::GANG_END = "EndGang";
+const std::string Mtmchkin::SPACE = " ";
+
+//add this to .h file later, remove this
+/*
 bool Mtmchkin::isNumber(std::string& str)
 {
     for (char i : str)
@@ -10,18 +15,7 @@ bool Mtmchkin::isNumber(std::string& str)
             return false;
     return true;
 }
-
-bool Mtmchkin::isValidPlayerName(std::string& name)
-{
-    int charCount = 0;
-    for (char c : name)
-    {
-        if (!std::isalpha(c))
-            return false;
-        charCount++;
-    }
-    return charCount <= 15;
-}
+ */
 
 void Mtmchkin::getCards(std::ifstream& file)
 {
@@ -90,10 +84,14 @@ int Mtmchkin::getNumOfPlayers()
         printEnterTeamSizeMessage();
         std::string input;
         std::getline(std::cin, input);
-        try {
-            if (stoi(input) < MIN_NUMBER_PLAYERS || stoi(input) > MAX_NUMBER_PLAYERS) {
+        try
+        {
+            if (stoi(input) < MIN_NUMBER_PLAYERS || stoi(input) > MAX_NUMBER_PLAYERS)
+            {
                 printInvalidTeamSize();
-            } else {
+            }
+            else
+            {
                 numOfPlayers = stoi(input);
             }
         }
@@ -104,9 +102,23 @@ int Mtmchkin::getNumOfPlayers()
 
     }
     while (!numOfPlayers);
+
     return numOfPlayers;
 }
 
+bool Mtmchkin::isValidPlayerName(std::string& name)
+{
+    int charCount = 0;
+    for (char c : name)
+    {
+        if (!std::isalpha(c))
+        {
+            return false;
+        }
+        charCount++;
+    }
+    return charCount <= 15;
+}
 
 void Mtmchkin::getPlayers(int numOfPlayers)
 {
@@ -119,7 +131,7 @@ void Mtmchkin::getPlayers(int numOfPlayers)
         bool isValid = false;
         do {
             std::getline(std::cin, input);
-            int spaceIndex = input.find(" ");
+            int spaceIndex = input.find(SPACE);
             name = input.substr(0, spaceIndex);
             playerClass = input.substr(spaceIndex + 1, input.length() - 1);
 
@@ -145,13 +157,11 @@ void Mtmchkin::getPlayers(int numOfPlayers)
     }
 }
 
-//important: we need to initialize m_leaderboard !!!
 Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
 {
     printStartGameMessage();
 
     std::ifstream file(fileName);
-
     if (!file)
     {
         throw DeckFileNotFound();
@@ -166,7 +176,6 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
     getPlayers(m_playersNumber);
 }
 
-
 template<class T>
 Player* createPlayer(const char *name) //should we change this on all Player to string instead of char* ??
 {
@@ -176,7 +185,7 @@ Player* createPlayer(const char *name) //should we change this on all Player to 
 typedef Player* (*createPlayerFunction)(const char*);
 typedef std::map<std::string, createPlayerFunction> StringToPlayerCreateMap;
 
-Player* Mtmchkin::makePlayer(std::string playerClass, std::string name)
+Player* Mtmchkin::makePlayer(std::string& playerClass, std::string& name)
 {
     StringToPlayerCreateMap map;
     map["Rogue"] = createPlayer<Rogue>;
@@ -198,7 +207,7 @@ typedef Card* (*createCardFunction)(void);
 typedef std::map<std::string, createCardFunction> StringToFunctionMap; //check convention about capital letter at the beginning
 
 //wrap this in try catch if invalid card name was entered, or return null ptr, preferably the latter
-Card *Mtmchkin::makeCard(std::string cardName)
+Card *Mtmchkin::makeCard(std::string& cardName)
 {
     StringToFunctionMap map;
     map["Dragon"] = createCard<Dragon>;
@@ -215,7 +224,8 @@ Card *Mtmchkin::makeCard(std::string cardName)
     return map.find(cardName)->second();
 }
 
-void Mtmchkin::playRound() {
+void Mtmchkin::playRound()
+{
     //if (!isGameOver()) ?????
     m_round++;
     printRoundStartMessage(m_round);
@@ -234,7 +244,7 @@ void Mtmchkin::playRound() {
         current_card->playCard(*current_player);
         m_cards.push_back(std::move(current_card));
 
-        if(current_player->getLevel()>=MAX_LEVEL || current_player->isKnockedOut() )
+        if(current_player->getLevel()>=Player::MAX_LEVEL || current_player->isKnockedOut() )
         {
             m_leaderboard.addPlayer(current_player);
             m_playersNumber--;
@@ -251,19 +261,18 @@ void Mtmchkin::playRound() {
     }
 }
 
-bool Mtmchkin::isGameOver() const {
-    if (m_players.empty())
-    {
-        return true;
-    }
-    return false;
+bool Mtmchkin::isGameOver() const
+{
+    return m_players.empty();
 }
 
-int Mtmchkin::getNumberOfRounds() const {
+int Mtmchkin::getNumberOfRounds() const
+{
     return m_round;
 }
 
-void Mtmchkin::printLeaderBoard() const {
+void Mtmchkin::printLeaderBoard() const
+{
     m_leaderboard.printBoard(m_players);
 }
 

@@ -6,18 +6,39 @@
 
 class Fighter : public Player
 {
-
 public:
+    /*
+     * C'tor of the game:
+     *
+     * @param name - The name of the player.
+     * @result
+     *      An instance of Rogue
+    */
     Fighter(const char* name);
+
+    /*
+     * Here we are explicitly telling the compiler to use the default methods
+    */
+    ~Fighter() override =default;
+    Fighter(const Fighter&) = default;
+    Fighter& operator=(const Fighter&) = default;
+    /*
+     * Returns the attack strength of the player.
+     * Fighter's attack strength is twice the force + player level
+     *
+     * @return
+     *          Player's attack strength
+    */
     int getAttackStrength() const override;
-    ~Fighter()=default;
 
 protected:
-    void print(std::ostream& os) const;
-    const std::string FIGHTER_NAME = "Fighter";
+    /*
+     * Virtual print function
+     */
+    void print(std::ostream& os) const override;
 
 private:
-    static const int DOUBLE=2;
+    static const std::string FIGHTER_NAME;
 };
 
 

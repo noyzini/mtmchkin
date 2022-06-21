@@ -1,6 +1,8 @@
 
 #include "Wizard.h"
 
+const std::string Wizard::WIZARD_NAME ="Wizard";
+
 Wizard::Wizard(const char *name) : Player(name)
 {
 }
