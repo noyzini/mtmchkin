@@ -1,4 +1,3 @@
-
 #include "Barfight.h"
 
 Barfight::Barfight():Card() {
