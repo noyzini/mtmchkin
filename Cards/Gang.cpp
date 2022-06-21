@@ -1,5 +1,6 @@
-
 #include "Gang.h"
+
+const std::string Gang::GANG_NAME="Gang";
 
 Gang::Gang() : Card()
 {

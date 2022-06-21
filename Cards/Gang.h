@@ -1,4 +1,3 @@
-
 #ifndef MTMCHKIN_H_GANG_H
 #define MTMCHKIN_H_GANG_H
 #include "Card.h"
@@ -8,19 +7,31 @@
 #include <memory>
 
 
-//using std::unique_ptr;
-
 class Gang: public Card {
 public:
+    /*
+     * Default Constructor,destructor ,operator and copy constructor
+    */
     Gang();
     ~Gang()=default;
-    void print(std::ostream& os) const override;
+    Gang& operator=(const Gang&) =default;
+    Gang(const Gang&)=default;
+    /*
+    * Playing Gang card on a given player
+    */
     void playCard(Player &player) const override;
+    /*
+    * Printing Gang card information
+    */
+    void print(std::ostream& os) const override;
+    /*
+    * Gang contains monster cards, this function adds a monster to the gang.
+    */
     void addMonster (std::unique_ptr<BattleCards> &card);
 
 private:
     std::vector<std::unique_ptr<BattleCards>> m_gang;
-    const std::string GANG_NAME="Gang";
+    static const std::string GANG_NAME;
 
 };
 

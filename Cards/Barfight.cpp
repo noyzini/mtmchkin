@@ -1,7 +1,8 @@
 #include "Barfight.h"
 
-Barfight::Barfight():Card() {
+const std::string Barfight::BARFIGHT= "Barfight";
 
+Barfight::Barfight():Card() {
 }
 
 void Barfight::playCard(Player &player) const {

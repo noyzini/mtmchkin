@@ -1,6 +1,6 @@
-
 #include "Treasure.h"
 
+const std::string Treasure::TREASURE = "Treasure";
 
 Treasure::Treasure() : Card( )
 {

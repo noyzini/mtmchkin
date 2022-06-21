@@ -7,9 +7,20 @@
 
 class Merchant : public Card{
 public:
+    /*
+    * Default Constructor,destructor ,operator and copy constructor
+    */
     Merchant();
     ~Merchant()=default;
+    Merchant& operator=(const Merchant&) =default;
+    Merchant(const Merchant&)=default;
+    /*
+    * Playing Merchant card on a given player
+    */
     void playCard(Player& player) const override;
+    /*
+    * Printing Merchant card information
+    */
     void print(std::ostream &os) const override;
 private:
     static const int COST_HEAL_POINT = 5;
@@ -18,7 +29,7 @@ private:
     static const int BUY_HP = 1;
     static const int BUY_FORCE = 2;
     static const int UNDEFINED =-1;
-    const std::string MERCHANT = "Merchant";
+    static const std::string MERCHANT ;
 };
 
 

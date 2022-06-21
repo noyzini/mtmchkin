@@ -1,4 +1,3 @@
-
 #include "Dragon.h"
 
 const std::string Dragon::m_monsterName = "Dragon";

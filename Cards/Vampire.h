@@ -1,6 +1,3 @@
-//
-// Created by aviaa on 6/8/2022.
-//
 
 #ifndef MTMCHKIN_VAMPIRE_H
 #define MTMCHKIN_VAMPIRE_H
@@ -10,8 +7,20 @@
 
 class Vampire: public BattleCards{
 public:
+    /*
+    * Default Constructor,destructor ,operator and copy constructor
+    */
     Vampire();
+    ~Vampire() override=default;
+    Vampire& operator=(const Vampire&) =default;
+    Vampire(const Vampire&)=default;
+    /*
+    * Playing Vampire card on a given player
+    */
     void playCard(Player &player) const override;
+    /*
+    * Printing Vampire card information
+    */
     void print(std::ostream& os) const override;
 private:
     static const std::string m_monsterName;

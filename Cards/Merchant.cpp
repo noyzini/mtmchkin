@@ -1,5 +1,5 @@
-
 #include "Merchant.h"
+const std::string Merchant::MERCHANT= "Merchant";
 
 Merchant::Merchant() :Card(){
 

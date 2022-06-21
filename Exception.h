@@ -1,10 +1,11 @@
-
 #ifndef MTMCHKIN_H_EXCEPTION_H
 #define MTMCHKIN_H_EXCEPTION_H
 
 #include <iostream>
 #include <exception>
-
+/*
+* Exception if the file we want to use is not find at the directory
+*/
 class DeckFileNotFound : public std::exception
 {
 public:
@@ -19,6 +20,9 @@ public:
     };
 };
 
+/*
+* Exception throws error if the number of arg in the file is wrong
+*/
 class DeckFileInvalidSize : public std::exception
 {
 public:
@@ -33,6 +37,9 @@ public:
     };
 };
 
+/*
+* Exception throws error if the arg in the file is not according to conventions
+*/
 class DeckFileFormatError : public std::exception
 {
     int m_lineError;

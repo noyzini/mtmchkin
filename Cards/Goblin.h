@@ -6,9 +6,20 @@
 
 class Goblin:public BattleCards {
 public:
+    /*
+    * Default Constructor,destructor ,operator and copy constructor
+    */
     Goblin();
     ~Goblin() = default;
+    Goblin& operator=(const Goblin&) =default;
+    Goblin(const Goblin&)=default;
+    /*
+    * Playing Goblin card on a given player
+    */
     void playCard(Player &player) const override;
+    /*
+    * Printing Goblin card information
+    */
     void print(std::ostream& os) const override;
 
 private:
