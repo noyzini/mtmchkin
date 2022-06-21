@@ -9,7 +9,7 @@ public:
      * Default Constructor,destructor ,operator and copy constructor
     */
     Pitfall();
-    ~Pitfall()=default;
+    ~Pitfall() override =default;
     Pitfall& operator=(const Pitfall&) =default;
     Pitfall(const Pitfall&)=default;
     /*

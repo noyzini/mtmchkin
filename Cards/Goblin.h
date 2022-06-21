@@ -10,7 +10,7 @@ public:
     * Default Constructor,destructor ,operator and copy constructor
     */
     Goblin();
-    ~Goblin() = default;
+    ~Goblin() override = default;
     Goblin& operator=(const Goblin&) =default;
     Goblin(const Goblin&)=default;
     /*

@@ -12,7 +12,7 @@ public:
     * Default Constructor,destructor ,operator and copy constructor
     */
     Treasure();
-    ~Treasure()=default;
+    ~Treasure()override=default;
     Treasure& operator=(const Treasure&) =default;
     Treasure(const Treasure&)=default;
     /*

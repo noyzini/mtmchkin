@@ -11,7 +11,7 @@ public:
     * Default Constructor,destructor ,operator and copy constructor
     */
     Merchant();
-    ~Merchant()=default;
+    ~Merchant() override =default;
     Merchant& operator=(const Merchant&) =default;
     Merchant(const Merchant&)=default;
     /*

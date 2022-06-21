@@ -13,7 +13,7 @@ public:
      * Default Constructor,destructor ,operator and copy constructor
     */
     Gang();
-    ~Gang()=default;
+    ~Gang() override =default;
     Gang& operator=(const Gang&) =default;
     Gang(const Gang&)=default;
     /*

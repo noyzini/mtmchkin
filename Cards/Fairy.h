@@ -9,7 +9,7 @@ public:
     * Default Constructor,destructor ,operator and copy constructor
     */
     Fairy();
-    ~Fairy()=default;
+    ~Fairy() override =default;
     Fairy& operator=(const Fairy&) =default;
     Fairy(const Fairy&)=default;
     /*
@@ -22,7 +22,6 @@ public:
     void print(std::ostream &os) const override;
 private:
     static const int HEAL_POINTS = 10;
-    static const int DOUBLE=2;
     static const std::string FAIRY ;
 };
 
