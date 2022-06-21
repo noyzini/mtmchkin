@@ -4,7 +4,7 @@ project(mtmchkin)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(mtmchkin
-        test.cpp
+        tool/main.cpp
         Mtmchkin.h
         Mtmchkin.cpp
         Players/Player.h

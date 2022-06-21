@@ -16,7 +16,7 @@ bool Mtmchkin::isValidPlayerName(std::string& name)
     int charCount = 0;
     for (char c : name)
     {
-        if (std::isdigit(c))
+        if (!std::isalpha(c))
             return false;
         charCount++;
     }
@@ -77,6 +77,10 @@ void Mtmchkin::getCards(std::ifstream& file)
         }
         currentLine++;
     }
+    if (gangMode)
+    {
+        throw DeckFileFormatError(currentLine);
+    }
 }
 
 int Mtmchkin::getNumOfPlayers()
@@ -86,14 +90,18 @@ int Mtmchkin::getNumOfPlayers()
         printEnterTeamSizeMessage();
         std::string input;
         std::getline(std::cin, input);
-        if (!isNumber(input) || stoi(input) < 2 || stoi(input) > 6)
+        try {
+            if (stoi(input) < 2 || stoi(input) > 6) {
+                printInvalidTeamSize();
+            } else {
+                numOfPlayers = stoi(input);
+            }
+        }
+        catch (std::invalid_argument& e)
         {
             printInvalidTeamSize();
         }
-        else
-        {
-            numOfPlayers = stoi(input);
-        }
+
     }
     while (!numOfPlayers);
     return numOfPlayers;

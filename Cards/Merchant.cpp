@@ -13,8 +13,13 @@ void Merchant::playCard(Player &player) const {
     while (type<DONT_BUY || type>BUY_FORCE)
     {
         std::getline (std::cin,input);
-        try {
+        try
+        {
             type=std::stoi(input);
+            if (type<DONT_BUY || type>BUY_FORCE)
+            {
+                printInvalidInput();
+            }
         }
         catch (std::exception& e)
         {
