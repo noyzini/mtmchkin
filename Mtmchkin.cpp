@@ -59,10 +59,10 @@ void Mtmchkin::getCards(std::ifstream& file)
 
             if(gangMode)
             {
-                BattleCards* monster = dynamic_cast<BattleCards*>(temp.release());
+                BattleCard* monster = dynamic_cast<BattleCard*>(temp.release());
                 if(monster!= nullptr)
                 {
-                    std::unique_ptr<BattleCards> insertMonster(monster);
+                    std::unique_ptr<BattleCard> insertMonster(monster);
                     lastGang->addMonster(insertMonster);
                 }
                 else

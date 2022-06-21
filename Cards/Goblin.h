@@ -1,10 +1,10 @@
 #ifndef MTMCHKIN_GOBLIN_H
 #define MTMCHKIN_GOBLIN_H
 
-#include "BattleCards.h"
+#include "BattleCard.h"
 #include "../utilities.h"
 
-class Goblin:public BattleCards {
+class Goblin:public BattleCard {
 public:
     /*
     * Default Constructor,destructor ,operator and copy constructor

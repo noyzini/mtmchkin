@@ -2,10 +2,10 @@
 #ifndef MTMCHKIN_DRAGON_H
 #define MTMCHKIN_DRAGON_H
 
-#include "BattleCards.h"
+#include "BattleCard.h"
 #include "../utilities.h"
 
-class Dragon :public BattleCards {
+class Dragon :public BattleCard {
 public:
     /*
     * Default Constructor,destructor ,operator and copy constructor

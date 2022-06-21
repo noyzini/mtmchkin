@@ -3,17 +3,17 @@
 
 #include "Card.h"
 
-class BattleCards : public Card {
+class BattleCard : public Card {
 public:
     /*
     * Default Constructor,destructor ,operator and copy constructor
     */
-    BattleCards(int force, int damageOnLoss, int coinsOnWin,std::string name);
-    virtual ~BattleCards() = default;
-    BattleCards& operator=(const BattleCards&) =default;
-    BattleCards(const BattleCards&)=default;
+    BattleCard(int force, int damageOnLoss, int coinsOnWin,std::string name);
+    virtual ~BattleCard() = default;
+    BattleCard& operator=(const BattleCard&) =default;
+    BattleCard(const BattleCard&)=default;
     /*
-    * Playing BattleCards card on a given player-pure virtual
+    * Playing BattleCard card on a given player-pure virtual
     */
     virtual void playCard(Player &player) const = 0;
     /*

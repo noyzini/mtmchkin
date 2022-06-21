@@ -2,7 +2,7 @@
 
 const std::string Dragon::m_monsterName = "Dragon";
 
-Dragon::Dragon() : BattleCards(FORCE,INT32_MAX,LOOT,m_monsterName)
+Dragon::Dragon() : BattleCard(FORCE,INT32_MAX,LOOT,m_monsterName)
 {
 }
 

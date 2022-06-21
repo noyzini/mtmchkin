@@ -9,7 +9,7 @@
 #include "Players/Rogue.h"
 #include "Players/Fighter.h"
 #include "Cards/Card.h"
-#include "Cards/BattleCards.h"
+#include "Cards/BattleCard.h"
 #include "Cards/Dragon.h"
 #include "Cards/Goblin.h"
 #include "Cards/Vampire.h"

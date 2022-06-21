@@ -1,7 +1,7 @@
 #ifndef MTMCHKIN_H_GANG_H
 #define MTMCHKIN_H_GANG_H
 #include "Card.h"
-#include "BattleCards.h"
+#include "BattleCard.h"
 #include <iostream>
 #include <vector>
 #include <memory>
@@ -27,10 +27,10 @@ public:
     /*
     * Gang contains monster cards, this function adds a monster to the gang.
     */
-    void addMonster (std::unique_ptr<BattleCards> &card);
+    void addMonster (std::unique_ptr<BattleCard> &card);
 
 private:
-    std::vector<std::unique_ptr<BattleCards>> m_gang;
+    std::vector<std::unique_ptr<BattleCard>> m_gang;
     static const std::string GANG_NAME;
 
 };

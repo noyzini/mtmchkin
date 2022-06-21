@@ -2,7 +2,7 @@
 
 const std::string Vampire::m_monsterName = "Vampire";
 
-Vampire::Vampire() : BattleCards(FORCE,DAMAGE,LOOT,m_monsterName)
+Vampire::Vampire() : BattleCard(FORCE,DAMAGE,LOOT,m_monsterName)
 {
 }
 

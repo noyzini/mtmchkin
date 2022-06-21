@@ -23,8 +23,8 @@ add_executable(mtmchkin
         Exception.h
         Cards/Card.cpp
         Cards/Card.h
-        Cards/BattleCards.cpp
-        Cards/BattleCards.h
+        Cards/BattleCard.cpp
+        Cards/BattleCard.h
         Cards/Dragon.cpp
         Cards/Dragon.h
         Cards/Goblin.cpp

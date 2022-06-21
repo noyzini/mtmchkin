@@ -6,7 +6,7 @@ Gang::Gang() : Card()
 {
 }
 
-void Gang::addMonster(std::unique_ptr<BattleCards> &card) {
+void Gang::addMonster(std::unique_ptr<BattleCard> &card) {
     m_gang.push_back(std::move(card));
 }
 

@@ -2,10 +2,10 @@
 #ifndef MTMCHKIN_VAMPIRE_H
 #define MTMCHKIN_VAMPIRE_H
 
-#include "BattleCards.h"
+#include "BattleCard.h"
 #include "../utilities.h"
 
-class Vampire: public BattleCards{
+class Vampire: public BattleCard{
 public:
     /*
     * Default Constructor,destructor ,operator and copy constructor

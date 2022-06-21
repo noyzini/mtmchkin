@@ -3,7 +3,7 @@
 
 const std::string Goblin::m_monsterName = "Goblin";
 
-Goblin::Goblin() : BattleCards(FORCE,DAMAGE,LOOT,m_monsterName)
+Goblin::Goblin() : BattleCard(FORCE,DAMAGE,LOOT,m_monsterName)
 {
 }
 
