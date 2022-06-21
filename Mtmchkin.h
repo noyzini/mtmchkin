@@ -33,6 +33,8 @@ private:
 
     static const int MAX_LEVEL=10;
     static const int MIN_AMOUNT_OF_CARDS = 5;
+    static const int MAX_NUMBER_PLAYERS=6;
+    static const int MIN_NUMBER_PLAYERS=2;
 
     static bool isValidPlayerName(std::string& name);
     static bool isNumber(std::string& str);

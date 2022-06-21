@@ -91,7 +91,7 @@ int Mtmchkin::getNumOfPlayers()
         std::string input;
         std::getline(std::cin, input);
         try {
-            if (stoi(input) < 2 || stoi(input) > 6) {
+            if (stoi(input) < MIN_NUMBER_PLAYERS || stoi(input) > MAX_NUMBER_PLAYERS) {
                 printInvalidTeamSize();
             } else {
                 numOfPlayers = stoi(input);
