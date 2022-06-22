@@ -2,7 +2,7 @@
 #define MTMCHKIN_H_
 
 #include <iostream>
-#include <fstream> //check if this is the include they used in tutorial!
+#include <fstream>
 #include <queue>
 #include "Players/Player.h"
 #include "Players/Wizard.h"

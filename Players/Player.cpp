@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "../utilities.h"
 
-Player::Player(const char* name) :
+Player::Player(const std::string& name) :
 m_name(name),
 m_level(FIRST_LEVEL),
 m_force(PLAYER_FORCE_DEFAULT),

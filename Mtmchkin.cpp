@@ -1,21 +1,9 @@
 #include <map>
 #include "Mtmchkin.h"
 
-
 const std::string Mtmchkin::GANG_START="Gang";
 const std::string Mtmchkin::GANG_END = "EndGang";
 const std::string Mtmchkin::SPACE = " ";
-
-//add this to .h file later, remove this
-/*
-bool Mtmchkin::isNumber(std::string& str)
-{
-    for (char i : str)
-        if (!isdigit(i))
-            return false;
-    return true;
-}
- */
 
 void Mtmchkin::getCards(std::ifstream& file)
 {
@@ -226,37 +214,39 @@ Card *Mtmchkin::makeCard(std::string& cardName)
 
 void Mtmchkin::playRound()
 {
-    //if (!isGameOver()) ?????
-    m_round++;
-    printRoundStartMessage(m_round);
-    int roundIndex=m_playersNumber;
-    while (roundIndex>0)
+    if (!isGameOver())
     {
-        roundIndex--;
-        std::unique_ptr<Player> current_player=std::move(m_players.front());
-        m_players.pop_front();
-
-        printTurnStartMessage(current_player->getName());
-
-        std::unique_ptr<Card> current_card=std::move(m_cards.front());
-        m_cards.pop_front();
-
-        current_card->playCard(*current_player);
-        m_cards.push_back(std::move(current_card));
-
-        if(current_player->getLevel()>=Player::MAX_LEVEL || current_player->isKnockedOut() )
+        m_round++;
+        printRoundStartMessage(m_round);
+        int roundIndex=m_playersNumber;
+        while (roundIndex>0)
         {
-            m_leaderboard.addPlayer(current_player);
-            m_playersNumber--;
-        }
-        else
-        {
-            m_players.push_back(std::move(current_player));
-        }
+            roundIndex--;
+            std::unique_ptr<Player> current_player=std::move(m_players.front());
+            m_players.pop_front();
 
-        if(isGameOver())
-        {
-            printGameEndMessage();
+            printTurnStartMessage(current_player->getName());
+
+            std::unique_ptr<Card> current_card=std::move(m_cards.front());
+            m_cards.pop_front();
+
+            current_card->playCard(*current_player);
+            m_cards.push_back(std::move(current_card));
+
+            if(current_player->getLevel()>=Player::MAX_LEVEL || current_player->isKnockedOut() )
+            {
+                m_leaderboard.addPlayer(current_player);
+                m_playersNumber--;
+            }
+            else
+            {
+                m_players.push_back(std::move(current_player));
+            }
+
+            if(isGameOver())
+            {
+                printGameEndMessage();
+            }
         }
     }
 }

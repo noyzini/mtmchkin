@@ -3,7 +3,7 @@
 
 const std::string Wizard::WIZARD_NAME ="Wizard";
 
-Wizard::Wizard(const char *name) : Player(name)
+Wizard::Wizard(const std::string& name) : Player(name)
 {
 }
 

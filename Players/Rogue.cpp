@@ -3,7 +3,7 @@
 
 const std::string Rogue::ROGUE_NAME = "Rogue";
 
-Rogue::Rogue(const char *name): Player(name)
+Rogue::Rogue(const std::string& name): Player(name)
 {
 }
 

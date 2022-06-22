@@ -3,7 +3,7 @@
 
 const std::string Fighter::FIGHTER_NAME = "Fighter";
 
-Fighter::Fighter(const char *name) : Player(name)
+Fighter::Fighter(const std::string& name) : Player(name)
 {
 }
 

@@ -17,12 +17,12 @@ public:
      * @result
      *      An instance of Player
     */
-    Player(const char* name); //<--------------------------------Avia doesn't like const char*
+    Player(const std::string& name);
 
     /*
      * Here we are explicitly telling the compiler to use the default methods
     */
-    Player(const Player&)=default; //<---------------------- if needed, make clone()!! here and @ Card.h???
+    Player(const Player&)=default;
     Player& operator=(const Player&)=default;
     virtual ~Player()=default;
 

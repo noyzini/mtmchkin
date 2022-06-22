@@ -16,7 +16,7 @@ public:
      * @result
      *      An instance of Rogue
     */
-    Rogue(const char* name);
+    Rogue(const std::string& name);
 
     /*
      * Here we are explicitly telling the compiler to use the default methods

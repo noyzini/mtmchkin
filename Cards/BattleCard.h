@@ -8,7 +8,7 @@ public:
     /*
     * Default Constructor,destructor ,operator and copy constructor
     */
-    BattleCard(int force, int damageOnLoss, int coinsOnWin,std::string name);
+    BattleCard(int force, int damageOnLoss, int coinsOnWin,const std::string& name);
     virtual ~BattleCard() = default;
     BattleCard& operator=(const BattleCard&) =default;
     BattleCard(const BattleCard&)=default;
