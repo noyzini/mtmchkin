@@ -7,9 +7,15 @@
 class Goblin:public BattleCard {
 public:
     /*
-    * Default Constructor,destructor ,operator and copy constructor
+     * C'tor of Goblin:
+     *
+     * @result
+     *      An instance of Goblin
     */
     Goblin();
+    /*
+    * Default Copy c'tor, destructor , and operator=
+    */
     ~Goblin() override = default;
     Goblin& operator=(const Goblin&) =default;
     Goblin(const Goblin&)=default;

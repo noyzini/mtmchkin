@@ -20,7 +20,7 @@ public:
     *
     * @param name - The name of the player.
     * @result
-    *      An instance of Rogue
+    *      An instance of Leaderboard
     */
     Leaderboard();
     /*
@@ -30,11 +30,11 @@ public:
     Leaderboard(const Leaderboard&) = default;
     Leaderboard& operator=(const Leaderboard&) = default;
     /*
-     * adding a given player to the leaderbord win or lose
+     * adding a given player to the leaderboard win or lose
      */
     void addPlayer(std::unique_ptr<Player>& player);
     /*
-     * printing of the leaderbord, getting the players that still are playing
+     * print of the leaderboard
      */
     void printBoard(const std::deque<std::unique_ptr<Player>>& players) const;
 };

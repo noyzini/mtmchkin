@@ -8,9 +8,15 @@
 class Dragon :public BattleCard {
 public:
     /*
-    * Default Constructor,destructor ,operator and copy constructor
+     * C'tor of Dragon:
+     *
+     * @result
+     *      An instance of Dragon
     */
     Dragon();
+    /*
+    * Default Copy c'tor, destructor , and operator=
+    */
     ~Dragon() override = default;
     Dragon& operator=(const Dragon&) =default;
     Dragon(const Dragon&)=default;

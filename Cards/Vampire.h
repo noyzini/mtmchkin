@@ -8,9 +8,15 @@
 class Vampire: public BattleCard{
 public:
     /*
-    * Default Constructor,destructor ,operator and copy constructor
+     * C'tor of Vampire:
+     *
+     * @result
+     *      An instance of Vampire
     */
     Vampire();
+    /*
+    * Default Copy c'tor, destructor , and operator=
+    */
     ~Vampire() override=default;
     Vampire& operator=(const Vampire&) =default;
     Vampire(const Vampire&)=default;
