@@ -90,8 +90,8 @@ private:
      * Helper functions for Mtmchkin C'tor
      */
     static bool isValidPlayerName(std::string& name);
-    static Card* makeCard(std::string& cardName);
-    static Player* makePlayer(std::string& playerClass, std::string& name);
+    static std::unique_ptr<Card> makeCard(std::string& cardName);
+    static std::unique_ptr<Player> makePlayer(std::string& playerClass, std::string& name);
     static int getNumOfPlayers();
     void getPlayers(int numOfPlayers);
     void getCards(std::ifstream& file);

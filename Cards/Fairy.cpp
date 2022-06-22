@@ -6,8 +6,9 @@ Fairy::Fairy():Card() {
 
 }
 
-void Fairy::playCard(Player &player) const {
-    Wizard *ptr = dynamic_cast<Wizard*>(&player);
+void Fairy::playCard(Player &player) const
+{
+    Wizard* ptr = dynamic_cast<Wizard*>(&player);
     if(ptr!= nullptr)
     {
         player.heal(HEAL_POINTS);

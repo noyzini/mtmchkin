@@ -165,15 +165,15 @@ Mtmchkin::Mtmchkin(const std::string& fileName):m_round(0)
 }
 
 template<class T>
-Player* createPlayer(const char *name) //should we change this on all Player to string instead of char* ??
+std::unique_ptr<Player> createPlayer(const std::string& name)
 {
-    return new T(name);
+    return std::unique_ptr<Player>(new T(name));
 }
 
-typedef Player* (*createPlayerFunction)(const char*);
+typedef std::unique_ptr<Player> (*createPlayerFunction)(const std::string&);
 typedef std::map<std::string, createPlayerFunction> StringToPlayerCreateMap;
 
-Player* Mtmchkin::makePlayer(std::string& playerClass, std::string& name)
+std::unique_ptr<Player> Mtmchkin::makePlayer(std::string& playerClass, std::string& name)
 {
     StringToPlayerCreateMap map;
     map["Rogue"] = createPlayer<Rogue>;
@@ -182,20 +182,20 @@ Player* Mtmchkin::makePlayer(std::string& playerClass, std::string& name)
 
     if (map.find(playerClass) == map.end())
         return nullptr;
-    return map.find(playerClass)->second(name.c_str());
+    return map.find(playerClass)->second(name);
 }
 
 template<class T>
-Card* createCard() //should it be smart ptr ???? @983 !! :(
+std::unique_ptr<Card> createCard() //should it be smart ptr ???? @983 !! :(
 {
-    return new T();
+    return std::unique_ptr<Card>(new T());
 }
 
-typedef Card* (*createCardFunction)(void);
+typedef std::unique_ptr<Card> (*createCardFunction)(void);
 typedef std::map<std::string, createCardFunction> StringToFunctionMap; //check convention about capital letter at the beginning
 
 //wrap this in try catch if invalid card name was entered, or return null ptr, preferably the latter
-Card *Mtmchkin::makeCard(std::string& cardName)
+std::unique_ptr<Card> Mtmchkin::makeCard(std::string& cardName)
 {
     StringToFunctionMap map;
     map["Dragon"] = createCard<Dragon>;
