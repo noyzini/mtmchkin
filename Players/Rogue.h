@@ -10,7 +10,7 @@
 class Rogue : public Player {
 public:
     /*
-     * C'tor of the game:
+     * C'tor of the player:
      *
      * @param name - The name of the player.
      * @result
