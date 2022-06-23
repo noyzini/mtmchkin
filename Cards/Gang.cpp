@@ -1,7 +1,7 @@
 #include "Gang.h"
 
 const std::string Gang::GANG_NAME="Gang";
-const std::string Gang::VAMPIYRE_CHECK ="Vampire";
+const std::string Gang::VAMPIRE_CHECK ="Vampire";
 
 Gang::Gang() : Card()
 {
@@ -28,11 +28,6 @@ std::unique_ptr<BattleCard> Gang::makeCard(std::string& cardName)
         return nullptr;
     return map.find(cardName)->second();
 }
-
-
-
-
-
 
 
 void Gang::addMonster(std::unique_ptr<BattleCard> &card) {
@@ -65,7 +60,7 @@ void Gang::playCard(Player &player) const
         for(; index < gangSize; index++)
         {
             player.damage(m_gang[index]->m_damageOnLoss);
-            if(m_gang[index]->m_name==VAMPIYRE_CHECK)
+            if(m_gang[index]->m_name == VAMPIRE_CHECK)
             {
                 player.loseForce();
             }
@@ -75,7 +70,7 @@ void Gang::playCard(Player &player) const
 }
 
 void Gang::print(std::ostream &os) const {
-    os<<"This is a Gang card\n";
+    os<<"This is a Gang card, there are " << m_gang.size() << " monsters in this gang:\n";
     int gangSize=m_gang.size();
     for(int i=0;i<gangSize;i++)
     {
@@ -84,37 +79,35 @@ void Gang::print(std::ostream &os) const {
     os<<"End of Gang card\n";
 }
 
-Gang &Gang::operator=(const Gang& gang) {
+Gang& Gang::operator=(const Gang& gang) {
     if (this==&gang)
     {
         return *this;
     }
-    int gangSize=gang.m_gang.size();
-    int i=0;
-    for(;i<gangSize;i++)
+    int oldGangSize = this->m_gang.size();
+    int gangSize= gang.m_gang.size();
+    for(int i = 0;i<gangSize;i++)
     {
-        std::unique_ptr<BattleCard> temp(makeCard(gang.m_gang.front()->m_name));
+        std::unique_ptr<BattleCard> temp(makeCard(gang.m_gang[i]->m_name));
         if (temp == nullptr){
-            throw std::exception();
+            throw std::runtime_error("Invalid gang");
         }
         else
         {
-            this->m_gang[i]=std::move(temp);
+            this->addMonster(temp);
         }
     }
-    int toBeDeleted= this->m_gang.size();
-    for(;i<toBeDeleted;i++)
-    {
-        this->m_gang[i].release();
-    }
+
+    m_gang.erase(m_gang.begin(), m_gang.begin() + oldGangSize);
+    return *this;
 }
 
 Gang::Gang(const Gang &gang): Card() {
     int gangSize=gang.m_gang.size();
     for(int i=0;i<gangSize;i++) {
-        std::unique_ptr<BattleCard> temp(makeCard(gang.m_gang.front()->m_name));
+        std::unique_ptr<BattleCard> temp(makeCard(gang.m_gang[i]->m_name));
         if (temp == nullptr){
-            throw std::exception();
+            throw std::runtime_error("Invalid gang");
         }
         else
         {

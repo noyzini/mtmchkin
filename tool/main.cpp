@@ -7,7 +7,6 @@
 #include "../Exception.h"
 #include <map>
 
-
 int main()
 {
     const int MAX_NUMBER_OF_ROUNDS = 100;

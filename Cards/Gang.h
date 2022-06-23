@@ -36,7 +36,7 @@ public:
 private:
     std::vector<std::unique_ptr<BattleCard>> m_gang;
     static const std::string GANG_NAME;
-    static const std::string VAMPIYRE_CHECK;
+    static const std::string VAMPIRE_CHECK;
     static std::unique_ptr<BattleCard> makeCard(std::string& cardName);
 
 };
