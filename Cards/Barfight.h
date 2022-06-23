@@ -9,7 +9,7 @@ public:
     /*
      * Default Constructor,destructor ,operator and copy constructor
      */
-    Barfight();
+    Barfight() ;
     ~Barfight() override =default ;
     Barfight& operator=(const Barfight&) =default;
     Barfight(const Barfight&)=default;

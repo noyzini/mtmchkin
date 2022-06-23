@@ -35,7 +35,7 @@ class DeckFileFormatError : public std::runtime_error
 {
 public:
 
-    DeckFileFormatError(int line) : std::runtime_error("Deck File Error: File format error in line " + std::to_string(line))
+    explicit DeckFileFormatError(int line) : std::runtime_error("Deck File Error: File format error in line " + std::to_string(line))
     {
     }
 };

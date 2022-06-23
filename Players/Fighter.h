@@ -14,7 +14,7 @@ public:
      * @result
      *      An instance of Rogue
     */
-    Fighter(const std::string& name);
+    explicit Fighter(const std::string& name);
 
     /*
      * Here we are explicitly telling the compiler to use the default methods

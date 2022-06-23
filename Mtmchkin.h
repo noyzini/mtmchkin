@@ -34,7 +34,7 @@ public:
     * @return
     *      A new instance of Mtmchkin.
     */
-    Mtmchkin(const std::string& fileName);
+    explicit Mtmchkin(const std::string& fileName);
     
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
@@ -69,6 +69,13 @@ public:
     */
     int getNumberOfRounds() const;
 
+    /*
+    * delete for the copy constructor and operator =
+    */
+    Mtmchkin(const Mtmchkin&)=delete;
+    Mtmchkin& operator=(const Mtmchkin&) =delete;
+    ~Mtmchkin()=default;
+
 private:
     std::deque<std::unique_ptr<Player>> m_players;
     std::deque<std::unique_ptr<Card>> m_cards;
@@ -83,8 +90,6 @@ private:
     static const std::string GANG_START;
     static const std::string GANG_END;
     static const std::string SPACE;
-
-    //static bool isNumber(std::string& str);
 
     /*
      * Helper functions for Mtmchkin C'tor

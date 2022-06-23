@@ -1,6 +1,7 @@
 #include "Gang.h"
 
 const std::string Gang::GANG_NAME="Gang";
+const std::string Gang::VAMPIYRE_CHECK ="Vampire";
 
 Gang::Gang() : Card()
 {
@@ -36,6 +37,10 @@ void Gang::playCard(Player &player) const
         for(; index < gangSize; index++)
         {
             player.damage(m_gang[index]->m_damageOnLoss);
+            if(m_gang[index]->m_name==VAMPIYRE_CHECK)
+            {
+                player.loseForce();
+            }
             printLossBattle(player.getName(),m_gang[index]->m_name);
         }
     }

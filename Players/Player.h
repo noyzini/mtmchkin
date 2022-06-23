@@ -17,7 +17,7 @@ public:
      * @result
      *      An instance of Player
     */
-    Player(const std::string& name);
+    explicit Player(const std::string& name);
 
     /*
      * Here we are explicitly telling the compiler to use the default methods

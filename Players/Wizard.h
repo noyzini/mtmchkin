@@ -14,7 +14,7 @@ public:
      * @result
      *      An instance of Rogue
     */
-    Wizard(const std::string& name);
+    explicit Wizard(const std::string& name);
     ~Wizard() override=default;
     Wizard(const Wizard&) = default;
     Wizard& operator=(const Wizard&) = default;

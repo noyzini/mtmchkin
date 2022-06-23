@@ -14,8 +14,8 @@ public:
     */
     Gang();
     ~Gang() override =default;
-    Gang& operator=(const Gang&) =default;
-    Gang(const Gang&)=default;
+    Gang& operator=(const Gang&) =delete;
+    Gang(const Gang&)=delete;
     /*
     * Playing Gang card on a given player
     */
@@ -32,6 +32,7 @@ public:
 private:
     std::vector<std::unique_ptr<BattleCard>> m_gang;
     static const std::string GANG_NAME;
+    static const std::string VAMPIYRE_CHECK;
 
 };
 
