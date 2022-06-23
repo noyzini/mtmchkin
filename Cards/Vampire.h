@@ -18,7 +18,7 @@ public:
     * Default Copy c'tor, destructor , and operator=
     */
     ~Vampire() override=default;
-    Vampire& operator=(const Vampire&) =default;
+    Vampire& operator=(const Vampire&)=default;
     Vampire(const Vampire&)=default;
     /*
     * Playing Vampire card on a given player

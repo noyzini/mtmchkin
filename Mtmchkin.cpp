@@ -187,15 +187,15 @@ std::unique_ptr<Player> Mtmchkin::makePlayer(std::string& playerClass, std::stri
 }
 
 template<class T>
-std::unique_ptr<Card> createCard() //should it be smart ptr ???? @983 !! :(
+std::unique_ptr<Card> createCard()
 {
     return std::unique_ptr<Card>(new T());
 }
 
 typedef std::unique_ptr<Card> (*createCardFunction)(void);
-typedef std::map<std::string, createCardFunction> StringToFunctionMap; //check convention about capital letter at the beginning
+typedef std::map<std::string, createCardFunction> StringToFunctionMap;
 
-//wrap this in try catch if invalid card name was entered, or return null ptr, preferably the latter
+
 std::unique_ptr<Card> Mtmchkin::makeCard(std::string& cardName)
 {
     StringToFunctionMap map;

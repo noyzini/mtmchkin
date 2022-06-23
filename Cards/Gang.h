@@ -5,6 +5,10 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <map>
+#include "Vampire.h"
+#include "Goblin.h"
+#include "Dragon.h"
 
 
 class Gang: public Card {
@@ -14,8 +18,8 @@ public:
     */
     Gang();
     ~Gang() override =default;
-    Gang& operator=(const Gang&) =delete;
-    Gang(const Gang&)=delete;
+    Gang& operator=(const Gang&);
+    Gang(const Gang&);
     /*
     * Playing Gang card on a given player
     */
@@ -33,6 +37,7 @@ private:
     std::vector<std::unique_ptr<BattleCard>> m_gang;
     static const std::string GANG_NAME;
     static const std::string VAMPIYRE_CHECK;
+    static std::unique_ptr<BattleCard> makeCard(std::string& cardName);
 
 };
 

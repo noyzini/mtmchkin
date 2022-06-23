@@ -1,5 +1,3 @@
-
-
 #ifndef MTMCHKIN_H_MERCHANT_H
 #define MTMCHKIN_H_MERCHANT_H
 #include "Card.h"

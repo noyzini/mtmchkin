@@ -27,3 +27,4 @@ void Dragon::print(std::ostream& os) const
     printMonsterDetails(os,m_force,m_damageOnLoss,m_coinsOnWin, true);
     printEndOfCardDetails(os);
 }
+
